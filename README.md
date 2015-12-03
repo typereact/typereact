@@ -9,9 +9,9 @@
   * cleanup/...
   * doc/...
 
-  ```
-  git checkout -b feature/<NEW-BRANCH-NAME>
-  ```
+```
+git checkout -b feature/<NEW-BRANCH-NAME>
+```
 
 * Make changes to your new branch
 
