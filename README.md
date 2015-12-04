@@ -35,7 +35,7 @@ git pull –rebase upstream dev
 git push origin feature/addlogin
 ```
 
-* Submit pull request from your personal github to the org’s github The pull request should be from your feature branch to the org’s dev branch.
+* Submit pull request from your personal github to the org’s github. The pull request should be from your feature branch to the org’s dev branch.
 
 * Once your pull request has been merged to the org's dev branch, git checkout your local dev branch and rebase from the org's dev branch before beginning work on a new feature
 
