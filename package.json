@@ -1,0 +1,12 @@
+{
+  "name": "typereact",
+  "version": "1.0.0",
+  "description": "typereact app",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "path": "^0.12.7"
+  }
+}
