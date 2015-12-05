@@ -2,6 +2,8 @@ var express = require('express');
 var path = require('path');
 var bodyParser  = require('body-parser');
 var app = express();
+//requires file that connects to database
+var db = require('./database/dbconfig.js');
 
 app.use(bodyParser.json());
 
