@@ -7,7 +7,19 @@ module.exports = function(sequelize, DataTypes) {
     achievementDescription: {
       type: DataTypes.STRING(50),
       field: 'achievement_description'
-    }
+    },
+    numChallengeRequirement: {
+      type: DataTypes.INTEGER(11),
+      field: 'num_challenge_requirement'
+    },
+    friendRequirement: {
+      type: DataTypes.INTEGER(11),
+      field: 'friend_requirement'
+    },
+    winRequirement: {
+      type: DataTypes.INTEGER(11),
+      field: 'win_requirement'
+    },
   }, {
     underscored: true
   })

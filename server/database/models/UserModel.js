@@ -15,9 +15,11 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING(11)
     },
+    email: {
+      type: DataTypes.STRING(40)
+    },
     skillLevel: {
       type: DataTypes.STRING(11),
-      unique: true,
       field: 'skill_level'
     },
     numericalRank: {
@@ -32,8 +34,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM('mac','pc'),
       field: 'mac_or_pc'
     },
-    code_submitted: {
-      type: DataTypes.TEXT('medium')
+    numChallengesCompleted: {
+      type: DataTypes.INTEGER(11).UNSIGNED,
+      field: 'num_challenges_completed'
     }
   }, {
     underscored: true

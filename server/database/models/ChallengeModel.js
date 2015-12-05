@@ -16,7 +16,19 @@ module.exports = function(sequelize, DataTypes) {
     difficultyLevel: {
       type: DataTypes.STRING(15),
       field: 'difficulty_level'
-    }
+    },
+    goldMedalTime: {
+      type: DataTypes.INTEGER(11),
+      field: 'gold_medal_time'
+    },
+    silverMedalTime: {
+      type: DataTypes.INTEGER(11),
+      field: 'silver_medal_time'
+    },
+    bronzeMedalTime: {
+      type: DataTypes.INTEGER(11),
+      field: 'bronze_medal_time'
+    },
   }, {
     underscored: true
   })

@@ -23,7 +23,8 @@ var models = [
   'Achievement',
   'UserAchievement',
   'Comment',
-  'Competition'
+  'Competition',
+  'Friend'
 ];
 
 //add each model as a property to module.exports
