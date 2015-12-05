@@ -19,7 +19,11 @@ var sequelize = new Sequelize('typereactv1', 'testuser1', 'testuser1', {
 var models = [
   'Challenge',
   'User',
-  'UserChallenge'
+  'UserChallenge',
+  'Achievement',
+  'UserAchievement',
+  'Comment',
+  'Competition'
 ];
 
 //add each model as a property to module.exports
@@ -31,6 +35,15 @@ models.forEach(function(model) {
 var defineRelationships = function(modexp) {
   modexp.Challenge.belongsToMany(modexp.User, {through: 'UserChallenge'});
   modexp.User.belongsToMany(modexp.Challenge, {through: 'UserChallenge'});
+  modexp.Challenge.belongsTo(modexp.User, {as: 'submitted_by'});
+  modexp.Achievement.belongsToMany(modexp.User, {through: 'UserAchievement'});
+  modexp.User.belongsToMany(modexp.Achievement, {through: 'UserAchievement'});
+  modexp.Comment.belongsTo(modexp.User);
+  modexp.User.hasMany(modexp.Comment);
+  modexp.Comment.belongsTo(modexp.Challenge);
+  modexp.Challenge.hasMany(modexp.Comment);
+  modexp.Competition.belongsTo(modexp.Challenge);
+  modexp.Challenge.hasMany(modexp.Competition);
 };
 //invoke function to define relationships
 defineRelationships(module.exports);
