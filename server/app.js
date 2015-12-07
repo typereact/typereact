@@ -1,38 +1,38 @@
 import React from "react";
-import Router from "react-router";  
-import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
-// var React = require('react');
-// var Router = require('react-router');
-// var DefaultRoute = require('react-router').Route
-// var Link = require('react-router').Link
-// var Route =require('react-router').Route
-// var RouteHandler = require('react-router').RouteHandler
+import ReactDOM from 'react-dom';
 
-
-// var LoginHandler = require('../shared/components/login.js');
-import LoginHandler from "../shared/components/login.js";
-
-let App = React.createClass({  
+class Hello extends React.Component {
   render() {
-    return(
-      <div className="nav">
-        <p> TESTING</p>
-        <Link to="app">Home</Link>
-        <Link to="login">Login</Link>
-
-        {/* this is the importTant part */}
-        <RouteHandler/>
-      </div>
-    );
+    return <h1>Hello</h1>
   }
-});
+}
 
-let routes = (  
-  <Route name="app" path="/" handler={App}>
-    <Route name="login" path="/login" handler={LoginHandler}/>
-  </Route>
-);
+ReactDOM.render(<Hello/>, document.getElementById('hello'));
+// import Router from "react-router";  
+// import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
+// import LoginHandler from "../shared/components/login.js";
 
-Router.run(routes, function (Handler) {  
-  React.render(<Handler/>, document.body);
-});
+// let App = React.createClass({  
+//   render() {
+//     return(
+//       <div className="nav">
+//         <p> TESTING</p>
+//         <Link to="app">Home</Link>
+//         <Link to="login">Login</Link>
+
+//         { this is the importTant part }
+//         <RouteHandler/>
+//       </div>
+//     );
+//   }
+// });
+
+// let routes = (  
+//   <Route name="app" path="/" handler={App}>
+//     <Route name="login" path="/login" handler={LoginHandler}/>
+//   </Route>
+// );
+
+// Router.run(routes, function (Handler) {  
+//   React.render(<Handler/>, document.body);
+// });
