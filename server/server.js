@@ -11,7 +11,7 @@ var db = require('./database/dbconfig.js');
 var User = db.User;
 
 
-var routes from "../shared/routes";
+// var routes from "../shared/routes";
 
 var authRouter = require('./routers/authRouter.js')(express, passport, User, GitHubStrategy);
 
