@@ -23,7 +23,8 @@
     "react-redux": "^4.0.0",
     "react-router": "^1.0.1",
     "redux": "^3.0.4",
-    "sequelize": "^3.14.2"
+    "sequelize": "^3.14.2",
+    "style-loader": "^0.13.0"
   },
   "devDependencies": {
     "babel": "^6.3.13",
@@ -36,6 +37,7 @@
     "babel-preset-react": "^6.3.13",
     "chai": "^3.4.1",
     "chai-immutable": "^1.5.3",
+    "css-loader": "^0.23.0",
     "mocha": "^2.3.4",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
