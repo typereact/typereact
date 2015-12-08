@@ -1,13 +1,21 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import Login from '../shared/components/login.js';
+import Editor from '../shared/components/editor.js';
 
-class Hello extends React.Component {
+class App extends React.Component {
   render() {
-    return <h1>Hello</h1>
+    return <div>
+    <div id='login'></div>
+    <div id='editor'></div>
+    </div>
   }
 }
 
-ReactDOM.render(<Hello/>, document.getElementById('hello'));
+ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<Login/>, document.getElementById('login'));
+ReactDOM.render(<Editor/>, document.getElementById('editor'));
+
 // import Router from "react-router";  
 // import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
 // import LoginHandler from "../shared/components/login.js";
