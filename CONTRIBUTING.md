@@ -25,7 +25,7 @@ git commit -m '[feature] <COMMIT-MESSAGE>'
 
 * Rebase from the upstream dev branch to your feature branch  Be sure to do this while you are on your feature branch
 ```
-git pull –rebase upstream dev
+git pull –-rebase upstream dev
 ```
 
 * Resolve merge conflicts if they exist
