@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import Login from '../shared/components/login.js';
+import Start from '../shared/components/start.js';
 import Editor from '../shared/components/editor.js';
+import SolutionEditor from '../shared/components/solutionEditor.js'
 
 class App extends React.Component {
   render() {
     return <div>
-      <Login />
+      <Start />
       <Editor />
+      <br><SolutionEditor /></br>
     </div>
   }
 }
