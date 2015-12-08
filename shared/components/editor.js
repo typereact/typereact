@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Codemirror from 'react-codemirror';
-require('codemirror/mode/javascript/javascript.js');
-require('codemirror/mode/xml/xml');
-require('codemirror/mode/markdown/markdown');
-require('codemirror/keymap/sublime.js');
+require('react-codemirror/node_modules/codemirror/mode/javascript/javascript.js');
+require('react-codemirror/node_modules/codemirror/mode/xml/xml');
+require('react-codemirror/node_modules/codemirror/mode/markdown/markdown');
+require('react-codemirror/node_modules/codemirror/keymap/sublime.js');
 require('codemirror/lib/codemirror.css');
-
-// require('../node_modules/codemirror/mode/javascript/javascript')
-// import '../../node_modules/react-codemirror/node_modules/mode/javascript/javascript.js';
 
 var defaults = {
     javascript: 'for(var i=0;i < array.length; i++)',
@@ -18,8 +15,9 @@ let Editor = React.createClass({
     getInitialState: function() {
         return {
             // code: defaults.markdown,
-            // mode: 'markdown'
+            // mode: 'markdown',
             code: defaults.javascript,
+            readOnly: false,
             mode: 'javascript'
         };
     },
@@ -32,8 +30,9 @@ let Editor = React.createClass({
         var options = {
             lineNumbers: true,
             mode: this.state.mode,
+            readOnly: this.state.readOnly,
             // mode: 'javascript'
-            // keyMap: 'sublime',
+            keyMap: 'sublime'
         };
         return <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
     }
@@ -41,4 +40,3 @@ let Editor = React.createClass({
 
 export default Editor;
 
-// ReactDOM.render(<Editor/>, document.getElementById('editor'));

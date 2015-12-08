@@ -6,15 +6,13 @@ import Editor from '../shared/components/editor.js';
 class App extends React.Component {
   render() {
     return <div>
-    <div id='login'></div>
-    <div id='editor'></div>
+      <Login />
+      <Editor />
     </div>
   }
 }
 
 ReactDOM.render(<App/>, document.getElementById('app'));
-ReactDOM.render(<Login/>, document.getElementById('login'));
-ReactDOM.render(<Editor/>, document.getElementById('editor'));
 
 // import Router from "react-router";  
 // import { DefaultRoute, Link, Route, RouteHandler } from "react-router";

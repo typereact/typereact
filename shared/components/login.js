@@ -9,4 +9,3 @@ let Login = React.createClass ({
 
 export default Login;
 
-// ReactDOM.render(<Login/>, document.getElementById('login'));

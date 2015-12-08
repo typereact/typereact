@@ -29,17 +29,17 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
 
-            }
+            },
                 // { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
             { 
                 test: /\.css$/, 
                 loader: "style-loader!css-loader" 
             }
         ]
-    }
-    // plugins: [
-    //   new webpack.NoErrorsPlugin()
-    // ]
+    },
+    plugins: [
+      new webpack.NoErrorsPlugin()
+    ]
 
 };
 
