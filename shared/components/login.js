@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-let login = React.createClass({
-
+let Login = React.createClass ({
   render() {
-    return(<div>Login through Github</div>);
+    return(<div>Login through Github</div>)
   }
 });
 
-export default login;
+export default Login;
+
+// ReactDOM.render(<Login/>, document.getElementById('login'));
