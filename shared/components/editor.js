@@ -9,13 +9,10 @@ require('codemirror/lib/codemirror.css');
 
 var defaults = {
     javascript: 'for(var i=0;i < array.length; i++)',
-    markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)'
 }
 let Editor = React.createClass({
     getInitialState: function() {
         return {
-            // code: defaults.markdown,
-            // mode: 'markdown',
             code: defaults.javascript,
             readOnly: false,
             mode: 'javascript'
@@ -31,8 +28,9 @@ let Editor = React.createClass({
             lineNumbers: true,
             mode: this.state.mode,
             readOnly: this.state.readOnly,
-            // mode: 'javascript'
-            keyMap: 'sublime'
+            keyMap: 'sublime',
+            tabSize: 2,
+            showCursorWhenSelecting: true
         };
         return <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
     }
