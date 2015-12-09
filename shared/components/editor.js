@@ -35,7 +35,7 @@ let Editor = React.createClass({
             tabSize: 2,
             showCursorWhenSelecting: true
         };
-        // console.log('inside render function');
+
         return <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
     }
 });
@@ -60,6 +60,7 @@ export function keyPressed(ch) {
 export function stringChanged(string) {
     return { type: STRING_CHANGED, string }
 }
+
 
 /* REDUCER */
 
@@ -115,6 +116,7 @@ function todos(state = [], action) {
 //   trackKeys,
 //   matchCode
 // })
+
 
 // export default editorApp
 
