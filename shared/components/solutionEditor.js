@@ -6,21 +6,23 @@ import Codemirror from 'react-codemirror';
 // require('react-codemirror/node_modules/codemirror/mode/markdown/markdown');
 // require('react-codemirror/node_modules/codemirror/keymap/sublime.js');
 require('codemirror/lib/codemirror.css');
+require('../css/codemirror.css')
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
 
-var defaults = {
+var Defaults = exports.Defaults = {
     javascript: 'for(var i=0;i < array.length; i++)',
     markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)'
 }
+
 
 let SolutionEditor = React.createClass({
     getInitialState: function() {
         return {
             // code: defaults.markdown,
             // mode: 'markdown',
-            code: defaults.javascript,
+            code: Defaults.javascript,
             readOnly: true,
             mode: 'javascript'
         };
