@@ -3,10 +3,12 @@ var path = require('path')
 
 module.exports = {  
     entry: [
+    //for es6
       'babel-polyfill', 
-      // 'webpack/hot/only-dev-server',
+      // 'webpack-hot-middleware/client'
+      // 'webpack/hot/dev-server',
       "./server/app.js",
-      'webpack-dev-server/client?http://localhost:8080'
+      // 'webpack-dev-server/client?http://localhost:8080'
     ],
     output: {
         path: __dirname,
