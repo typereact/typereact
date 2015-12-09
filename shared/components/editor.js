@@ -35,7 +35,7 @@ let Editor = React.createClass({
             tabSize: 2,
             showCursorWhenSelecting: true
         };
-        console.log('inside render function');
+        // console.log('inside render function');
         return <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
     }
 });
@@ -112,10 +112,10 @@ function todos(state = [], action) {
   }
 }
 
-const editorApp = combineReducers({
-  trackKeys,
-  matchCode
-})
+// const editorApp = combineReducers({
+//   trackKeys,
+//   matchCode
+// })
 
 // export default editorApp
 
