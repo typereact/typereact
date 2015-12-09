@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Codemirror from 'react-codemirror';
+import SolutionEditor from './solutionEditor.js'
 // require('react-codemirror/node_modules/codemirror/mode/javascript/javascript.js');
 // require('react-codemirror/node_modules/codemirror/mode/xml/xml');
 // require('react-codemirror/node_modules/codemirror/mode/markdown/markdown');
 // require('react-codemirror/node_modules/codemirror/keymap/sublime.js');
 require('codemirror/lib/codemirror.css');
+require('../css/codemirror.css');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
+import { Defaults } from './solutionEditor.js';
+
 
 var defaults = {
-    javascript: 'for(var i=0;i < array.length; i++)',
+    javascript: 'for(var i=0;i < array.length;',
+    markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)'
 }
+
 let Editor = React.createClass({
     getInitialState: function() {
         return {
@@ -25,6 +31,10 @@ let Editor = React.createClass({
         this.setState({
             code: newCode
         });
+        if(this.state.code === Defaults.javascript) {
+            alert('Good job!');
+            console.log('Good job!');
+        }
     },
     render: function() {
         var options = {
@@ -35,7 +45,6 @@ let Editor = React.createClass({
             tabSize: 2,
             showCursorWhenSelecting: true
         };
-
         return <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
     }
 });
@@ -126,4 +135,3 @@ function todos(state = [], action) {
 
 
 export default Editor;
-
