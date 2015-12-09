@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Codemirror from 'react-codemirror';
-// require('react-codemirror/node_modules/codemirror/mode/javascript/javascript.js');
-// require('react-codemirror/node_modules/codemirror/mode/xml/xml');
-// require('react-codemirror/node_modules/codemirror/mode/markdown/markdown');
-// require('react-codemirror/node_modules/codemirror/keymap/sublime.js');
+require('react-codemirror/node_modules/codemirror/mode/javascript/javascript.js');
+require('react-codemirror/node_modules/codemirror/mode/xml/xml');
+require('react-codemirror/node_modules/codemirror/mode/markdown/markdown');
+require('react-codemirror/node_modules/codemirror/keymap/sublime.js');
 require('codemirror/lib/codemirror.css');
-require('codemirror/mode/javascript/javascript');
-require('codemirror/mode/xml/xml');
-require('codemirror/keymap/sublime');
 
 var defaults = {
     javascript: 'for(var i=0;i < array.length; i++)',
