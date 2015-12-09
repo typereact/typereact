@@ -9,7 +9,8 @@ class App extends React.Component {
     return <div>
       <Start />
       <Editor />
-      <br><SolutionEditor /></br>
+      <br></br>
+      <SolutionEditor />
     </div>
   }
 }
