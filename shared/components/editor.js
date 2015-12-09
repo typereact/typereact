@@ -61,7 +61,6 @@ export function stringChanged(string) {
     return { type: STRING_CHANGED, string }
 }
 
-
 /* REDUCER */
 
 // import { combineReducers } from 'redux'
