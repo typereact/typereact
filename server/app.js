@@ -5,17 +5,37 @@ import Editor from '../shared/components/editor.js';
 import SolutionEditor from '../shared/components/solutionEditor.js'
 import Counter from '../shared/components/counter.js'
 
-class App extends React.Component {
-  render() {
+import $ from 'jquery';
+
+let App = React.createClass( {
+  getInitialState: function () {
+    return {
+      challengeUnsolved: 'fetching unsolved challenge...',
+      challengeSolved: 'fetching solved challenge...'
+    }
+  },
+  componentDidMount: function() {
+    $.get('/challenge/getChallenge', function(dbChallenge) {
+      this.setState({
+        challengeUnsolved: dbChallenge.challengeUnsolved,
+        challengeSolved: dbChallenge.challengeSolved
+      })
+    }.bind(this))    
+  },
+
+  render: function() {
+    // var alpha = this.
     return <div>
-      <Start />
+      <a href='auth/github'>Github Auth</a>
       <Counter />
-      <Editor />
+      <p></p>
+      <Start/>
+      <Editor challengeUnsolved={this.state.challengeUnsolved} challengeSolved={this.state.challengeSolved}/>
       <br></br>
-      <SolutionEditor />
+      <SolutionEditor challengeSolved={this.state.challengeSolved}/>
     </div>
   }
-}
+})
 
 ReactDOM.render(<App/>, document.getElementById('app'));
 
