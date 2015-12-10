@@ -11,11 +11,8 @@ require('../css/codemirror.css');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
-<<<<<<< HEAD
 
-=======
 import $ from 'jquery';
->>>>>>> [feature] loading challenge from database
 import { Defaults } from './solutionEditor.js';
 
 
@@ -26,23 +23,24 @@ var defaults = {
 
 let Editor = React.createClass({
     getInitialState: function() {
-        return {
-            code: this.props.challengeUnsolved,
-            solvedCode: this.props.challengeSolved,
-            readOnly: false,
-            mode: 'javascript',
-            counter: 0
-        };
+      return {
+          code: this.props.challengeUnsolved,
+          solvedCode: this.props.challengeSolved,
+          readOnly: false,
+          mode: 'javascript',
+          counter: 0
+      };
     },
     componentDidMount: function() {
-        document.addEventListener('keypress', () => {
+      document.addEventListener('keypress', () => {
         this.setState({counter:this.state.counter +1})
         console.log('counter is ', this.state.counter)
-        })
+      })
     },
     handleKey: function(instance, name, event) {
-        this.setState({counter:this.state.counter + 1})
-        console.log('handle key ', this.state.counter)
+      this.setState({counter:this.state.counter + 1});
+      console.log('handle key ', this.state.counter);
+    },
     componentWillReceiveProps: function(nextProps) {
       console.log('componentWillReceiveProps', this.props)
       this.setState({
