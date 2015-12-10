@@ -22,10 +22,15 @@ let SolutionEditor = React.createClass({
         return {
             // code: defaults.markdown,
             // mode: 'markdown',
-            code: Defaults.javascript,
+            code: this.props.challengeSolved,
             readOnly: true,
             mode: 'javascript'
         };
+    },
+    componentWillReceiveProps: function(nextProps) {
+      this.setState({
+        code: nextProps.challengeSolved
+      })
     },
     updateCode: function(newCode) {
         this.setState({
@@ -37,6 +42,7 @@ let SolutionEditor = React.createClass({
             lineNumbers: true,
             mode: this.state.mode,
             readOnly: this.state.readOnly,
+            tabSize: 2,
             // mode: 'javascript'
             keyMap: 'sublime'
         };

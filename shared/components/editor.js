@@ -12,6 +12,7 @@ require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
 
+import $ from 'jquery';
 import { Defaults } from './solutionEditor.js';
 
 
@@ -22,29 +23,37 @@ var defaults = {
 
 let Editor = React.createClass({
     getInitialState: function() {
-        return {
-            code: defaults.javascript,
-            readOnly: false,
-            mode: 'javascript',
-            counter: 0
-        };
+      return {
+          code: this.props.challengeUnsolved,
+          solvedCode: this.props.challengeSolved,
+          readOnly: false,
+          mode: 'javascript',
+          counter: 0
+      };
     },
     componentDidMount: function() {
-        document.addEventListener('keypress', () => {
+      document.addEventListener('keypress', () => {
         this.setState({counter:this.state.counter +1})
         console.log('counter is ', this.state.counter)
-        })
+      })
     },
     handleKey: function(instance, name, event) {
-        this.setState({counter:this.state.counter + 1})
-        console.log('handle key ', this.state.counter)
+      this.setState({counter:this.state.counter + 1});
+      console.log('handle key ', this.state.counter);
+    },
+    componentWillReceiveProps: function(nextProps) {
+      console.log('componentWillReceiveProps', this.props)
+      this.setState({
+        code: nextProps.challengeUnsolved,
+        solvedCode: nextProps.challengeSolved
+      })
     },
     updateCode: function(newCode) {
         // debugger;
         this.setState({
             code: newCode
         });
-        if(this.state.code === Defaults.javascript) {
+        if(this.state.code === this.state.solvedCode) {
             alert('Good job!');
             console.log('Good job!');
         }
