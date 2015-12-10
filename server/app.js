@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import Start from '../shared/components/start.js';
 import Editor from '../shared/components/editor.js';
 import SolutionEditor from '../shared/components/solutionEditor.js'
+import Counter from '../shared/components/counter.js'
 
 class App extends React.Component {
   render() {
     return <div>
       <Start />
+      <Counter />
       <Editor />
       <br></br>
       <SolutionEditor />
