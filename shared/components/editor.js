@@ -11,6 +11,7 @@ require('../css/codemirror.css');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
+
 import { Defaults } from './solutionEditor.js';
 
 
@@ -24,10 +25,22 @@ let Editor = React.createClass({
         return {
             code: defaults.javascript,
             readOnly: false,
-            mode: 'javascript'
+            mode: 'javascript',
+            counter: 0
         };
     },
+    componentDidMount: function() {
+        document.addEventListener('keypress', () => {
+        this.setState({counter:this.state.counter +1})
+        console.log('counter is ', this.state.counter)
+        })
+    },
+    handleKey: function(instance, name, event) {
+        this.setState({counter:this.state.counter + 1})
+        console.log('handle key ', this.state.counter)
+    },
     updateCode: function(newCode) {
+        // debugger;
         this.setState({
             code: newCode
         });
@@ -45,9 +58,12 @@ let Editor = React.createClass({
             tabSize: 2,
             showCursorWhenSelecting: true
         };
-        return <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+        return <div>{this.state.counter}<Codemirror ref="editor" value={this.state.code} onkeyHandled={this.handleKey} onChange={this.updateCode} options={options} /></div>
     }
 });
+
+var ShowCounter = exports.ShowCounter = ShowCounter;
+
 
 /* ACTION CREATOR */
 
@@ -120,6 +136,9 @@ function todos(state = [], action) {
       return state
   }
 }
+
+
+// import { combineReducers } from 'redux'
 
 // const editorApp = combineReducers({
 //   trackKeys,
