@@ -1,17 +1,17 @@
-import {expect} from 'chai';
+// import {expect} from 'chai';
 
-describe('immutability', () => {
-  describe('a number', () => {
-    function increment (currentState) {
-      return currentState + 1;
-    }
+// describe('immutability', () => {
+//   describe('a number', () => {
+//     function increment (currentState) {
+//       return currentState + 1;
+//     }
 
-    if('is immutable', () => {
-      let state = 42;
-      let nextState = increment(state);
+//     if('is immutable', () => {
+//       let state = 42;
+//       let nextState = increment(state);
 
-      expect(nextState).to.equal(43);
-      expect(state).to.equal(42);
-    });
-  });
-});
+//       expect(nextState).to.equal(43);
+//       expect(state).to.equal(42);
+//     });
+//   });
+// });

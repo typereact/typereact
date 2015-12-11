@@ -10,6 +10,7 @@ require('../css/codemirror.css')
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
+var beautify = require('js-beautify').js_beautify;
 
 var Defaults = exports.Defaults = {
     javascript: 'for(var i=0;i < array.length; i++)',
@@ -29,7 +30,7 @@ let SolutionEditor = React.createClass({
     },
     componentWillReceiveProps: function(nextProps) {
       this.setState({
-        code: nextProps.challengeSolved
+        code: beautify(nextProps.challengeSolved, {indent_size: 2})
       })
     },
     updateCode: function(newCode) {

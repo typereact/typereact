@@ -11,6 +11,7 @@ require('../css/codemirror.css');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
+var beautify = require('js-beautify').js_beautify
 
 import $ from 'jquery';
 import { Defaults } from './solutionEditor.js';
@@ -35,7 +36,7 @@ let Editor = React.createClass({
       console.log('componentWillReceiveProps', this.props)
       this.setState({
         code: nextProps.challengeUnsolved,
-        solvedCode: nextProps.challengeSolved
+        solvedCode: beautify(nextProps.challengeSolved, {indent_size: 2})
       })
     },
     handleKeyPress: function() {
@@ -48,24 +49,27 @@ let Editor = React.createClass({
         console.log('name is ', name)
     },
     updateCode: function(newCode) {
-        this.setState({
-            code: newCode
-        });
-        if(this.state.code === this.state.solvedCode) {
-            alert('Good job!');
-            console.log('Good job!');
-        }
+      // debugger;
+      console.log(JSON.stringify(newCode));
+      console.log(JSON.stringify(this.state.solvedCode));
+      this.setState({
+        code: newCode
+      });
+      if(this.state.code === this.state.solvedCode) {
+        alert('Good job!');
+        console.log('Good job!');
+      }
     },
     render: function() {
-        var options = {
-            lineNumbers: true,
-            mode: this.state.mode,
-            readOnly: this.state.readOnly,
-            keyMap: 'sublime',
-            tabSize: 2,
-            showCursorWhenSelecting: true
-        };
-        return <div>{this.state.counter}<Codemirror id='userEditor' ref="editor" value={this.state.code} onkeyPressHandled={this.handleKeyPress} onkeyHandled={this.handleKey} onChange={this.updateCode} options={options} /></div>
+      var options = {
+        lineNumbers: true,
+        mode: this.state.mode,
+        readOnly: this.state.readOnly,
+        keyMap: 'sublime',
+        tabSize: 2,
+        showCursorWhenSelecting: true
+      };
+      return <div>{this.state.counter}<Codemirror id='userEditor' ref="editor" value={this.state.code} onkeyPressHandled={this.handleKeyPress} onkeyHandled={this.handleKey} onChange={this.updateCode} options={options} /></div>
     }
 });
 

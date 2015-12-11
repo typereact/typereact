@@ -1,3 +1,6 @@
+process.env.NODE_ENV = process.env.NODE_ENV||'development';
+console.log('currently within the ' + process.env.NODE_ENV + ' node environment');
+
 var express = require('express');
 var React = require('react');
 var Router = require('react-router');

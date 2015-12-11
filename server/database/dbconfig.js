@@ -1,9 +1,17 @@
 var Sequelize = require('sequelize');
 var mysql      = require('mysql');
-
+//define whether we are in a test or dev environment
+var dbName;
+if(process.env.NODE_ENV === 'test') {
+  console.log('going to connect to test database');
+  dbName = 'typereacttest';
+} else if(process.env.NODE_ENV === 'development') {
+  console.log('going to connect to dev database');
+  dbName = 'typereactv1';
+}
 //connect to database
 //when testing locally, please add a database called typereactv1 for mysql user: testuser1 and password: testuser1
-var sequelize = new Sequelize('typereactv1', 'testuser1', 'testuser1', {
+var sequelize = new Sequelize(dbName, 'testuser1', 'testuser1', {
   host: 'localhost',
   dialect: 'mysql',
 
@@ -51,5 +59,5 @@ defineRelationships(module.exports);
 
 //create the data tables if they do not already exist
 sequelize.sync().then(function() {
-  console.log('it worked!');
+  console.log('connected to database called: ',dbName);
 });
