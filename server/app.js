@@ -31,7 +31,6 @@ let App = React.createClass( {
       <p></p>
       <Start/>
       <Editor challengeUnsolved={this.state.challengeUnsolved} challengeSolved={this.state.challengeSolved}/>
-      <br></br>
       <SolutionEditor challengeSolved={this.state.challengeSolved}/>
     </div>
   }
