@@ -8,6 +8,9 @@
   border-width:2px;
   border-style:solid;
   border-color:#cccccc;
+  width: 49%;
+  margin: 5px;
+  float: left;
 }
 
 /* PADDING */
@@ -15,6 +18,7 @@
 .CodeMirror-lines {
   padding: 4px 0; /* Vertical padding around content */
 }
+
 .CodeMirror pre {
   padding: 0 4px; /* Horizontal padding of content */
 }
