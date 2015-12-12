@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Codemirror from 'react-codemirror';
 import SolutionEditor from './solutionEditor.js'
-// require('react-codemirror/node_modules/codemirror/mode/javascript/javascript.js');
-// require('react-codemirror/node_modules/codemirror/mode/xml/xml');
-// require('react-codemirror/node_modules/codemirror/mode/markdown/markdown');
-// require('react-codemirror/node_modules/codemirror/keymap/sublime.js');
 require('codemirror/lib/codemirror.css');
 require('../css/codemirror.css');
 require('codemirror/mode/javascript/javascript');
@@ -84,7 +80,6 @@ let Editor = React.createClass({
     console.log('name is ', name)
   },
   updateCode: function(newCode) {
-    // debugger;
     console.log(JSON.stringify(newCode));
     console.log(JSON.stringify(this.state.solvedCode));
     this.setState({
