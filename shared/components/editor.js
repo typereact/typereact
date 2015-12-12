@@ -16,7 +16,6 @@ var beautify = require('js-beautify').js_beautify
 import $ from 'jquery';
 import { Defaults } from './solutionEditor.js';
 
-
 var defaults = {
     javascript: 'for(var i=0;i < array.length;',
     markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)'
@@ -88,8 +87,9 @@ let Editor = React.createClass({
     },
     updateCode: function(newCode) {
       // debugger;
-      console.log(JSON.stringify(newCode));
-      console.log(JSON.stringify(this.state.solvedCode));
+      console.log('newCode is ', newCode)
+      // console.log(JSON.stringify(newCode));
+      // console.log(JSON.stringify(this.state.solvedCode));
       this.setState({
         code: newCode
       });

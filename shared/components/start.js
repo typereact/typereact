@@ -10,12 +10,21 @@ let Start = React.createClass ({
     started: null,
     min: '0',
     sec: '0',
-    ms:'0'
+    ms:'0',
+    countdown: 3
     };  
   },
   countDown: function () {
-    setTimeout(this.startTimer, 3000)
+    setTimeout(this.countDownBySecond, 1000)
     console.log('counting down')
+  },
+  countDownBySecond: function () {
+    if(this.state.countdown === 0){
+      this.startTimer();
+    } else {
+      this.setState({countdown: this.state.countdown-1});
+      this.countDown();
+    }
   },
   startTimer: function () {
     if(this.state.timeBegan === null) {
@@ -40,10 +49,17 @@ let Start = React.createClass ({
     console.log(this.state.min + ' ' + this.state.sec + ' ' + this.state.ms)
   },
   stopTrigger: function () {
-    console.log('hi');
+    this.setState({timeStopped: new Date()});
+    clearInterval(this.state.started);
   },
   render () {
-    return(<div><div>{this.state.min > 9 ? this.state.min : '0' + this.state.min}:{this.state.sec > 9 ? this.state.sec : '0' + this.state.sec}:{this.state.ms > 99 ? this.state.ms : this.state.ms > 9 ? '0' + this.state.ms : '00' + this.state.ms}</div><button onClick={this.countDown}>Start Timer</button></div>)
+    return(<div>
+      <div>COUNTDOWN: {this.state.countdown}</div>
+      <div>{this.state.min > 9 ? this.state.min : '0' + this.state.min}:{this.state.sec > 9 ? this.state.sec : '0' + this.state.sec}:{this.state.ms > 99 ? this.state.ms : this.state.ms > 9 ? '0' + this.state.ms : '00' + this.state.ms}</div>
+      <button onClick={this.countDown}>Start Timer</button>
+      <button onClick={this.stopTrigger}>Stop Timer</button>
+      </div>
+      )
   }
   // render() {
   //   return(<div><form><input type='text'></input></form></div>)
