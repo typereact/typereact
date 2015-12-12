@@ -8,9 +8,9 @@ let Start = React.createClass ({
     timeBegan: null,
     stoppedDuration: 0,
     started: null,
-    min: '00',
-    sec: '00',
-    ms:'000'
+    min: '0',
+    sec: '0',
+    ms:'0'
     };  
   },
   countDown: function () {
@@ -37,20 +37,13 @@ let Start = React.createClass ({
     })
 
     //work on removing third digit of milliseconds
-    this.state.min > 9 ? this.state.min : '0'.toString() + this.state.min;
-    this.state.sec > 9 ? this.state.sec : '0' + this.state.sec;
-    this.state.ms > 99 ? this.state.ms : this.state.ms > 9 ? '0' + this.state.ms : '00' + this.state.ms;
-
-    this.setState({min: this.state.min});
-    this.setState({sec: this.state.sec});
-    this.setState({ms: this.state.ms});
     console.log(this.state.min + ' ' + this.state.sec + ' ' + this.state.ms)
   },
   stopTrigger: function () {
     console.log('hi');
   },
   render () {
-    return(<div><div>{this.state.min}:{this.state.sec}:{this.state.ms}</div><button onClick={this.countDown}>Start Timer</button></div>)
+    return(<div><div>{this.state.min > 9 ? this.state.min : '0' + this.state.min}:{this.state.sec > 9 ? this.state.sec : '0' + this.state.sec}:{this.state.ms > 99 ? this.state.ms : this.state.ms > 9 ? '0' + this.state.ms : '00' + this.state.ms}</div><button onClick={this.countDown}>Start Timer</button></div>)
   }
   // render() {
   //   return(<div><form><input type='text'></input></form></div>)
