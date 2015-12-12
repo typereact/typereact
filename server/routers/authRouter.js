@@ -1,4 +1,5 @@
 var secrets = require('./../../secrets.js')()
+var userController = require('./../database/controllers/userController.js')
 
 module.exports = function(express, passport, User, GitHubStrategy) {
   var authRouter = express.Router();
@@ -23,13 +24,8 @@ module.exports = function(express, passport, User, GitHubStrategy) {
   },
     function(accessToken, refreshToken, profile, done) {
       console.log('findOrCreate')
-      User.findOrCreate({
-        where: {
-          githubID: profile.id
-        }
-      }).spread(function(user, created) {
-          return done(null, user.dataValues)
-      })
+      console.log(profile)
+      userController.findOrAdd(profile, done);
     }
   ));
 

@@ -5,6 +5,10 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    challengeInstructions: {
+      type: DataTypes.TEXT('medium'),
+      field: 'challenge_instructions'
+    },
     challengeUnsolved: {
       type: DataTypes.TEXT('medium'),
       field: 'challenge_unsolved'
@@ -28,6 +32,30 @@ module.exports = function(sequelize, DataTypes) {
     bronzeMedalTime: {
       type: DataTypes.INTEGER(11),
       field: 'bronze_medal_time'
+    },
+    goldKeyStrokes: {
+      type: DataTypes.INTEGER(11),
+      field: 'gold_key_strokes'
+    },
+    silverKeyStrokes: {
+      type: DataTypes.INTEGER(11),
+      field: 'silver_key_strokes'
+    },
+    bronzeKeyStrokes: {
+      type: DataTypes.INTEGER(11),
+      field: 'bronze_key_strokes'
+    },
+    numPlays: {
+      type: DataTypes.INTEGER(11),
+      field: 'num_plays'
+    },
+    numRatings: {
+      type: DataTypes.INTEGER(11),
+      field: 'num_ratings'
+    },
+    totalRatingScore: {
+      type: DataTypes.INTEGER(11),
+      field: 'total_rating_score'
     },
   }, {
     underscored: true

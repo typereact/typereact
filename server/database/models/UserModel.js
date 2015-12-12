@@ -10,17 +10,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     githubID: {
       type: DataTypes.STRING(30),
-      field: 'github_id'
+      field: 'github_id',
+      unique: true
     },
-    password: {
-      type: DataTypes.STRING(11)
+    githubProfile: {
+      type: DataTypes.STRING(60),
+      field: 'github_profile'
+    },
+    githubName: {
+      type: DataTypes.STRING(50),
+      field: 'github_name'
     },
     email: {
       type: DataTypes.STRING(40)
-    },
-    skillLevel: {
-      type: DataTypes.STRING(11),
-      field: 'skill_level'
     },
     numericalRank: {
       type: DataTypes.INTEGER,
