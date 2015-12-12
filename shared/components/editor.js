@@ -22,6 +22,41 @@ var defaults = {
     markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)'
 }
 
+var bindings = {
+  'Alt-Left': 0,
+  'Alt-Right':0,
+  'Ctrl-Alt-Up': 0, //maybe
+  'Ctrl-Alt-Down': 0, //maybe
+  'Shift-Cmd-L':0, //doesn't work on codemirror + sublime
+  'Shift-Tab':0, //doesn't work on codemirror  
+  'Cmd-L':0, 
+  'Shift-Cmd-K':0, //doesn't work on sublime
+  'Cmd-Enter':0,
+  'Shift-Cmd-Enter':0,
+  'Cmd-D':0,
+  'Shift-Cmd-Space':0,
+  'Shift-Cmd-M': 0, //doesn't work on sublime
+  'Cmd-M':0, //doesn't work on sublime
+  'Cmd-Ctrl-Up':0, 
+  'Cmd-Ctrl-Down': 0,
+  'Cmd-J':0,
+  'Shift-Cmd-D': 0,
+  'Cmd-T':0, //doesn't work on comdemirror + not sure what it does
+  'Alt-Q':0, //doesn't work on codemirror + sublime
+  'Cmd-K Cmd-Backspace':0,
+  'Cmd-K Cmd-K': 0,
+  'Cmd-K Cmd-U':0,
+  'Cmd-K Cmd-L':0,
+  'Cmd-K Cmd-Space':0, // doesn't work + not sure what it does
+  'Cmd-K Cmd-A': 0, // doesn't work + not sure what it does
+  'Cmd-K Cmd-W': 0, // doesn't work + not sure what it does
+  'Cmd-K Cmd-X' :0, // doesn't work + not sure what it does
+  'Cmd-K Cmd-Y': 0, // doesn't work + not sure what it does
+  'Cmd-K Cmd-C': 0, //maybe
+  'Shift-Alt-Up': 0,
+  'Shift-Alt-Down': 0,
+}
+
 let Editor = React.createClass({
     getInitialState: function() {
       return {
@@ -45,8 +80,11 @@ let Editor = React.createClass({
     },
     handleKey: function(instance, name, event) {
         this.setState({counter:this.state.counter + 1})
+        if(name in bindings) {
+          bindings[name]++;
+        }
+        // console.log('bindings['+name+'] is ', bindings[name])
         console.log('handle key ', this.state.counter)
-        console.log('name is ', name)
     },
     updateCode: function(newCode) {
       // debugger;
@@ -61,15 +99,18 @@ let Editor = React.createClass({
       }
     },
     render: function() {
-      var options = {
-        lineNumbers: true,
-        mode: this.state.mode,
-        readOnly: this.state.readOnly,
-        keyMap: 'sublime',
-        tabSize: 2,
-        showCursorWhenSelecting: true
-      };
-      return <div>{this.state.counter}<Codemirror id='userEditor' ref="editor" value={this.state.code} onkeyPressHandled={this.handleKeyPress} onkeyHandled={this.handleKey} onChange={this.updateCode} options={options} /></div>
+        var options = {
+            lineNumbers: true,
+            mode: this.state.mode,
+            readOnly: this.state.readOnly,
+            keyMap: 'sublime',
+            tabSize: 2,
+            showCursorWhenSelecting: true
+        };
+        return <div>
+        Keystrokes:{this.state.counter}
+        <Codemirror id='userEditor' ref="editor" value={this.state.code} onkeyPressHandled={this.handleKeyPress} onkeyHandled={this.handleKey} onChange={this.updateCode} options={options} />
+        </div>
     }
 });
 
