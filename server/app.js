@@ -26,56 +26,23 @@ import $ from 'jquery';
 //     }.bind(this))    
 //   },
 
-//   render: function() {
-//     // var alpha = this.
-//     return <div>
-//       <a href='auth/github'>Github Auth</a>
-//       <Counter />
-//       <p></p>
-//       <Start/>
-//       <Editor challengeUnsolved={this.state.challengeUnsolved} challengeSolved={this.state.challengeSolved}/>
-//       <SolutionEditor challengeSolved={this.state.challengeSolved}/>
-
-
 
 export default class App extends Component {
   render() {
+    console.log('rendering app' + JSON.stringify(this.props));
     // injected by connect() call:
     // const { dispatch, statusText, isMatch, code, readOnly, mode } = this.props;
     return <div>
       <a href='auth/github'>Github Auth</a>
       <Start />
-      <Status statusText={this.props.statusText} isMatch={this.props.isMatch} />
+      <Status />
       <Counter />
-      <Editor isMatch={this.props.isMatch} />
+      <Editor />
       <br></br>
-      <SolutionEditor />
+      <SolutionEditor challengeSolved={this.props.challengeSolved} />
     </div>
   }
-})
-
-App.propTypes = {
-  onCodeChange: PropTypes.func,
-  statusText: PropTypes.string,
-  isMatch: PropTypes.bool,
-  code: PropTypes.string,
-  readOnly: PropTypes.bool,
-  mode: PropTypes.string,
-};
-// App.defaultProps = {
-//   // onCodeChange: 
-//   statusText: 'NOT A MATCH',
-//   isMatch: false,
-//   code: 'for(var i=0;i < array.length;',
-//   readOnly: false,
-//   mode: 'javascript'
-// }
-
-// ReactDOM.render(<App />, document.getElementById('app'));
-
-
-
-
+}
 
 
 // ReactDOM.render(<App store={store}/>, document.getElementById('app'));

@@ -1,6 +1,9 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { stringChanged, incrementCounter } from '../actions/actions.js';
+import editorApp from '../reducers/reducers.js';
 
-export default class Status extends Component {
+class Status extends Component {
   render() {
     return (
       <div
@@ -13,3 +16,16 @@ export default class Status extends Component {
   }
 }
 
+Status.propTypes = {
+  statusText: PropTypes.string,
+  isMatch: PropTypes.bool
+}
+
+function mapStateToProps(state) {
+  return {
+    statusText: state.editorState.statusText,
+    isMatch: state.editorState.isMatch
+  }
+}
+
+export default connect(mapStateToProps)(Status);

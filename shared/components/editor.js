@@ -17,7 +17,7 @@ import $ from 'jquery';
 import { Component, PropTypes } from 'react';
 // import { createStore, combineReducers } from 'redux';
 import { connect } from 'react-redux';
-import { stringChanged } from '../actions/actions.js';
+import { stringChanged, incrementCounter } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 
 var bindings = {
@@ -57,7 +57,7 @@ var bindings = {
 
 
  // class Editor extends Component({
-let Editor = React.createClass({
+class Editor extends Component {
 // REFFACTOR THIS SECTION
 //   getInitialState: function() {
 //     return {
@@ -75,29 +75,6 @@ let Editor = React.createClass({
 //       code: nextProps.challengeUnsolved,
 //       solvedCode: beautify(nextProps.challengeSolved, {indent_size: 2})
 //     })
-//   },
-//   handleKeyPress: function() {
-//     this.setState({counter:this.state.counter +1});
-//     console.log('counter is', this.state.counter);
-//   },
-//   handleKey: function(instance, name, event) {
-//     this.setState({counter:this.state.counter + 1});
-//     if(name in bindings) {
-//       bindings[name]++;
-//     }
-//     console.log('handle key ', this.state.counter)
-//     console.log('name is ', name)
-//   },
-//   updateCode: function(newCode) {
-//     console.log(JSON.stringify(newCode));
-//     console.log(JSON.stringify(this.state.solvedCode));
-//     this.setState({
-//       code: newCode
-//     });
-//     if(this.state.code === this.state.solvedCode) {
-//       alert('Good job!');
-//       console.log('Good job!');
-//     }
 //   },
 //   updateKeymap: function(newKeymap) {
 //     // console.log('updating keymap to ' + newKeymap)
@@ -131,7 +108,7 @@ let Editor = React.createClass({
 // var ShowCounter = exports.ShowCounter = ShowCounter;
 
 
-    render: function() {
+    render() {
       console.log('inside editor component', this.props.code)
         var options = {
             mode: this.props.mode,
@@ -141,15 +118,18 @@ let Editor = React.createClass({
             tabSize: 2,
             showCursorWhenSelecting: true
         };
-        return <Codemirror ref="editor" value={this.props.code} onChange={this.props.onCodeChange} options={options} />
+        return <Codemirror ref="editor" value={this.props.code} onChange={this.props.onCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} options={options} />
     }
-})
+}
 
 Editor.propTypes = {
   onCodeChange: PropTypes.func,
   code: PropTypes.string,
   readOnly: PropTypes.bool,
-  mode: PropTypes.string
+  mode: PropTypes.string,
+  counter: PropTypes.number,
+  handleKey: PropTypes.func,
+  handleKeyPress: PropTypes.func
   // isMatch: PropTypes.bool,
   // statusText: PropTypes.string,
 };
@@ -161,34 +141,26 @@ Editor.propTypes = {
 //   // statusText: 'MATCH COMPLETE',
 // }
 
-/*
-mapStateToProps
-*/
 function mapStateToProps(state) {
-  // console.log('entering mapStateToProps');
-  console.log('state.code is ' +state.reducer_onCodeChange.code);
   return {
-    code: state.reducer_onCodeChange.code
+    code: state.editorState.code,
+    counter: state.editorState.counter
   }
 }
 
 
-/*
-mapDispatchToProps`
-*/
-// trying to call func in action creator
 function mapDispatchToProps(dispatch) {
-  // console.log('entering mapDispatchToProps');
-  // console.log(this);
   return {
     onCodeChange: function(newCode) {
-      // debugger
-      console.log('got an onCodeChange');
       dispatch(stringChanged(newCode))
+    },
+    handleKey: function() {
+      dispatch(incrementCounter());
+    },
+    handleKeyPress: function(counter) {
+      dispatch(incrementCounter())
     }
   }
 }
 
-
-//connect element
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { KEY_PRESSED, STRING_CHANGED } from '../actions/actions.js'
+import { KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER } from '../actions/actions.js'
 
 /* REDUCER */
 
@@ -15,17 +15,18 @@ function trackKeys(state = [], action) {
   }
 }
 
-const editorState = {
+const initEditorState = {
   mode: 'javascript',
   readOnly: false,
-  solvedCode: 'for(var i=0;i < array.length; i++) {\n  console.log("hello");\n}\n',
+  solvedCode: 'console.log("hello");',
   statusText: 'NOT A MATCH',
   isMatch: false,
-  code: 'for(var i=0;i < array.length;'
+  code: 'for(var i=0;i < array.length;',
+  counter: 10
 }
 
-function reducer_onCodeChange(state = editorState, action) {
-  console.log('reducer_onCodeChange was called with state', state, 'and action', action)
+function editorState(state = initEditorState, action) {
+  console.log('editorState was called with state', state, 'and action', action)
   switch (action.type) {
     case STRING_CHANGED:
     // debugger
@@ -33,32 +34,36 @@ function reducer_onCodeChange(state = editorState, action) {
       if (action.code === state.solvedCode) {
         console.log('found a match');
         return {
-                    mode: state.mode,
-                    readOnly: state.readOnly,
-                    solvedCode: state.solvedCode,
-                    statusText: state.statusText,
-                    isMatch: true,
-                    code: action.code
-                    //index was returned from action creator (as an argument, from todo tutorial)
-                    //we want to change the value of the prop
-                    // Object.assign({}, state, {
-                    //   isMatch: true
-                    // })
-                }
+          mode: state.mode,
+          readOnly: state.readOnly,
+          solvedCode: state.solvedCode,
+          statusText: state.statusText,
+          isMatch: true,
+          code: action.code,
+          counter: state.counter
+        }
       } else {
         return {
-                    mode: state.mode,
-                    readOnly: state.readOnly,
-                    solvedCode: state.solvedCode,
-                    statusText: state.statusText,
-                    isMatch: false,
-                    code: action.code
-                    //index was returned from action creator (as an argument, from todo tutorial)
-                    //we want to change the value of the prop
-                    // Object.assign({}, state, {
-                    //   isMatch: true
-                    // })
-                }
+          mode: state.mode,
+          readOnly: state.readOnly,
+          solvedCode: state.solvedCode,
+          statusText: state.statusText,
+          isMatch: false,
+          code: action.code,
+          counter: state.counter
+        }
+      }
+    case INCREMENT_COUNTER:
+      console.log('gonna increment counter');
+      console.log('current counter is: ' + state.counter);
+      return {
+          mode: state.mode,
+          readOnly: state.readOnly,
+          solvedCode: state.solvedCode,
+          statusText: state.statusText,
+          isMatch: false,
+          code: state.code,
+          counter: state.counter + 1
       }
     default:
       return state
@@ -69,19 +74,10 @@ function reducer_onCodeChange(state = editorState, action) {
 
 const editorApp = combineReducers({
   trackKeys,
-  reducer_onCodeChange
+  editorState
 });
 
 export default editorApp;
-
-// {
-//   trackKeys:[],
-//   reducer_onCodeChange: {
-//     mode:
-//     readOnly:
-//     ...
-//   }
-// }
 
 
 
