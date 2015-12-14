@@ -5,9 +5,9 @@ module.exports = {
     entry: [
     //for es6
       'babel-polyfill', 
-      // 'webpack-hot-middleware/client'
-      // 'webpack/hot/dev-server',
-      "./server/app.js",
+      // 'webpack/hot/only-dev-server',
+      // "./server/app.js",
+      "./shared/index.js",
       // 'webpack-dev-server/client?http://localhost:8080'
     ],
     output: {

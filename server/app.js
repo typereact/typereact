@@ -4,39 +4,48 @@ import Start from '../shared/components/start.js';
 import Editor from '../shared/components/editor.js';
 import SolutionEditor from '../shared/components/solutionEditor.js'
 import Counter from '../shared/components/counter.js'
-
+import { Component, PropTypes } from 'react';
+import Status from '../shared/components/status.js';
+import { stringChanged } from '../shared/actions/actions.js';
 import $ from 'jquery';
 
-let App = React.createClass( {
-  getInitialState: function () {
-    return {
-      challengeUnsolved: 'fetching unsolved challenge...',
-      challengeSolved: 'fetching solved challenge...'
-    }
-  },
-  componentDidMount: function() {
-    $.get('/challenge/getChallenge', function(dbChallenge) {
-      this.setState({
-        challengeUnsolved: dbChallenge.challengeUnsolved,
-        challengeSolved: dbChallenge.challengeSolved
-      })
-    }.bind(this))    
-  },
+// REFACTOR THE FOLLOWING SECTION
+// let App = React.createClass( {
+//   getInitialState: function () {
+//     return {
+//       challengeUnsolved: 'fetching unsolved challenge...',
+//       challengeSolved: 'fetching solved challenge...'
+//     }
+//   },
+//   componentDidMount: function() {
+//     $.get('/challenge/getChallenge', function(dbChallenge) {
+//       this.setState({
+//         challengeUnsolved: dbChallenge.challengeUnsolved,
+//         challengeSolved: dbChallenge.challengeSolved
+//       })
+//     }.bind(this))    
+//   },
 
-  render: function() {
-    // var alpha = this.
+
+export default class App extends Component {
+  render() {
+    console.log('rendering app' + JSON.stringify(this.props));
+    // injected by connect() call:
+    // const { dispatch, statusText, isMatch, code, readOnly, mode } = this.props;
     return <div>
       <a href='auth/github'>Github Auth</a>
+      <Start />
+      <Status />
       <Counter />
-      <p></p>
-      <Start/>
-      <Editor challengeUnsolved={this.state.challengeUnsolved} challengeSolved={this.state.challengeSolved}/>
-      <SolutionEditor challengeSolved={this.state.challengeSolved}/>
+      <Editor />
+      <br></br>
+      <SolutionEditor challengeSolved={this.props.challengeSolved} />
     </div>
   }
-})
+}
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+
+// ReactDOM.render(<App store={store}/>, document.getElementById('app'));
 
 // import Router from "react-router";  
 // import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
@@ -66,3 +75,5 @@ ReactDOM.render(<App/>, document.getElementById('app'));
 // Router.run(routes, function (Handler) {  
 //   React.render(<Handler/>, document.body);
 // });
+
+

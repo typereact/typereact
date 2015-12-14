@@ -1,12 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ShowCounter } from './editor.js';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { stringChanged, incrementCounter } from '../actions/actions.js';
+import editorApp from '../reducers/reducers.js';
 
-let Counter = React.createClass ({
+class Counter extends Component {
   render() {
-    return <div><h1>{ShowCounter}</h1></div>
+    return <div><h1>{this.props.counter}</h1></div>
   }
-});
-  // console.log('showcounter is ' + ShowCounter)
+};
 
-export default Counter;
+Counter.propTypes = {
+  counter: PropTypes.number
+}
+
+function mapStateToProps(state) {
+  return {
+    code: state.editorState.code,
+    counter: state.editorState.counter
+  }
+}
+
+export default connect(mapStateToProps)(Counter);
