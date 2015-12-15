@@ -8,6 +8,8 @@ import { Component, PropTypes } from 'react';
 import Status from '../shared/components/status.js';
 import EditorOptions from '../shared/components/editorOptions.js';
 import { stringChanged } from '../shared/actions/actions.js';
+import Navbar from '../shared/components/navbar.js'
+
 import $ from 'jquery';
 
 // REFACTOR THE FOLLOWING SECTION
@@ -34,6 +36,7 @@ export default class App extends Component {
     // injected by connect() call:
     // const { dispatch, statusText, isMatch, code, readOnly, mode } = this.props;
     return <div>
+      <Navbar />
       <a href='auth/github'>Github Auth</a>
       <Start />
       <Status />
