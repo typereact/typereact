@@ -143,6 +143,7 @@ Editor.propTypes = {
 function mapStateToProps(state) {
   return {
     code: state.editorState.code,
+    mode: state.editorState.mode,
     counter: state.editorState.counter,
     keyMap: state.editorState.keyMap,
   }
