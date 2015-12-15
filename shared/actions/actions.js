@@ -8,6 +8,7 @@ export const KEY_PRESSED = 'KEY_PRESSED'
 export const STRING_CHANGED = 'STRING_CHANGED'
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
 export const CHANGE_KEYMAP = 'CHANGE_KEYMAP'
+export const LOAD_CHALLENGE = 'LOAD_CHALLENGE'
 
 /*
  * action creators
@@ -27,4 +28,8 @@ export function incrementCounter() {
 
 export function updateKeyMap(newKeyMap) {
   return { type: CHANGE_KEYMAP, keyMap: newKeyMap }
+}
+
+export function loadChallenge(unsolved, solved) {
+  return { type: LOAD_CHALLENGE, unsolved: unsolved, solved: solved }
 }
