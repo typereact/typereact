@@ -17,7 +17,7 @@ import $ from 'jquery';
 import { Component, PropTypes } from 'react';
 // import { createStore, combineReducers } from 'redux';
 import { connect } from 'react-redux';
-import { stringChanged, incrementCounter } from '../actions/actions.js';
+import { stringChanged, incrementCounter, loadChallenge } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 
 var bindings = {
@@ -103,7 +103,11 @@ class Editor extends Component {
 //     </div>
 //   }
 // });
-
+    componentDidMount() {
+      $.get('/challenge/getChallenge', function(dbChallenge) {
+        this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved)
+      }.bind(this)) 
+    }
     render() {
       console.log('inside editor component', this.props.code)
         var options = {
@@ -116,7 +120,7 @@ class Editor extends Component {
             matchBrackets: true,
             autoCloseBrackets: true
         };
-        return <Codemirror ref="editor" value={this.props.code} onChange={this.props.onCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} options={options} />
+        return <Codemirror ref="editor" className="userEditor" value={this.props.code} onChange={this.props.onCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} options={options} />
     }
 }
 
@@ -160,6 +164,9 @@ function mapDispatchToProps(dispatch) {
     },
     handleKeyPress: function(counter) {
       dispatch(incrementCounter())
+    },
+    updateChallenge: function(unsolved, solved) {
+      dispatch(loadChallenge(unsolved, solved))
     }
   }
 }

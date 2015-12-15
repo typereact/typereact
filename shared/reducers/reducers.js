@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, CHANGE_KEYMAP } from '../actions/actions.js'
-
+import { KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, CHANGE_KEYMAP, LOAD_CHALLENGE } from '../actions/actions.js'
+var beautify = require('js-beautify').js_beautify;
 /* REDUCER */
 
 
@@ -60,7 +60,7 @@ function editorState(state = initEditorState, action) {
           readOnly: state.readOnly,
           solvedCode: state.solvedCode,
           statusText: state.statusText,
-          isMatch: false,
+          isMatch: state.isMatch,
           code: state.code,
           counter: state.counter + 1,
           keyMap: state.keyMap,
@@ -75,6 +75,17 @@ function editorState(state = initEditorState, action) {
           code: state.code,
           counter: state.counter,
           keyMap: action.keyMap,
+      }
+    case LOAD_CHALLENGE:
+      return {
+          mode: state.mode,
+          readOnly: state.readOnly,
+          solvedCode: beautify(action.solved, {indent_size: 2}),
+          statusText: state.statusText,
+          isMatch: state.isMatch,
+          code: action.unsolved,
+          counter: state.counter,
+          keyMap: state.keyMap,
       }
     default:
       return state
