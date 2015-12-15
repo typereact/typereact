@@ -7,8 +7,10 @@ import Counter from '../shared/components/counter.js'
 import { Component, PropTypes } from 'react';
 import Status from '../shared/components/status.js';
 import EditorOptions from '../shared/components/editorOptions.js';
-import { stringChanged } from '../shared/actions/actions.js';
+import { stringChanged, checkUser } from '../shared/actions/actions.js';
 import Navbar from '../shared/components/navbar.js'
+import { connect } from 'react-redux';
+
 
 import $ from 'jquery';
 
@@ -31,13 +33,21 @@ import $ from 'jquery';
 
 
 export default class App extends Component {
+  componentDidMount() {
+    $.get('/isLoggedIn', function(response) {
+      console.log('response from the deeb: ' + JSON.stringify(response));
+      var loggedIn = Boolean(response);
+      var username = response.username || 'Guest';
+      var pic = response.githubProfile || null;
+      this.props.storeUser(loggedIn, username, pic);
+    }.bind(this))
+  }
   render() {
     console.log('rendering app' + JSON.stringify(this.props));
     // injected by connect() call:
     // const { dispatch, statusText, isMatch, code, readOnly, mode } = this.props;
     return <div>
       <Navbar />
-      <a href='auth/github'>Github Auth</a>
       <Start />
       <Status />
       <Counter />
@@ -49,6 +59,26 @@ export default class App extends Component {
   }
 }
 
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
+
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.loggedInState.loggedIn,
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    storeUser: function(loggedIn, username, picture) {
+      dispatch(checkUser(loggedIn, username, picture));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // ReactDOM.render(<App store={store}/>, document.getElementById('app'));
 

@@ -44,6 +44,13 @@ app.use(webpackMiddleware(compiler));
 //use routers
 app.use('/auth', authRouter);
 app.use('/challenge', challengeRouter);
+app.use('/isLoggedIn', function(req, res) {
+  if(req.user) {
+    res.send(req.user);
+  } else {
+    res.send(false);
+  }
+})
 
 app.listen(3000);
 module.exports = app;
