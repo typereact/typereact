@@ -17,9 +17,15 @@ class Navigation extends Component{
   render() {
     var githubButton;
     if(!this.props.isLoggedIn) {
-      githubButton = <a href="/auth/github" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a>;
+      githubButton = <div style={{position: 'relative', padding: '8px 0px'}}><a href="/auth/github" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
     } else {
-      githubButton = <a href="/auth/logout" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Logout</a>;
+      githubButton = <div style={{position: 'relative', display: 'inline-block', padding: '8px 0px', float: 'right'}}><a href="/auth/logout" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Logout</a></div>;
+    }
+    var userDisplay;
+    if(!this.props.profilePic) {
+      userDisplay = null;
+    } else {
+      userDisplay = <div style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div style={{display: 'inline-block', color: '#777', padding: '0px 10px'}}>Welcome, {this.props.user}</div></div>
     }
     console.log('navbar props: ' + JSON.stringify(this.props));
     return (
@@ -56,6 +62,7 @@ class Navigation extends Component{
           </NavDropdown>
         </Nav>
         <Nav pullRight>
+          {userDisplay}
           {githubButton}
         </Nav>
       </Navbar>
