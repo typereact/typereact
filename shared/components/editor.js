@@ -94,7 +94,6 @@ class Editor extends Component {
 //       matchBrackets: true,
 //       autoCloseBrackets: true
 //     };
-//     console.log(this.state.keyMap);
 //     return <div>Keystrokes:{this.state.counter}
 //       <br></br> 
 //       <button style={{display: 'inline-block'}} onClick={this.updateKeymap.bind(this, 'sublime')}>Sublime</button>
@@ -105,18 +104,17 @@ class Editor extends Component {
 //   }
 // });
 
-// var ShowCounter = exports.ShowCounter = ShowCounter;
-
-
     render() {
       console.log('inside editor component', this.props.code)
         var options = {
             mode: this.props.mode,
             readOnly: this.props.readOnly,
             lineNumbers: true,
-            keyMap: 'sublime',
+            keyMap: this.props.keyMap,
             tabSize: 2,
-            showCursorWhenSelecting: true
+            showCursorWhenSelecting: true,
+            matchBrackets: true,
+            autoCloseBrackets: true
         };
         return <Codemirror ref="editor" value={this.props.code} onChange={this.props.onCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} options={options} />
     }
@@ -129,7 +127,8 @@ Editor.propTypes = {
   mode: PropTypes.string,
   counter: PropTypes.number,
   handleKey: PropTypes.func,
-  handleKeyPress: PropTypes.func
+  handleKeyPress: PropTypes.func,
+  keyMap: PropTypes.string,
   // isMatch: PropTypes.bool,
   // statusText: PropTypes.string,
 };
@@ -144,7 +143,8 @@ Editor.propTypes = {
 function mapStateToProps(state) {
   return {
     code: state.editorState.code,
-    counter: state.editorState.counter
+    counter: state.editorState.counter,
+    keyMap: state.editorState.keyMap,
   }
 }
 

@@ -6,6 +6,7 @@ import SolutionEditor from '../shared/components/solutionEditor.js'
 import Counter from '../shared/components/counter.js'
 import { Component, PropTypes } from 'react';
 import Status from '../shared/components/status.js';
+import EditorOptions from '../shared/components/editorOptions.js';
 import { stringChanged } from '../shared/actions/actions.js';
 import $ from 'jquery';
 
@@ -37,6 +38,7 @@ export default class App extends Component {
       <Start />
       <Status />
       <Counter />
+      <EditorOptions />
       <Editor />
       <br></br>
       <SolutionEditor challengeSolved={this.props.challengeSolved} />
