@@ -7,6 +7,7 @@
 export const KEY_PRESSED = 'KEY_PRESSED'
 export const STRING_CHANGED = 'STRING_CHANGED'
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
+export const CHANGE_KEYMAP = 'CHANGE_KEYMAP'
 
 /*
  * action creators
@@ -22,4 +23,8 @@ export function stringChanged(newCode) {
 
 export function incrementCounter() {
   return { type: INCREMENT_COUNTER }
+}
+
+export function updateKeyMap(newKeyMap) {
+  return { type: CHANGE_KEYMAP, keyMap: newKeyMap }
 }
