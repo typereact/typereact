@@ -44,10 +44,10 @@ export function loadChallenge(unsolved, solved) {
 
 export function checkUser(loggedIn, username, picture) {
   return { type: CHECK_USER, loggedIn: loggedIn, username: username, picture: picture}
-
-export function countDown() {
-  return { type: COUNT_DOWN }
 }
+// export function countDown() {
+//   return { type: COUNT_DOWN }
+// } 
 
 export function countDownBySecond() {
   return {type: COUNT_DOWN_BY_SECOND}

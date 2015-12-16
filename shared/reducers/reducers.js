@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP } from '../actions/actions.js'
 import { countDown, countDownBySecond } from '../actions/actions.js';
 
 /* REDUCER */
