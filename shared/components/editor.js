@@ -109,7 +109,7 @@ class Editor extends Component {
       }.bind(this)) 
     }
     render() {
-      console.log('inside editor component', this.props.code)
+      // console.log('inside editor component', this.props.code)
         var options = {
             mode: this.props.mode,
             readOnly: this.props.readOnly,
@@ -133,8 +133,11 @@ Editor.propTypes = {
   handleKey: PropTypes.func,
   handleKeyPress: PropTypes.func,
   keyMap: PropTypes.string,
-  clockRunning: PropTypes.bool
-  // isMatch: PropTypes.bool,
+  onStopTimer: PropTypes.func,
+  // clockRunning: PropTypes.bool,
+  // timeStopped: PropTypes.string,
+  isMatch: PropTypes.bool,
+  readOnly: PropTypes.string,
   // statusText: PropTypes.string,
 };
 // Editor.defaultProps = {
@@ -146,6 +149,7 @@ Editor.propTypes = {
 // }
 
 function mapStateToProps(state) {
+  // debugger
   return {
     code: state.editorState.code,
     mode: state.editorState.mode,
@@ -153,24 +157,35 @@ function mapStateToProps(state) {
     keyMap: state.editorState.keyMap,
     readOnly: state.editorState.readOnly,
     counter: state.editorState.counter,
-    clockRunning: state.timerState.clockRunning,
+    clockRunning: state.editorState.clockRunning,
+    timeStopped: state.editorState.timeStopped,
+    isMatch: state.editorState.isMatch,
+    readOnly: state.editorState.readOnly,
   }
 }
 
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, state) {
   return {
     onCodeChange: function(newCode) {
-      dispatch(stringChanged(newCode))
+      var timeStamp = new Date();
+      dispatch(stringChanged(newCode, timeStamp));
+      // console.log('this is ', this)
+      // if(props.isMatch) {
+        // dispatch(this.props.onStopTimer());
+      // }
     },
     handleKey: function() {
       dispatch(incrementCounter());
     },
     handleKeyPress: function(counter) {
-      dispatch(incrementCounter())
+      dispatch(incrementCounter());
     },
     updateChallenge: function(unsolved, solved) {
-      dispatch(loadChallenge(unsolved, solved))
+      dispatch(loadChallenge(unsolved, solved));
+    },
+    test: function () {
+      console.log('hello testing')
     }
   }
 }
