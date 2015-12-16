@@ -19,7 +19,7 @@ function trackKeys(state = [], action) {
 
 const initEditorState = {
   mode: 'javascript',
-  readOnly: 'true',
+  readOnly: true,
   solvedCode: 'console.log("hello");',
   statusText: 'NOT A MATCH',
   isMatch: false,
@@ -38,7 +38,7 @@ const initEditorState = {
 }
 
 function editorState(state = initEditorState, action) {
-  // console.log('editorState was called with state', state, 'and action', action)
+  console.log('editorState was called with state', state, 'and action', action)
   switch (action.type) {
     case STRING_CHANGED:
       if (action.code === state.solvedCode) {
@@ -136,7 +136,7 @@ function editorState(state = initEditorState, action) {
           code: action.unsolved,
           counter: state.counter,
           keyMap: state.keyMap,
-          counter: state.counter + 1,
+          counter: state.counter,
           clockRunning: state.clockRunning,
           timeStopped: action.timeStopped,
           timeBegan: state.timeBegan,

@@ -137,7 +137,7 @@ Editor.propTypes = {
   // clockRunning: PropTypes.bool,
   // timeStopped: PropTypes.string,
   isMatch: PropTypes.bool,
-  readOnly: PropTypes.string,
+  // readOnly: PropTypes.string,
   // statusText: PropTypes.string,
 };
 // Editor.defaultProps = {
