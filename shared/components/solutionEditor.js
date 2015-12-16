@@ -37,6 +37,7 @@ SolutionEditor.propTypes = {
 
 SolutionEditor.defaultProps = {
   readOnly: 'nocursor',
+  mode: 'javascript'
 }
 
 function mapStateToProps(state) {

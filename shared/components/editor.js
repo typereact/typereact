@@ -127,7 +127,7 @@ class Editor extends Component {
 Editor.propTypes = {
   onCodeChange: PropTypes.func,
   code: PropTypes.string,
-  readOnly: PropTypes.bool,
+  // readOnly: PropTypes.bool,
   mode: PropTypes.string,
   counter: PropTypes.number,
   handleKey: PropTypes.func,
@@ -150,6 +150,7 @@ function mapStateToProps(state) {
     mode: state.editorState.mode,
     counter: state.editorState.counter,
     keyMap: state.editorState.keyMap,
+    readOnly: state.editorState.readOnly,
   }
 }
 
