@@ -24,10 +24,12 @@
     "react": "^0.14.3",
     "react-bootstrap": "^0.28.1",
     "react-codemirror": "https://github.com/typereact/react-codemirror/tarball/master",
+    "react-countdown-clock": "^1.0.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.1",
     "redux": "^3.0.4",
+    "redux-thunk": "^1.0.2",
     "sequelize": "^3.14.2",
     "style-loader": "^0.13.0"
   },
