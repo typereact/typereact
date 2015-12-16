@@ -22,7 +22,7 @@ const initEditorState = {
   statusText: 'NOT A MATCH',
   isMatch: false,
   code: 'for(var i=0;i < array.length;',
-  counter: 10,
+  counter: 0,
   keyMap: 'sublime'
 }
 
@@ -34,7 +34,7 @@ function editorState(state = initEditorState, action) {
         console.log('found a match');
         return {
           mode: state.mode,
-          readOnly: state.readOnly,
+          readOnly: 'nocursor',
           solvedCode: state.solvedCode,
           statusText: state.statusText,
           isMatch: true,
