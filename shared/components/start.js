@@ -60,14 +60,13 @@ let Start = React.createClass ({
   // },
   render () {
     return(<div>
-      <div>COUNTDOWN: {this.props.countdown}</div>
       <button onClick={this.props.onStartTimer}>Start Timer</button>
-      <button onClick={this.props.onStopTimer}>Stop Timer</button>
       <div>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</div>
       </div>
       )
   }
 });
+      // <button onClick={this.props.onStopTimer}>Stop Timer</button>
       // <div>{this.state.min > 9 ? this.state.min : '0' + this.state.min}:{this.state.sec > 9 ? this.state.sec : '0' + this.state.sec}:{this.state.ms > 99 ? this.state.ms : this.state.ms > 9 ? '0' + this.state.ms : '00' + this.state.ms}</div>
       // <Timer />
 
@@ -80,6 +79,12 @@ let Start = React.createClass ({
   //   }
   // })
 
+      // <div>TESTING: {this.props.code}</div>
+      // <div>ISMATCH: {this.props.isMatch}</div>
+      // <div>TIMESTOPPED: {this.props.timeStopped}</div>
+      // <div>CLOCKRUNNING:  {this.props.clockRunning}</div>
+      // <div>COUNTDOWN: {this.props.countdown}</div>
+
 Start.propTypes = {
   onCountDown: PropTypes.func,
   onCountDownBySecond: PropTypes.func,
@@ -88,7 +93,11 @@ Start.propTypes = {
   countdown: PropTypes.number,
   min: PropTypes.string,
   sec: PropTypes.string,
-  ms: PropTypes.string
+  ms: PropTypes.string,
+  code: PropTypes.string,
+  isMatch: PropTypes.bool,
+  clockRunning: PropTypes.bool,
+  // timeStopped: PropTypes.date,
 }
 
 // Timer.propTypes = {
@@ -96,15 +105,17 @@ Start.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    timeStopped: state.timerState.timeStopped,
-    timeBegan: state.timerState.timeBegan,
-    stoppedDuration: state.timerState.stoppedDuration,
-    started: state.timerState.started,
-    min: state.timerState.min,
-    sec: state.timerState.sec,
-    ms: state.timerState.ms,
-    countdown: state.timerState.countdown,
-    clockRunning: state.timerState.clockRunning
+    timeStopped: state.editorState.timeStopped,
+    timeBegan: state.editorState.timeBegan,
+    stoppedDuration: state.editorState.stoppedDuration,
+    started: state.editorState.started,
+    min: state.editorState.min,
+    sec: state.editorState.sec,
+    ms: state.editorState.ms,
+    countdown: state.editorState.countdown,
+    clockRunning: state.editorState.clockRunning,
+    code: state.editorState.code,
+    isMatch: state.editorState.isMatch,
   }
 }
 function mapDispatchToProps(dispatch, state) {

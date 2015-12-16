@@ -26,8 +26,8 @@ export function keyPressed(ch) {
     return { type: KEY_PRESSED, ch }
 }
 
-export function stringChanged(newCode) {
-    return { type: STRING_CHANGED, code: newCode }
+export function stringChanged(newCode, timeStamp) {
+    return { type: STRING_CHANGED, code: newCode, timeStopped: timeStamp }
 }
 
 export function incrementCounter() {
