@@ -133,6 +133,7 @@ Editor.propTypes = {
   handleKey: PropTypes.func,
   handleKeyPress: PropTypes.func,
   keyMap: PropTypes.string,
+  clockRunning: PropTypes.bool
   // isMatch: PropTypes.bool,
   // statusText: PropTypes.string,
 };
@@ -151,6 +152,8 @@ function mapStateToProps(state) {
     counter: state.editorState.counter,
     keyMap: state.editorState.keyMap,
     readOnly: state.editorState.readOnly,
+    counter: state.editorState.counter,
+    clockRunning: state.timerState.clockRunning,
   }
 }
 

@@ -12,6 +12,7 @@ import Navbar from '../shared/components/navbar.js'
 import { connect } from 'react-redux';
 
 
+import ReactCountdownClock from 'react-countdown-clock';
 import $ from 'jquery';
 
 // REFACTOR THE FOLLOWING SECTION
