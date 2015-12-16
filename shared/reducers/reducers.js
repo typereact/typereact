@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, CHANGE_KEYMAP, LOAD_CHALLENGE } from '../actions/actions.js'
+import { KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, CHANGE_KEYMAP, LOAD_CHALLENGE, CHECK_USER } from '../actions/actions.js'
 var beautify = require('js-beautify').js_beautify;
 /* REDUCER */
 
@@ -92,11 +92,32 @@ function editorState(state = initEditorState, action) {
   }
 }
 
+const initLoggedInState = {
+  loggedIn: false,
+  user: 'Guest',
+  profilePic: null
+}
+
+function loggedInState(state = initLoggedInState, action) {
+  switch(action.type) {
+    case CHECK_USER:
+    console.log('loggedInState: ' + JSON.stringify(action))
+      return {
+        loggedIn: action.loggedIn,
+        user: action.username,
+        profilePic: action.picture,
+      }
+    default:
+      return state
+  }
+}
+
 
 
 const editorApp = combineReducers({
   trackKeys,
-  editorState
+  editorState,
+  loggedInState,
 });
 
 export default editorApp;
