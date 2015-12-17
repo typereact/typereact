@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Codemirror from 'react-codemirror';
-require('codemirror/lib/codemirror.css');
-require('../css/codemirror.css')
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
@@ -24,7 +22,7 @@ class SolutionEditor extends Component {
       mode: this.props.mode,
       readOnly: this.props.readOnly,
     };
-    return <Codemirror ref="solutionEditor" value={this.props.solvedCode} options={options} />
+    return <Codemirror className="solutionEditor" ref="solutionEditor" value={this.props.solvedCode} options={options} />
   }
 };
 

@@ -1,0 +1,56 @@
+/* EDITOR OPTIONS */
+@font-face {
+  font-family: Avenir;
+  src: url('./Avenir.ttc');
+}
+
+body {
+  font-family: Avenir;
+}
+
+.sublime-option {
+  /*font-family: Consolas;*/
+  background-color:white;
+  border-style: solid;
+  border-color:black;
+  border-right:none;
+  /*margin-left: 5px;*/
+}
+
+#start-timer {
+  background-color:white;
+  border-style: solid;
+  border-color:black;
+}
+
+.vim-option {
+  background-color:white;
+  border-style: solid;
+  border-color:black;
+  /*margin-left: 5px;*/
+}
+
+.emacs-option {
+  background-color:white;
+  border-style: solid;
+  border-color:black;
+  border-left:none;
+  /*margin-left: 5px;*/
+}
+
+.editor-option-clicked {
+  background-color:#a9b7c0;
+  color:white;
+}
+
+
+#all-options {
+  float:right;
+  margin-top:5px;
+  margin-right: 135px;
+}
+
+#counter {
+  float:left;
+  margin-left: 190px;
+}
