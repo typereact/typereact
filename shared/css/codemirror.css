@@ -1,5 +1,19 @@
 /* BASICS */
 
+#editors {
+  margin-left:120px;
+}
+
+.solutionEditor {
+  /*width: 40%;*/
+  /*margin-left: 20px;*/
+}
+
+/*.userEditor {
+  margin-left: 200px;
+  width: 40%;
+}*/
+
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
@@ -8,8 +22,10 @@
   border-width:2px;
   border-style:solid;
   border-color:#cccccc;
-  width: 49%;
-  margin: 5px;
+  width: 40%;
+  margin-top: 10px;
+  margin-left:70px;
+  /*margin-left: 40px;*/
   float: left;
 }
 

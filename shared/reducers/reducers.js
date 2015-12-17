@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
 import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
-
+import $ from 'jquery';
 /* REDUCER */
 
 const initEditorState = {
@@ -95,6 +95,27 @@ function editorState(state = initEditorState, action) {
         return state
       }
     case CHANGE_KEYMAP:
+      if(action.keyMap === 'sublime') {
+        console.log('inside keyMap sublime')
+        $('.sublime-option').addClass('editor-option-clicked');
+        $('.vim-option').removeClass('editor-option-clicked');
+        $('.emacs-option').removeClass('editor-option-clicked');
+      }
+      if(action.keyMap === 'vim') {
+        console.log('inside keyMap vim')
+        $('.vim-option').addClass('editor-option-clicked');
+        $('.sublime-option').removeClass('editor-option-clicked');
+        $('.emacs-option').removeClass('editor-option-clicked');
+        // $('.sublime-options').addClass('editor-option-clicked2');
+        // $('.emacs-options').addClass('editor-option-clicked2')
+      }
+      if(action.keyMap === 'emacs') {
+        console.log('inside keyMap emacs')
+        $('.emacs-option').addClass('editor-option-clicked');
+        $('.sublime-option').removeClass('editor-option-clicked');
+        $('.vim-option').removeClass('editor-option-clicked');
+      }
+
       return {
           mode: state.mode,
           readOnly: state.readOnly,
