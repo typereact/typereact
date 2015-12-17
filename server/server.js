@@ -50,6 +50,11 @@ app.get('/playchallenge', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'))
 })
 
+app.get('/challengeList', function(req, res) {
+  console.log('receiving request to play challenge')
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+})
+
 //use webpack Middleware to build index.html script
 app.use(webpackMiddleware(compiler));
 
