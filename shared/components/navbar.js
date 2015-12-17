@@ -12,28 +12,37 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 import { Component, PropTypes } from 'react';
 import editorApp from '../reducers/reducers.js';
-import { checkUser } from '../actions/actions.js';
+import { checkUser, storeChallenges } from '../actions/actions.js';
 
 class Navigation extends Component{
   componentDidMount() {
     $.get('/isLoggedIn', function(response) {
-      console.log('response from the deeb: ' + JSON.stringify(response));
+      // console.log('Login Status: ' + JSON.stringify(response, null, 2));
       var loggedIn = Boolean(response);
-      var username = response.username || 'Guest';
+      var username = response.githubName ? response.githubName.split(' ')[0] : 'Guest';
       var pic = response.githubProfile || null;
       this.props.storeUser(loggedIn, username, pic);
     }.bind(this))
+
+    if (this.props.challenges.length === 0) {
+      $.get('/challenge/getAllChallenges', function(response) {
+        // console.log('getting challenges: ' + JSON.stringify(response, null, 2));
+        this.props.storeChallengeList(response);
+      }.bind(this))
+    }
   }
+
   render() {
+    // console.log('Challenges saved to props: ' + JSON.stringify(this.props.challenges, null, 2));
     var githubButton;
     if(!this.props.isLoggedIn) {
-      githubButton = <div style={{position: 'relative', padding: '8px 0px'}}><a href="/auth/github" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
+      githubButton = <div style={{position: 'relative', display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
     } else {
       githubButton = <div style={{position: 'relative', display: 'inline-block', padding: '8px 0px', float: 'right'}}><a href="/auth/logout" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Logout</a></div>;
     }
     var userDisplay;
     if(!this.props.profilePic) {
-      userDisplay = null;
+      userDisplay = <NavItem>Welcome, {this.props.user}</NavItem>;
     } else {
       userDisplay = <div style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div style={{display: 'inline-block', color: '#777', padding: '0px 10px'}}>Welcome, {this.props.user}</div></div>
     }
@@ -85,7 +94,8 @@ class Navigation extends Component{
 Navigation.propTypes = {
   isLoggedIn: PropTypes.bool,
   user: PropTypes.string,
-  profilePic: PropTypes.string
+  profilePic: PropTypes.string,
+  challenges: PropTypes.array,
 };
 
 function mapStateToProps(state) {
@@ -93,6 +103,7 @@ function mapStateToProps(state) {
     isLoggedIn: state.loggedInState.loggedIn,
     user: state.loggedInState.user,
     profilePic: state.loggedInState.profilePic,
+    challenges: state.challengeState.challenges,
   }
 }
 
@@ -101,6 +112,9 @@ function mapDispatchToProps(dispatch) {
   return {
     storeUser: function(loggedIn, username, picture) {
       dispatch(checkUser(loggedIn, username, picture));
+    },
+    storeChallengeList: function(challengeList) {
+      dispatch(storeChallenges(challengeList))
     }
   }
 }

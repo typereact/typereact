@@ -17,6 +17,7 @@ export const STOP_TIMER = 'STOP_TIMER'
 export const CLOCK_RUNNING = 'CLOCK_RUNNING'
 export const SETTING_INTERVAL = 'SETTING_INTERVAL'
 export const CLOCK_STOP = 'CLOCK_STOP'
+export const STORE_CHALLENGES = 'STORE_CHALLENGES'
 
 /*
  * action creators
@@ -73,4 +74,8 @@ export function settingInterval (intervals) {
 
 export function clockStop () {
   return { type: CLOCK_STOP }
+}
+
+export function storeChallenges (challenges) {
+  return { type: STORE_CHALLENGES, challenges: challenges }
 }

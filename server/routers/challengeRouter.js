@@ -7,5 +7,7 @@ module.exports = function(express) {
 
   challengeRouter.use('/postChallenge', challengeController.postChallenge)
 
+  challengeRouter.use('/getAllChallenges', challengeController.getAllChallenges)
+
   return challengeRouter;
 }

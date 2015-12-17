@@ -38,5 +38,19 @@ module.exports = {
       }
       res.send(chal)
     })
+  },
+  getAllChallenges: function(req, res, next) {
+    Challenge.findAll({
+      where: {
+        id: {
+          $gt: 0
+        }
+      }
+    }).then(function(chal, err) {
+      if (chal === null) {
+        res.send('no challenges retrieved')
+      }
+      res.send(chal)
+    })
   }
 }
