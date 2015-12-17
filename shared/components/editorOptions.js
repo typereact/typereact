@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import { updateKeyMap } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 
+
 class editorOptions extends Component {
   render() {
-    return <div>
-      <button style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'sublime')}>Sublime</button>
-      <button style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'vim')}>Vim</button>
-      <button style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'emacs')}>Emacs</button>
+    return <div id='all-options'>
+      <button className='sublime-option' style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'sublime')}>Sublime</button>
+      <button className='vim-option' style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'vim')}>Vim</button>
+      <button className='emacs-option' style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'emacs')}>Emacs</button>
     </div>
   }
 

@@ -6,7 +6,7 @@ import editorApp from '../reducers/reducers.js';
 class Status extends Component {
   render() {
     return (
-      <div
+      <div id='status'
         style={{
           textDecoration: this.props.isMatch ? 'line-through' : 'none',
         }}>Current status is: &nbsp;

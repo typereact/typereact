@@ -8,6 +8,8 @@ import { Component, PropTypes } from 'react';
 import Status from '../shared/components/status.js';
 import EditorOptions from '../shared/components/editorOptions.js';
 import { connect } from 'react-redux';
+// require('../shared/css/codemirror.css')
+// require('../shared/css/styles.css');
 
 
 import ReactCountdownClock from 'react-countdown-clock';
@@ -18,11 +20,12 @@ export default class App extends Component {
     return <div>
       <Start />
       <Status />
-      <Counter />
-      <EditorOptions />
+      <div id='editors'>
       <Editor />
-      <br></br>
       <SolutionEditor challengeSolved={this.props.challengeSolved} />
+      </div>
+      <EditorOptions />
+      <Counter />
       <div>{this.props.children}</div>
     </div>
   }

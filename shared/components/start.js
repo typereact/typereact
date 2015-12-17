@@ -60,8 +60,8 @@ let Start = React.createClass ({
   // },
   render () {
     return(<div>
-      <button onClick={this.props.onStartTimer}>Start Timer</button>
-      <div>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</div>
+      <button id='start-timer' onClick={this.props.onStartTimer}>Start Timer</button>
+      <br><div id='timer'>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</div></br>
       </div>
       )
   }
