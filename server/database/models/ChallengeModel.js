@@ -9,6 +9,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT('medium'),
       field: 'challenge_instructions'
     },
+    challengeName: {
+      type: DataTypes.STRING(50),
+      field: 'challenge_name'
+    },
+    challengeCategory: {
+      type: DataTypes.STRING(50),
+      field: 'challenge_category'
+    },
     challengeUnsolved: {
       type: DataTypes.TEXT('medium'),
       field: 'challenge_unsolved'

@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     username: {
-      type: DataTypes.STRING(11)
+      type: DataTypes.STRING(50)
     },
     githubID: {
       type: DataTypes.STRING(30),
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: true
     },
     githubProfile: {
-      type: DataTypes.STRING(60),
+      type: DataTypes.STRING(100),
       field: 'github_profile'
     },
     githubName: {
@@ -23,6 +23,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING(40)
+    },
+    role: {
+      type: DataTypes.INTEGER(11)
     },
     numericalRank: {
       type: DataTypes.INTEGER,

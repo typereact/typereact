@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'key_stroke_list_fewest_key_strokes'
     },
     timeToComplete: {
-      type: DataTypes.INTEGER(11).UNSIGNED,
+      type: DataTypes.DECIMAL(13, 2).UNSIGNED,
       field: 'time_to_complete'
     },
     keyStrokeListBestTime: {
