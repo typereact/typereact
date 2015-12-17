@@ -36,7 +36,19 @@ app.use(passport.session());
 
 //sets the static directory as the client directory
 //this may change depending on the location of our index.html file
+
+//redirect to play challenge when navigating to home page
+app.get('/', function(req, res) {
+  res.redirect('/playchallenge');
+})
+//the static middleware is not used at the moment because of the redirect immediately above
 app.use(express.static(path.join(__dirname,'/..')));
+
+//default home page
+app.get('/playchallenge', function(req, res) {
+  console.log('receiving request to play challenge')
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+})
 
 //use webpack Middleware to build index.html script
 app.use(webpackMiddleware(compiler));

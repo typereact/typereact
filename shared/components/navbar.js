@@ -12,8 +12,18 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 import { Component, PropTypes } from 'react';
 import editorApp from '../reducers/reducers.js';
+import { checkUser } from '../actions/actions.js';
 
 class Navigation extends Component{
+  componentDidMount() {
+    $.get('/isLoggedIn', function(response) {
+      console.log('response from the deeb: ' + JSON.stringify(response));
+      var loggedIn = Boolean(response);
+      var username = response.username || 'Guest';
+      var pic = response.githubProfile || null;
+      this.props.storeUser(loggedIn, username, pic);
+    }.bind(this))
+  }
   render() {
     var githubButton;
     if(!this.props.isLoggedIn) {
@@ -27,7 +37,7 @@ class Navigation extends Component{
     } else {
       userDisplay = <div style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div style={{display: 'inline-block', color: '#777', padding: '0px 10px'}}>Welcome, {this.props.user}</div></div>
     }
-    console.log('navbar props: ' + JSON.stringify(this.props));
+    // console.log('navbar props: ' + JSON.stringify(this.props));
     return (
       // <Tabs defaultActiveKey={2}>
       //   <Tab eventKey={1} title="Home">Tab 1 content</Tab>
@@ -43,7 +53,7 @@ class Navigation extends Component{
       //   </NavDropdown>
       //   </Nav>
       // </Tabs>
-
+    <div>
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
@@ -66,6 +76,8 @@ class Navigation extends Component{
           {githubButton}
         </Nav>
       </Navbar>
+      <div>{this.props.children}</div>
+    </div>
     )
   }
 };
@@ -85,12 +97,14 @@ function mapStateToProps(state) {
 }
 
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     storeUser: function(loggedIn, username, picture) {
-//       dispatch(checkUser(loggedIn, username, picture));
-//     }
-//   }
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    storeUser: function(loggedIn, username, picture) {
+      dispatch(checkUser(loggedIn, username, picture));
+    }
+  }
+}
 //add dispatch if creating new actions
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+
+

@@ -274,7 +274,7 @@ const initLoggedInState = {
 function loggedInState(state = initLoggedInState, action) {
   switch(action.type) {
     case CHECK_USER:
-    console.log('loggedInState: ' + JSON.stringify(action))
+    // console.log('loggedInState: ' + JSON.stringify(action))
       return {
         loggedIn: action.loggedIn,
         user: action.username,

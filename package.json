@@ -13,7 +13,7 @@
     "codemirror": "^5.9.0",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
-    "history": "^1.13.1",
+    "history": "^1.16.0",
     "immutable": "^3.7.5",
     "jquery": "^2.1.4",
     "js-beautify": "^1.5.10",
