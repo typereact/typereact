@@ -9,7 +9,7 @@ module.exports = {
       }
     }).then(function(user, err) {
         if(user === null) {
-          User.create({
+          return User.create({
             githubID: profile.id,
             githubProfile: profile._json.avatar_url,
             username: profile.username,
