@@ -37,7 +37,7 @@ function editorState(state = initEditorState, action) {
           statusText: state.statusText,
           isMatch: true,
           code: action.code,
-          counter: state.counter,
+          counter: state.counter + 1,
           keyMap: state.keyMap,
           clockRunning: false,
           timeStopped: action.timeStopped,
