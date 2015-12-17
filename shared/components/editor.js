@@ -55,56 +55,10 @@ var bindings = {
   'Shift-Alt-Down': 0,
 }
 
-
- // class Editor extends Component({
 class Editor extends Component {
-// REFFACTOR THIS SECTION
-//   getInitialState: function() {
-//     return {
-//       code: this.props.challengeUnsolved,
-//       solvedCode: this.props.challengeSolved,
-//       readOnly: false,
-//       mode: 'javascript',
-//       counter: 0,
-//       keyMap: 'sublime'
-//     };
-//   },
-//   componentWillReceiveProps: function(nextProps) {
-//     console.log('componentWillReceiveProps', this.props)
-//     this.setState({
-//       code: nextProps.challengeUnsolved,
-//       solvedCode: beautify(nextProps.challengeSolved, {indent_size: 2})
-//     })
-//   },
-//   updateKeymap: function(newKeymap) {
-//     // console.log('updating keymap to ' + newKeymap)
-//     this.setState({
-//       keyMap: newKeymap
-//     });
-//     this.refs.editor.focus();
-//   },
-//   render: function() {
-//     var options = {
-//       lineNumbers: true,
-//       mode: this.state.mode,
-//       readOnly: this.state.readOnly,
-//       keyMap: this.state.keyMap,
-//       tabSize: 2,
-//       showCursorWhenSelecting: true,
-//       matchBrackets: true,
-//       autoCloseBrackets: true
-//     };
-//     return <div>Keystrokes:{this.state.counter}
-//       <br></br> 
-//       <button style={{display: 'inline-block'}} onClick={this.updateKeymap.bind(this, 'sublime')}>Sublime</button>
-//       <button style={{display: 'inline-block'}} onClick={this.updateKeymap.bind(this, 'vim')}>Vim</button>
-//       <button style={{display: 'inline-block'}} onClick={this.updateKeymap.bind(this, 'emacs')}>Emacs</button>
-//       <Codemirror id='userEditor' ref="editor" value={this.state.code} onkeyPressHandled={this.handleKeyPress} onkeyHandled={this.handleKey} onChange={this.updateCode} options={options} />
-//     </div>
-//   }
-// });
     componentDidMount() {
       $.get('/challenge/getChallenge', function(dbChallenge) {
+        // console.log('getting first challenge: ' + JSON.stringify(dbChallenge, null, 2))
         this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved)
       }.bind(this)) 
     }
