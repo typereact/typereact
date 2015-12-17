@@ -21,6 +21,18 @@ body {
   background-color:white;
   border-style: solid;
   border-color:black;
+  float:left;
+  margin-left: 49%;
+}
+
+#status {
+  float:left;
+  margin-left: 50%;
+}
+
+#timer {
+  float:left;
+  margin-left: 49.5%;
 }
 
 .vim-option {
