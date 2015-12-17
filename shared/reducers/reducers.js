@@ -1,21 +1,9 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP } from '../actions/actions.js'
-import { countDown, countDownBySecond } from '../actions/actions.js';
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES } from '../actions/actions.js'
+// import { countDown, countDownBySecond } from '../actions/actions.js';
 
 /* REDUCER */
-
-
-function trackKeys(state = [], action) {
-  switch (action.type) {
-    case KEY_PRESSED:
-      return [
-        
-      ]
-    default:
-      return state
-  }
-}
 
 const initEditorState = {
   mode: 'javascript',
@@ -38,7 +26,7 @@ const initEditorState = {
 }
 
 function editorState(state = initEditorState, action) {
-  console.log('editorState was called with state', state, 'and action', action)
+  // console.log('editorState was called with state', state, 'and action', action)
   switch (action.type) {
     case STRING_CHANGED:
       if (action.code === state.solvedCode) {
@@ -285,6 +273,20 @@ function loggedInState(state = initLoggedInState, action) {
   }
 }
 
+const initChallengeState = {
+  challenges: []
+}
+
+function challengeState(state = initChallengeState, action){
+  switch(action.type) {
+    case STORE_CHALLENGES:
+      return {
+        challenges: action.challenges,
+      }
+    default:
+      return state
+  }
+}
 // const initTimerState = {
 //     timeStopped: null,
 //     timeBegan: null,
@@ -424,7 +426,7 @@ function loggedInState(state = initLoggedInState, action) {
 
 
 const editorApp = combineReducers({
-  trackKeys,
+  challengeState,
   editorState,
   loggedInState,
   // timerState
