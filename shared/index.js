@@ -31,7 +31,7 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={Navbar}>
-        <Route path='playchallenge' component={App}/>
+        <Route path='playchallenge/:challengeID' component={App}/>
         <Route path='challengeList' component={ChallengeList}/>
       </Route>
     </Router>

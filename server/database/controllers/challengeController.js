@@ -52,5 +52,18 @@ module.exports = {
       }
       res.send(chal)
     })
+  },
+  getChallengeByIndex: function(req, res, next) {
+    var chalID = Number(req._parsedOriginalUrl.query)
+    Challenge.findOne({
+      where: {
+        id: chalID
+      }
+    }).then(function(chal, err) {
+      if (chal === null) {
+        res.send('no challenges retrieved')
+      }
+      res.send(chal)
+    })
   }
 }

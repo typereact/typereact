@@ -14,6 +14,7 @@ import { checkUser, storeChallenges } from '../actions/actions.js';
 
 class Navigation extends Component{
   componentDidMount() {
+    console.log(this.props.challenges);
     $.get('/isLoggedIn', function(response) {
       // console.log('Login Status: ' + JSON.stringify(response, null, 2));
       var loggedIn = Boolean(response);
@@ -21,13 +22,6 @@ class Navigation extends Component{
       var pic = response.githubProfile || null;
       this.props.storeUser(loggedIn, username, pic);
     }.bind(this))
-
-    if (this.props.challenges.length === 0) {
-      $.get('/challenge/getAllChallenges', function(response) {
-        // console.log('getting challenges: ' + JSON.stringify(response, null, 2));
-        this.props.storeChallengeList(response);
-      }.bind(this))
-    }
   }
 
   render() {
@@ -79,7 +73,6 @@ Navigation.propTypes = {
   isLoggedIn: PropTypes.bool,
   user: PropTypes.string,
   profilePic: PropTypes.string,
-  challenges: PropTypes.array,
 };
 
 function mapStateToProps(state) {
@@ -87,7 +80,6 @@ function mapStateToProps(state) {
     isLoggedIn: state.loggedInState.loggedIn,
     user: state.loggedInState.user,
     profilePic: state.loggedInState.profilePic,
-    challenges: state.challengeState.challenges,
   }
 }
 
@@ -97,9 +89,6 @@ function mapDispatchToProps(dispatch) {
     storeUser: function(loggedIn, username, picture) {
       dispatch(checkUser(loggedIn, username, picture));
     },
-    storeChallengeList: function(challengeList) {
-      dispatch(storeChallenges(challengeList))
-    }
   }
 }
 //add dispatch if creating new actions
