@@ -5,7 +5,7 @@ import editorApp from '../reducers/reducers.js';
 
 class Counter extends Component {
   render() {
-    return <div id='counter'><h1>{this.props.counter}</h1></div>
+    return <div id='counter'><h4>keystrokes: {this.props.counter}</h4></div>
   }
 };
 

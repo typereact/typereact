@@ -12,6 +12,7 @@ class editorOptions extends Component {
       <button className='sublime-option' style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'sublime')}>Sublime</button>
       <button className='vim-option' style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'vim')}>Vim</button>
       <button className='emacs-option' style={{display: 'inline-block'}} onClick={this.props.selectKeyMap.bind(this,'emacs')}>Emacs</button>
+      <div id='editor-comment'>choose a text editor!</div>
     </div>
   }
 
