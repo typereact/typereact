@@ -21,8 +21,8 @@ export default class App extends Component {
     return <div>
       <Start />
       <div id='editors'>
-      <Editor />
-      <SolutionEditor challengeSolved={this.props.challengeSolved} />
+      <Editor chalID={this.props.params.challengeID}/>
+      <SolutionEditor/>
       </div>
       <Counter />
       <EditorOptions />

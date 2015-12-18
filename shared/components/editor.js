@@ -57,7 +57,7 @@ var bindings = {
 
 class Editor extends Component {
     componentDidMount() {
-      $.get('/challenge/getChallenge', function(dbChallenge) {
+      $.get('/challenge/getChallengeByIndex', this.props.chalID, function(dbChallenge) {
         // console.log('getting first challenge: ' + JSON.stringify(dbChallenge, null, 2))
         this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved)
       }.bind(this)) 

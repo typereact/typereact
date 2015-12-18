@@ -9,5 +9,7 @@ module.exports = function(express) {
 
   challengeRouter.use('/getAllChallenges', challengeController.getAllChallenges)
 
+  challengeRouter.use('/getChallengeByIndex', challengeController.getChallengeByIndex)
+
   return challengeRouter;
 }
