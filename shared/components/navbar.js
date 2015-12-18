@@ -66,11 +66,11 @@ class Navigation extends Component{
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">TypeReact</a>
+            <a href="/">TypeReact</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} href="#">Challenges</NavItem>
+          <NavItem eventKey={1} href="/challengeList">Challenges</NavItem>
           <NavItem eventKey={2} href="#">Users</NavItem>
           <NavDropdown eventKey={3} title="My account" id="basic-nav-dropdown">
             <MenuItem eventKey={3.1}>{this.props.user}</MenuItem>

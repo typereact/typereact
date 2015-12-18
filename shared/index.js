@@ -11,6 +11,7 @@ import Navbar from './components/navbar.js';
 import Router from "react-router";  
 import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
 import createBrowserHistory from 'history/lib/createBrowserHistory';
+import ChallengeList from './components/challengeList.js'
 
 const history = createBrowserHistory();
 
@@ -31,6 +32,7 @@ render(
     <Router history={history}>
       <Route path='/' component={Navbar}>
         <Route path='playchallenge' component={App}/>
+        <Route path='challengeList' component={ChallengeList}/>
       </Route>
     </Router>
   </Provider>,
