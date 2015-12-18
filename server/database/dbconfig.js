@@ -42,8 +42,6 @@ models.forEach(function(model) {
 
 //function to define the relationships between models
 var defineRelationships = function(modexp) {
-  modexp.Challenge.belongsToMany(modexp.User, {through: 'UserChallenge'});
-  modexp.User.belongsToMany(modexp.Challenge, {through: 'UserChallenge'});
   modexp.Challenge.belongsTo(modexp.User, {as: 'submitted_by'});
   modexp.Achievement.belongsToMany(modexp.User, {through: 'UserAchievement'});
   modexp.User.belongsToMany(modexp.Achievement, {through: 'UserAchievement'});
