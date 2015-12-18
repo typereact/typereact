@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Codemirror from 'react-codemirror';
-import SolutionEditor from './solutionEditor.js'
 require('codemirror/lib/codemirror.css');
 require('../css/codemirror.css');
 require('codemirror/mode/javascript/javascript');
@@ -13,12 +12,13 @@ require('codemirror/addon/edit/closebrackets.js')
 var beautify = require('js-beautify').js_beautify
 
 import $ from 'jquery';
-// import { Defaults } from './solutionEditor.js';
 import { Component, PropTypes } from 'react';
-// import { createStore, combineReducers } from 'redux';
 import { connect } from 'react-redux';
 import { stringChanged, incrementCounter, loadChallenge } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
+// import SolutionEditor from './solutionEditor.js'
+// import { Defaults } from './solutionEditor.js';
+// import { createStore, combineReducers } from 'redux';
 
 var bindings = {
   'Alt-Left': 0,
