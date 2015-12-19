@@ -149,7 +149,7 @@ class Navigation extends Component{
       var loggedIn = Boolean(response);
       var username = response.githubName ? response.githubName.split(' ')[0] : 'Guest';
       var pic = response.githubProfile || null;
-      var currentUserId = response.id;
+      var currentUserId = response.id || 1;
       this.props.storeUser(loggedIn, username, pic, currentUserId);
     }.bind(this))
   }

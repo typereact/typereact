@@ -14,7 +14,7 @@ var beautify = require('js-beautify').js_beautify
 import $ from 'jquery';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { stringChanged, incrementCounter, loadChallenge } from '../actions/actions.js';
+import { stringChanged, incrementCounter, loadChallenge, incrementKeyHandled } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 // import SolutionEditor from './solutionEditor.js'
 // import { Defaults } from './solutionEditor.js';
@@ -125,7 +125,7 @@ function mapDispatchToProps(dispatch, state) {
       dispatch(stringChanged(newCode, timeStamp));
     },
     handleKey: function() {
-      dispatch(incrementCounter());
+      dispatch(incrementKeyHandled());
     },
     handleKeyPress: function(counter) {
       dispatch(incrementCounter());

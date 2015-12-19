@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_FIVE_TIMES, HIDE_MODAL, SHOW_MODAL } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_FIVE_TIMES, HIDE_MODAL, SHOW_MODAL, INCREMENT_KEY_HANDLED } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
@@ -23,6 +23,7 @@ const initEditorState = {
   sec: '0',
   ms:'0',
   countdown: 3,
+  hasPosted: false
 }
 
 function editorState(state = initEditorState, action) {
@@ -37,7 +38,7 @@ function editorState(state = initEditorState, action) {
           statusText: state.statusText,
           isMatch: true,
           code: action.code,
-          counter: state.counter + 1,
+          counter: state.counter,
           keyMap: state.keyMap,
           clockRunning: false,
           timeStopped: action.timeStopped,
@@ -47,7 +48,8 @@ function editorState(state = initEditorState, action) {
           min: state.min,
           sec: state.sec,
           ms: state.ms,
-          countdown: state.countdown
+          countdown: state.countdown,
+          hasPosted: state.hasPosted
         }
       } else {
         return {
@@ -67,7 +69,8 @@ function editorState(state = initEditorState, action) {
           min: state.min,
           sec: state.sec,
           ms: state.ms,
-          countdown: state.countdown
+          countdown: state.countdown,
+          hasPosted: state.hasPosted
         }
       }
     case INCREMENT_COUNTER:
@@ -89,11 +92,58 @@ function editorState(state = initEditorState, action) {
             min: state.min,
             sec: state.sec,
             ms: state.ms,
-            countdown: state.countdown
+            countdown: state.countdown,
+            hasPosted: state.hasPosted
         }
-      } else {
-        return state
+        } else {
+          return state
       }
+    case INCREMENT_KEY_HANDLED:
+      if(state.isMatch) {
+        return {
+          mode: state.mode,
+          readOnly: state.readOnly,
+          solvedCode: state.solvedCode,
+          statusText: state.statusText,
+          isMatch: state.isMatch,
+          code: state.code,
+          counter: state.counter + 1,
+          keyMap: state.keyMap,
+          clockRunning: state.clockRunning,
+          timeStopped: action.timeStopped,
+          timeBegan: state.timeBegan,
+          stoppedDuration: state.stoppedDuration,
+          started: state.started,
+          min: state.min,
+          sec: state.sec,
+          ms: state.ms,
+          countdown: state.countdown,
+          hasPosted: true
+        }
+      } else if (state.readOnly === false){
+          return {
+            mode: state.mode,
+            readOnly: state.readOnly,
+            solvedCode: state.solvedCode,
+            statusText: state.statusText,
+            isMatch: state.isMatch,
+            code: state.code,
+            counter: state.counter + 1,
+            keyMap: state.keyMap,
+            clockRunning: state.clockRunning,
+            timeStopped: action.timeStopped,
+            timeBegan: state.timeBegan,
+            stoppedDuration: state.stoppedDuration,
+            started: state.started,
+            min: state.min,
+            sec: state.sec,
+            ms: state.ms,
+            countdown: state.countdown,
+            hasPosted: state.hasPosted
+          }
+        } else {
+          return state
+        }
     case CHANGE_KEYMAP:
       if(action.keyMap === 'sublime') {
         console.log('inside keyMap sublime')
@@ -133,13 +183,14 @@ function editorState(state = initEditorState, action) {
           min: state.min,
           sec: state.sec,
           ms: state.ms,
-          countdown: state.countdown
+          countdown: state.countdown,
+          hasPosted: state.hasPosted
       }
     case LOAD_CHALLENGE:
       return {
           mode: state.mode,
           readOnly: state.readOnly,
-          solvedCode: beautify(action.solved, {indent_size: 2}),
+          solvedCode: action.solved,
           statusText: state.statusText,
           isMatch: state.isMatch,
           code: action.unsolved,
@@ -154,7 +205,8 @@ function editorState(state = initEditorState, action) {
           min: state.min,
           sec: state.sec,
           ms: state.ms,
-          countdown: state.countdown
+          countdown: state.countdown,
+          hasPosted: state.hasPosted
       }
       case START_TIMER:
       return {
@@ -174,7 +226,7 @@ function editorState(state = initEditorState, action) {
         sec: state.sec,
         ms: state.ms,
         countdown: state.countdown,
-        clockRunning: true
+        clockRunning: true,
       }
     case STOP_TIMER:
     // console.log('timestop is: ', action.timeStopped);

@@ -8,7 +8,8 @@ import $ from 'jquery';
 
 class PostData extends Component {
   postResults(props) {
-    var userID = props.currentUserId;
+    console.log(props)
+    var userID = this.props.currentUserId;
     var challengeID = Number(this.props.chalID);
     var numKeyStrokes = props.counter;
     // time conversion to seconds (input is a string)
@@ -34,7 +35,8 @@ class PostData extends Component {
 
   render() {
     var props = this.props;
-    if (this.props.isMatch) {
+    // console.log(this.props)
+    if (this.props.isMatch && !this.props.hasPosted) {
       this.postResults(props)
     }
     return(
@@ -55,13 +57,12 @@ function mapStateToProps(state) {
   return {
     isMatch: state.editorState.isMatch,
     counter: state.editorState.counter,
-    timeBegan: state.editorState.timeBegan,
-    timeStopped: state.editorState.timeStopped,
     min: state.editorState.min,
     sec: state.editorState.sec,
     ms: state.editorState.ms,
     user: state.loggedInState.user,
     currentUserId: state.loggedInState.currentUserId,
+    hasPosted: state.editorState.hasPosted
   }
 }
 
