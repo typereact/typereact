@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, HIDE_MODAL, SHOW_MODAL } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_FIVE_TIMES, HIDE_MODAL, SHOW_MODAL } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
@@ -313,7 +313,9 @@ function loggedInState(state = initLoggedInState, action) {
 }
 
 const initChallengeState = {
-  challenges: []
+  challenges: [],
+  topFiveTimes: [],
+  topFiveKeyStrokes: []
 }
 
 function challengeState(state = initChallengeState, action){
@@ -321,6 +323,14 @@ function challengeState(state = initChallengeState, action){
     case STORE_CHALLENGES:
       return {
         challenges: action.challenges,
+        topFiveTimes: state.topFiveTimes,
+        topFiveKeyStrokes: state.topFiveKeyStrokes
+      }
+    case UPDATE_TOP_FIVE_TIMES:
+      return {
+        challenges: state.challenges,
+        topFiveTimes: action.topFiveTimes,
+        topFiveKeyStrokes: state.topFiveKeyStrokes
       }
     default:
       return state

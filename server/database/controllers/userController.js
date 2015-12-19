@@ -21,5 +21,15 @@ module.exports = {
           return done(null, user.dataValues)
         }
     })
+  },
+  findUserByID: function(req, res, next) {
+    var userID = Number(req._parsedOriginalUrl.query)
+    User.findOne({
+      where: {
+        id: userID
+      }
+    }).then(function(user) {
+      res.send(user);
+    })
   }
 }

@@ -12,7 +12,7 @@ import Router from "react-router";
 import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import ChallengeList from './components/challengeList.js'
-
+import TopFive from './components/topFive.js'
 const history = createBrowserHistory();
 
 
@@ -33,6 +33,7 @@ render(
       <Route path='/' component={Navbar}>
         <Route path='playchallenge/:challengeID' component={App}/>
         <Route path='challengeList' component={ChallengeList}/>
+        <Route path='results/:challengeID' component={TopFive}/>
       </Route>
     </Router>
   </Provider>,
