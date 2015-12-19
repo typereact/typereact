@@ -12,6 +12,7 @@ import ReactCountdownClock from 'react-countdown-clock';
 // var ReactCountdownClock = require('react-countdown-clock/build/react-countdown-clock.js');
 // require('../shared/css/codemirror.css')
 // require('../shared/css/styles.css');
+import PostData from '../shared/components/postData.js';
 
 
 import $ from 'jquery';
@@ -25,6 +26,7 @@ export default class App extends Component {
       <SolutionEditor/>
       </div>
       <Counter />
+      <PostData chalID={this.props.params.challengeID} />
       <EditorOptions />
       <div>{this.props.children}</div>
     </div>

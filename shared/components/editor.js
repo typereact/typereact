@@ -81,16 +81,16 @@ class Editor extends Component {
 Editor.propTypes = {
   onCodeChange: PropTypes.func,
   code: PropTypes.string,
-  // readOnly: PropTypes.bool,
   mode: PropTypes.string,
   counter: PropTypes.number,
+  keyMap: PropTypes.string,
   handleKey: PropTypes.func,
   handleKeyPress: PropTypes.func,
-  keyMap: PropTypes.string,
   onStopTimer: PropTypes.func,
+  isMatch: PropTypes.bool,
+  // readOnly: PropTypes.bool,
   // clockRunning: PropTypes.bool,
   // timeStopped: PropTypes.string,
-  isMatch: PropTypes.bool,
   // readOnly: PropTypes.string,
   // statusText: PropTypes.string,
 };
@@ -98,12 +98,11 @@ Editor.propTypes = {
 //   code: 'for(var i=0;i < array.length;',
 //   readOnly: false,
 //   mode: 'javascript'
-//   // isMatch: false,
-//   // statusText: 'MATCH COMPLETE',
+//   isMatch: false,
+//   statusText: 'MATCH COMPLETE',
 // }
 
 function mapStateToProps(state) {
-  // debugger
   return {
     code: state.editorState.code,
     mode: state.editorState.mode,
@@ -124,10 +123,6 @@ function mapDispatchToProps(dispatch, state) {
     onCodeChange: function(newCode) {
       var timeStamp = new Date();
       dispatch(stringChanged(newCode, timeStamp));
-      // console.log('this is ', this)
-      // if(props.isMatch) {
-        // dispatch(this.props.onStopTimer());
-      // }
     },
     handleKey: function() {
       dispatch(incrementCounter());
