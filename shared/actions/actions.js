@@ -18,6 +18,8 @@ export const CLOCK_RUNNING = 'CLOCK_RUNNING'
 export const SETTING_INTERVAL = 'SETTING_INTERVAL'
 export const CLOCK_STOP = 'CLOCK_STOP'
 export const STORE_CHALLENGES = 'STORE_CHALLENGES'
+export const HIDE_MODAL = 'HIDE_MODAL'
+export const SHOW_MODAL = 'SHOW_MODAL'
 
 export const STORE_RESULTS = 'STORE_RESULTS'
 export const SAVE = 'SAVE'
@@ -48,8 +50,8 @@ export function loadChallenge(unsolved, solved) {
   return { type: LOAD_CHALLENGE, unsolved: unsolved, solved: solved }
 }
 
-export function checkUser(loggedIn, username, picture) {
-  return { type: CHECK_USER, loggedIn: loggedIn, username: username, picture: picture}
+export function checkUser(loggedIn, username, picture, userId) {
+  return { type: CHECK_USER, loggedIn: loggedIn, username: username, picture: picture, currentUserId: userId }
 }
 
 export function countDown() {
@@ -120,4 +122,10 @@ export function storeChallenges (challenges) {
 //   return {type: 'SAVE_ERROR', error}
 // } 
 
+export function hideModal() {
+  return { type: HIDE_MODAL }
+}
 
+export function showModal(cheatSheet) {
+  return { type: SHOW_MODAL, cheatSheet: cheatSheet}
+}
