@@ -3,25 +3,25 @@ var UserChallenge = db.UserChallenge;
 
 module.exports = {
   postUserChallenge: function(req, res, next) {
-    var newUserChallenge = UserChallenge.build({
-      numKeyStrokes: 6,
-      keyStrokeList: '1 ,2, 3, 4, 5, 6',
-      timeToComplete: 30,
-      user_id: 12,
-      challenge_id: 2
-    })
-
-    // var newChallenge = Challenge.build({
-    //   numKeyStrokes: req.body.numKeyStrokes,
-    //   keyStrokeList: req.body.keyStrokeList,
-    //   timeToComplete: req.body.timeToComplete,
-    //   user_id: req.body.user_id,
-    //   challenge_id: req.body.challenge_id,
+    // var newUserChallenge = UserChallenge.build({
+    //   numKeyStrokes: 6,
+    //   keyStrokeList: '1 ,2, 3, 4, 5, 6',
+    //   timeToComplete: 30,
+    //   user_id: 12,
+    //   challenge_id: 2
     // })
-
+    console.log('inside postUserChallenge');
+    // console.log(req);
+    var newUserChallenge = UserChallenge.build({
+      numKeyStrokes: req.body.numKeyStrokes,
+      timeToComplete: req.body.timeToComplete,
+      userID: req.body.userID,
+      challengeID: req.body.challengeID,
+    })
+    
     newUserChallenge.save().then(function(useChal) {
       console.log('posted chal score:', useChal)
-      next();
+      res.send('success'); 
     })
   },
   // getFirstChallenge: function(req, res, next) {

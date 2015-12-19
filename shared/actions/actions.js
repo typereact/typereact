@@ -19,6 +19,11 @@ export const SETTING_INTERVAL = 'SETTING_INTERVAL'
 export const CLOCK_STOP = 'CLOCK_STOP'
 export const STORE_CHALLENGES = 'STORE_CHALLENGES'
 
+export const STORE_RESULTS = 'STORE_RESULTS'
+export const SAVE = 'SAVE'
+export const SAVE_SUCCESS = 'SAVE_SUCCESS'
+export const SAVE_ERROR = 'SAVE_ERROR'
+
 /*
  * action creators
  */
@@ -46,9 +51,10 @@ export function loadChallenge(unsolved, solved) {
 export function checkUser(loggedIn, username, picture) {
   return { type: CHECK_USER, loggedIn: loggedIn, username: username, picture: picture}
 }
-// export function countDown() {
-//   return { type: COUNT_DOWN }
-// } 
+
+export function countDown() {
+  return { type: COUNT_DOWN }
+} 
 
 export function countDownBySecond() {
   return {type: COUNT_DOWN_BY_SECOND}
@@ -79,3 +85,39 @@ export function clockStop () {
 export function storeChallenges (challenges) {
   return { type: STORE_CHALLENGES, challenges: challenges }
 }
+
+// export function storeResults (tbd) {
+//   return { type: STORE_RESULTS, results: results }
+// }
+
+
+// export function save () {
+//   return (dispatch, getState) => {
+//     var currentState = getState();
+//     var interestingBits = extractInterestingBitsFromState(currentState);
+
+//     dispatch({type: 'SAVE'});
+
+//     $.post(someUrl, {
+//       method: 'POST',
+//       body: JSON.stringify(interestingBits)
+//     })
+//     .then(checkStatus) // from https://github.com/github/fetch#handling-http-error-statuses
+//     .then((response) => response.json())
+//     .then((json) => dispatch saveSuccess(json.someResponseValue))
+//     .catch((error) =>
+//       console.error(error)
+//       dispatch saveError(error)
+//     );
+//   }
+// }
+
+// export function saveSuccess (someResponseValue) {
+//   return {type: 'SAVE_SUCCESS', someResponseValue}
+// } 
+
+// export function saveError (error) {
+//   return {type: 'SAVE_ERROR', error}
+// } 
+
+

@@ -14,7 +14,7 @@ import { checkUser, storeChallenges } from '../actions/actions.js';
 
 class Navigation extends Component{
   componentDidMount() {
-    console.log(this.props.challenges);
+    // console.log(this.props.challenges);
     $.get('/isLoggedIn', function(response) {
       // console.log('Login Status: ' + JSON.stringify(response, null, 2));
       var loggedIn = Boolean(response);
