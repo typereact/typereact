@@ -21,6 +21,7 @@ export const STORE_CHALLENGES = 'STORE_CHALLENGES'
 export const HIDE_MODAL = 'HIDE_MODAL'
 export const SHOW_MODAL = 'SHOW_MODAL'
 export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
+export const INCREMENT_KEY_HANDLED = 'INCREMENT_KEY_HANDLED'
 
 /*
  * action creators
@@ -93,4 +94,8 @@ export function showModal(cheatSheet) {
 }
 export function updateTopFiveTimes (arr) {
   return { type: UPDATE_TOP_FIVE_TIMES, topFiveTimes: arr }
+}
+
+export function incrementKeyHandled () {
+  return { type: INCREMENT_KEY_HANDLED }
 }
