@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, HIDE_MODAL, SHOW_MODAL } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
@@ -277,7 +277,9 @@ function editorState(state = initEditorState, action) {
 const initLoggedInState = {
   loggedIn: false,
   user: 'Guest',
-  profilePic: null
+  profilePic: null,
+  lgShow: false,
+  currentUserId: null
 }
 
 function loggedInState(state = initLoggedInState, action) {
@@ -288,6 +290,22 @@ function loggedInState(state = initLoggedInState, action) {
         loggedIn: action.loggedIn,
         user: action.username,
         profilePic: action.picture,
+        currentUserId: action.currentUserId,
+      }
+    case HIDE_MODAL:
+      return {
+        loggedIn: state.loggedIn,
+        user: state.user,
+        profilePic: state.profilePic,
+        lgShow: false,
+      }
+    case SHOW_MODAL:
+      return {
+        loggedIn: state.loggedIn,
+        user: state.user,
+        profilePic: state.profilePic,
+        lgShow: true,
+        cheatSheet: action.cheatSheet,
       }
     default:
       return state
