@@ -8,7 +8,7 @@ import $ from 'jquery';
 
 class PostData extends Component {
   postResults(props) {
-    var userID = 1;
+    var userID = props.currentUserId;
     var challengeID = Number(this.props.chalID);
     var numKeyStrokes = props.counter;
     // time conversion to seconds (input is a string)
@@ -22,7 +22,6 @@ class PostData extends Component {
       numKeyStrokes: numKeyStrokes,
       timeToComplete: timeToComplete
     };
-    console.log(data);
 
     $.ajax({
       type: "POST",
@@ -35,6 +34,9 @@ class PostData extends Component {
 
   render() {
     var props = this.props;
+    if (this.props.isMatch) {
+      this.postResults(props)
+    }
     return(
       <div>
       <div id="test-is-match" style= {{display: this.props.isMatch ? '' : 'none'}}> This should appear on match </div>
@@ -45,13 +47,9 @@ class PostData extends Component {
 
 }
 
-PostData.Proptypes = {
-  saveResults: PropTypes.func,
+PostData.PropTypes = {
+  isMatch: PropTypes.bool
 };
-
-// PostData.defaultProps = {
-
-// };
 
 function mapStateToProps(state) {
   return {
@@ -63,34 +61,12 @@ function mapStateToProps(state) {
     sec: state.editorState.sec,
     ms: state.editorState.ms,
     user: state.loggedInState.user,
-
+    currentUserId: state.loggedInState.currentUserId,
   }
-
 }
 
 function mapDispatchToProps(dispatch, getState, state) {
-  return {
-    saveResults: function ()  {
-      console.log('firing here');
-      var currentState = getState();
-      console.log('TRYING TO SAVE RESULTS. STATE IS');
-      console.log(currentState);
-      return (dispatch, getState) => {
-      // var interestingBits = extractInterestingBitsFromState(currentState);
-      dispatch()
-    }
-    // postResult: function (results) {
-    //   //grab all the props to package together to storage
-    //   //especially need userid and challengeid
-    //   dispatch(storeResults(results));
-    //   //expect a 'ready to post' = true prop
-    //   //expect a 'post package' prop to be set (from null)
-    //   //post request with packed storage data
-    //   postRequest()
-    // }
-  }
-}
-
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostData);

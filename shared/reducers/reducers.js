@@ -279,7 +279,7 @@ const initLoggedInState = {
   user: 'Guest',
   profilePic: null,
   lgShow: false,
-  currentUserId: null
+  currentUserId: 1
 }
 
 function loggedInState(state = initLoggedInState, action) {
