@@ -20,11 +20,7 @@ export const CLOCK_STOP = 'CLOCK_STOP'
 export const STORE_CHALLENGES = 'STORE_CHALLENGES'
 export const HIDE_MODAL = 'HIDE_MODAL'
 export const SHOW_MODAL = 'SHOW_MODAL'
-
-export const STORE_RESULTS = 'STORE_RESULTS'
-export const SAVE = 'SAVE'
-export const SAVE_SUCCESS = 'SAVE_SUCCESS'
-export const SAVE_ERROR = 'SAVE_ERROR'
+export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
 
 /*
  * action creators
@@ -88,44 +84,13 @@ export function storeChallenges (challenges) {
   return { type: STORE_CHALLENGES, challenges: challenges }
 }
 
-// export function storeResults (tbd) {
-//   return { type: STORE_RESULTS, results: results }
-// }
-
-
-// export function save () {
-//   return (dispatch, getState) => {
-//     var currentState = getState();
-//     var interestingBits = extractInterestingBitsFromState(currentState);
-
-//     dispatch({type: 'SAVE'});
-
-//     $.post(someUrl, {
-//       method: 'POST',
-//       body: JSON.stringify(interestingBits)
-//     })
-//     .then(checkStatus) // from https://github.com/github/fetch#handling-http-error-statuses
-//     .then((response) => response.json())
-//     .then((json) => dispatch saveSuccess(json.someResponseValue))
-//     .catch((error) =>
-//       console.error(error)
-//       dispatch saveError(error)
-//     );
-//   }
-// }
-
-// export function saveSuccess (someResponseValue) {
-//   return {type: 'SAVE_SUCCESS', someResponseValue}
-// } 
-
-// export function saveError (error) {
-//   return {type: 'SAVE_ERROR', error}
-// } 
-
 export function hideModal() {
   return { type: HIDE_MODAL }
 }
 
 export function showModal(cheatSheet) {
   return { type: SHOW_MODAL, cheatSheet: cheatSheet}
+}
+export function updateTopFiveTimes (arr) {
+  return { type: UPDATE_TOP_FIVE_TIMES, topFiveTimes: arr }
 }
