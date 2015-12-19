@@ -205,13 +205,13 @@ class Navigation extends Component{
 
     return (
     <div>
-      <Navbar id='navbar'>
+      <Navbar fluid>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/" id='navbar-links'>TypeReact</a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
+        <Nav className='navbar-challenges'>
           <NavItem eventKey={1} href="/challengeList">Challenges</NavItem>
           <NavItem eventKey={2} href="#">Users</NavItem>
           <NavDropdown eventKey={4} title="Cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>

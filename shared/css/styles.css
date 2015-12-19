@@ -7,15 +7,30 @@
 
 body {
   font-family: Consolas;
-  /*background-color: #f7f7f7;*/
+  /*background-color: #fdfcfd;*/
 }
 
+/* TEXT EDITORS */
+#both-editors {
+  font-size:18px;
+  margin-left:67px;
+  color:#a9b7c0;
+  letter-spacing: .05em;
+}
+
+#solution-editors {
+  font-size:18px;
+  /*margin-left:67px;*/
+  color:#a9b7c0;
+  letter-spacing: .05em;
+}
 /* EDITOR OPTIONS */
 #all-options {
   font-size:16px;
   margin-top:6px;
   float:left;
   margin-left: 250px;
+  /*position:relative;*/
 }
 
 .emacs-option {
@@ -45,6 +60,7 @@ body {
 
 #editor-comment {
   font-size: 14px;
+  text-align:center;
 }
 
 /* TIMER */
@@ -79,6 +95,10 @@ body {
 
 /* NAVBAR */
 
+.fa-github {
+  margin-right: 5px;
+}
+
 #dropdown-link {
   text-align: right;
   color:#a9b7c0;  
@@ -94,18 +114,22 @@ body {
 }
 
 #navbar {
-  /*background-color: #a9b7c0;*/
-  color:white;
+  /*background-color: #e5e5e5;*/
+  /*color:white;*/
 }
 
 #navbar-links {
 color:#a9b7c0;
+font-size:22px;
 }
 
 .navbar-challenges {
-  color:#a9b7c0;
+  color:white;
 }
 
-.navbar-challenges:hover {
-  color:red;
+/* PROGRESS BAR */
+
+#progress-bar {
+  width: 600px;
+  color: red;
 }
