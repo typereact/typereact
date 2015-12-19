@@ -29,6 +29,8 @@ var User = db.User;
 var authRouter = require('./routers/authRouter.js')(express, passport, User, GitHubStrategy);
 var challengeRouter = require('./routers/challengeRouter.js')(express);
 var userChallengeController = require('./database/controllers/userChallengeController.js');
+var userChallengeRouter = require('./routers/userChallengeRouter.js')(express);
+var userRouter = require('./routers/userRouter.js')(express);
 
 app.use(bodyParser.json());
 app.use(session({ secret: 'typereact secret' }));
@@ -45,6 +47,11 @@ app.use(express.static(path.join(__dirname,'/../')));
 
 //routes user to specific challenge page
 app.get('/playchallenge/*', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+})
+
+//routes user to specific results page
+app.get('/results/*', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'))
 })
 
@@ -65,6 +72,8 @@ app.use(webpackMiddleware(compiler));
 //use routers
 app.use('/auth', authRouter);
 app.use('/challenge', challengeRouter);
+app.use('/userchallenge', userChallengeRouter);
+app.use('/user', userRouter);
 app.use('/isLoggedIn', function(req, res) {
   if(req.user) {
     res.send(req.user);

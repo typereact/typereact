@@ -1,5 +1,7 @@
 var db = require('./../dbconfig.js');
 var UserChallenge = db.UserChallenge;
+var User = db.User;
+var Challenge = db.Challenge;
 
 module.exports = {
   postUserChallenge: function(req, res, next) {
@@ -40,4 +42,20 @@ module.exports = {
   //     res.send(undefined)
   //   })
   // }
+
+  getTopFive: function(req, res, next) {
+    var chalID = Number(req._parsedOriginalUrl.query)
+    UserChallenge.findAll({
+      where: {
+        challengeID: chalID
+      },
+      limit: 5,
+      order: 'timeToComplete ASC'
+    }).then(function(times, err) {
+      if(err) {
+        res.send(err);
+      }
+      res.send(times);
+    })
+  }
 }
