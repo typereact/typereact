@@ -17,6 +17,10 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import LandingPage from './components/landingPage.js';
 import About from './components/about.js';
 import FAQs from './components/FAQs.js';
+import ChallengeList from './components/challengeList.js'
+import TopFive from './components/topFive.js'
+import profilePage from './components/profilePage.js'
+>>>>>>> [feature] routing navbar to profile page
 const history = createBrowserHistory();
 
 
@@ -42,6 +46,7 @@ render(
         <Route path="addChallenge" component={AddChallenge}/>
         <Route path="faqs" component={FAQs}/>
         <Route path="about" component={About}/>
+        <Route path="profile" component={profilePage}/>
       </Route>
     </Router>
   </Provider>,
