@@ -74,4 +74,15 @@ module.exports = {
       res.send(times);
     })
   }
+
+  // getCompletedChallenges: function(req, res, next) {
+  //   var userID= Number(req._parsedOriginalUrl.query)
+  //   UserChallenge.findAll({
+  //     where: {
+  //       userID: userID
+  //     }
+  //   }).then(function(results) {
+  //     res.send(results)
+  //   })
+  // }
 }
