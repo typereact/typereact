@@ -26,7 +26,7 @@ class PostData extends Component {
 
     $.ajax({
       type: "POST",
-      url: '/testurl',
+      url: '/userchallenge/postuserchallenge',
       data: JSON.stringify(data),
       success: function() {console.log('results saved to db')},
       contentType: 'application/json'
