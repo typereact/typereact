@@ -28,7 +28,6 @@ var db = require('./database/dbconfig.js');
 var User = db.User;
 var authRouter = require('./routers/authRouter.js')(express, passport, User, GitHubStrategy);
 var challengeRouter = require('./routers/challengeRouter.js')(express);
-var userChallengeController = require('./database/controllers/userChallengeController.js');
 var userChallengeRouter = require('./routers/userChallengeRouter.js')(express);
 var userRouter = require('./routers/userRouter.js')(express);
 
@@ -58,12 +57,6 @@ app.get('/results/*', function(req, res) {
 //routes user to challenge listing
 app.get('/challengeList', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'))
-})
-
-app.post('/testurl', function(req, res) {
-  console.log('trying to post');
-  console.log(req.body);
-  userChallengeController.postUserChallenge(req, res);
 })
 
 //use webpack Middleware to build index.html script
