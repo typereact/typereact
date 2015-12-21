@@ -12,8 +12,6 @@ module.exports = {
     //   user_id: 12,
     //   challenge_id: 2
     // })
-    console.log('inside postUserChallenge');
-    // console.log(req);
     var newUserChallenge = UserChallenge.build({
       numKeyStrokes: req.body.numKeyStrokes,
       timeToComplete: req.body.timeToComplete,
@@ -43,14 +41,30 @@ module.exports = {
   //   })
   // }
 
-  getTopFive: function(req, res, next) {
+  getTop25Times: function(req, res, next) {
     var chalID = Number(req._parsedOriginalUrl.query)
     UserChallenge.findAll({
       where: {
         challengeID: chalID
       },
-      limit: 5,
+      limit: 25,
       order: 'timeToComplete ASC'
+    }).then(function(times, err) {
+      if(err) {
+        res.send(err);
+      }
+      res.send(times);
+    })
+  },
+
+  getTop25KeyStrokes: function(req, res, next) {
+    var chalID = Number(req._parsedOriginalUrl.query)
+    UserChallenge.findAll({
+      where: {
+        challengeID: chalID
+      },
+      limit: 25,
+      order: 'numKeyStrokes ASC'
     }).then(function(times, err) {
       if(err) {
         res.send(err);
