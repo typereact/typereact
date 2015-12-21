@@ -20,8 +20,9 @@ export const CLOCK_STOP = 'CLOCK_STOP'
 export const STORE_CHALLENGES = 'STORE_CHALLENGES'
 export const HIDE_MODAL = 'HIDE_MODAL'
 export const SHOW_MODAL = 'SHOW_MODAL'
-export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
 export const INCREMENT_KEY_HANDLED = 'INCREMENT_KEY_HANDLED'
+export const UPDATE_TOP_25_TIMES = 'UPDATE_TOP_25_TIMES'
+export const UPDATE_TOP_25_KEYSTROKES = 'UPDATE_TOP_25_KEYSTROKES'
 
 /*
  * action creators
@@ -92,10 +93,14 @@ export function hideModal() {
 export function showModal(cheatSheet) {
   return { type: SHOW_MODAL, cheatSheet: cheatSheet}
 }
-export function updateTopFiveTimes (arr) {
-  return { type: UPDATE_TOP_FIVE_TIMES, topFiveTimes: arr }
+export function updateTop25Times (arr) {
+  return { type: UPDATE_TOP_25_TIMES, top25Times: arr }
 }
 
 export function incrementKeyHandled () {
   return { type: INCREMENT_KEY_HANDLED }
+}
+
+export function updateTop25KeyStrokes (arr) {
+  return { type: UPDATE_TOP_25_KEYSTROKES, top25KeyStrokes: arr }
 }

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_FIVE_TIMES, HIDE_MODAL, SHOW_MODAL, INCREMENT_KEY_HANDLED } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
@@ -366,8 +366,8 @@ function loggedInState(state = initLoggedInState, action) {
 
 const initChallengeState = {
   challenges: [],
-  topFiveTimes: [],
-  topFiveKeyStrokes: []
+  globalTop25Times: [],
+  globalTop25KeyStrokes: []
 }
 
 function challengeState(state = initChallengeState, action){
@@ -375,14 +375,20 @@ function challengeState(state = initChallengeState, action){
     case STORE_CHALLENGES:
       return {
         challenges: action.challenges,
-        topFiveTimes: state.topFiveTimes,
-        topFiveKeyStrokes: state.topFiveKeyStrokes
+        globalTop25Times: state.globalTop25Times,
+        globalTop25KeyStrokes: state.globalTop25KeyStrokes
       }
-    case UPDATE_TOP_FIVE_TIMES:
+    case UPDATE_TOP_25_TIMES:
       return {
         challenges: state.challenges,
-        topFiveTimes: action.topFiveTimes,
-        topFiveKeyStrokes: state.topFiveKeyStrokes
+        globalTop25Times: action.top25Times,
+        globalTop25KeyStrokes: state.globalTop25KeyStrokes
+      }
+    case UPDATE_TOP_25_KEYSTROKES:
+      return {
+        challenges: state.challenges,
+        globalTop25Times: state.globalTop25Times,
+        globalTop25KeyStrokes: action.top25KeyStrokes
       }
     default:
       return state
