@@ -23,7 +23,8 @@ const initEditorState = {
   sec: '0',
   ms:'0',
   countdown: 3,
-  hasPosted: false
+  hasPosted: false,
+  editDistance: 100
 }
 
 function editorState(state = initEditorState, action) {
@@ -49,7 +50,8 @@ function editorState(state = initEditorState, action) {
           sec: state.sec,
           ms: state.ms,
           countdown: state.countdown,
-          hasPosted: state.hasPosted
+          hasPosted: state.hasPosted,
+          editDistance: state.editDistance
         }
       } else {
         return {
@@ -70,7 +72,8 @@ function editorState(state = initEditorState, action) {
           sec: state.sec,
           ms: state.ms,
           countdown: state.countdown,
-          hasPosted: state.hasPosted
+          hasPosted: state.hasPosted,
+          editDistance: state.editDistance
         }
       }
     case INCREMENT_COUNTER:
@@ -93,7 +96,8 @@ function editorState(state = initEditorState, action) {
             sec: state.sec,
             ms: state.ms,
             countdown: state.countdown,
-            hasPosted: state.hasPosted
+            hasPosted: state.hasPosted,
+            editDistance: state.editDistance
         }
         } else {
           return state
@@ -118,7 +122,8 @@ function editorState(state = initEditorState, action) {
           sec: state.sec,
           ms: state.ms,
           countdown: state.countdown,
-          hasPosted: true
+          hasPosted: true,
+          editDistance: state.editDistance
         }
       } else if (state.readOnly === false){
           return {
@@ -139,7 +144,8 @@ function editorState(state = initEditorState, action) {
             sec: state.sec,
             ms: state.ms,
             countdown: state.countdown,
-            hasPosted: state.hasPosted
+            hasPosted: state.hasPosted,
+            editDistance: state.editDistance
           }
         } else {
           return state
@@ -184,7 +190,8 @@ function editorState(state = initEditorState, action) {
           sec: state.sec,
           ms: state.ms,
           countdown: state.countdown,
-          hasPosted: state.hasPosted
+          hasPosted: state.hasPosted,
+          editDistance: state.editDistance
       }
     case LOAD_CHALLENGE:
       return {
@@ -196,7 +203,6 @@ function editorState(state = initEditorState, action) {
           code: action.unsolved,
           counter: state.counter,
           keyMap: state.keyMap,
-          counter: state.counter,
           clockRunning: state.clockRunning,
           timeStopped: action.timeStopped,
           timeBegan: state.timeBegan,
@@ -206,7 +212,8 @@ function editorState(state = initEditorState, action) {
           sec: state.sec,
           ms: state.ms,
           countdown: state.countdown,
-          hasPosted: state.hasPosted
+          hasPosted: state.hasPosted,
+          editDistance: action.editDistance
       }
       case START_TIMER:
       return {
@@ -227,6 +234,8 @@ function editorState(state = initEditorState, action) {
         ms: state.ms,
         countdown: state.countdown,
         clockRunning: true,
+        hasPosted: state.hasPosted,
+        editDistance: state.editDistance
       }
     case STOP_TIMER:
     // console.log('timestop is: ', action.timeStopped);
@@ -247,7 +256,9 @@ function editorState(state = initEditorState, action) {
         sec: state.sec,
         ms: state.ms,
         countdown: state.countdown,
-        clockRunning: false
+        clockRunning: false,
+        hasPosted: state.hasPosted,
+        editDistance: state.editDistance
       }
     case CLOCK_RUNNING:
       if(state.clockRunning === true) {
@@ -278,7 +289,9 @@ function editorState(state = initEditorState, action) {
         sec: timeElapsed.getUTCSeconds().toString(),
         ms: timeElapsed.getUTCMilliseconds().toString(),
         countdown: state.countdown,
-        clockRunning: state.clockRunning
+        clockRunning: state.clockRunning,
+        hasPosted: state.hasPosted,
+        editDistance: state.editDistance
        }
     case SETTING_INTERVAL:
       return {
@@ -298,7 +311,9 @@ function editorState(state = initEditorState, action) {
         sec: state.sec,
         ms: state.ms,
         countdown: state.countdown,
-        clockRunning: state.clockRunning 
+        clockRunning: state.clockRunning,
+        hasPosted: state.hasPosted,
+        editDistance: state.editDistance 
       }
     case CLOCK_STOP:
       // clearInterval(state.started);
@@ -319,7 +334,9 @@ function editorState(state = initEditorState, action) {
         sec: state.sec,
         ms: state.ms,
         countdown: state.countdown,
-        clockRunning: state.clockRunning 
+        clockRunning: state.clockRunning,
+        hasPosted: state.hasPosted,
+        editDistance: state.editDistance 
       }
     default:
       return state

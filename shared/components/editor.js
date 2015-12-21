@@ -16,6 +16,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { stringChanged, incrementCounter, loadChallenge, incrementKeyHandled } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
+import editDistanceCalculator from '../../editDistanceCalc.js'
 // import SolutionEditor from './solutionEditor.js'
 // import { Defaults } from './solutionEditor.js';
 // import { createStore, combineReducers } from 'redux';
@@ -58,8 +59,8 @@ var bindings = {
 class Editor extends Component {
     componentDidMount() {
       $.get('/challenge/getChallengeByIndex', this.props.chalID, function(dbChallenge) {
-        // console.log('getting first challenge: ' + JSON.stringify(dbChallenge, null, 2))
-        this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved)
+        var differential = editDistanceCalculator(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved)
+        this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved, differential);
       }.bind(this)) 
     }
     render() {
@@ -130,8 +131,8 @@ function mapDispatchToProps(dispatch, state) {
     handleKeyPress: function(counter) {
       dispatch(incrementCounter());
     },
-    updateChallenge: function(unsolved, solved) {
-      dispatch(loadChallenge(unsolved, solved));
+    updateChallenge: function(unsolved, solved, stringDiff) {
+      dispatch(loadChallenge(unsolved, solved, stringDiff));
     },
     test: function () {
       console.log('hello testing')

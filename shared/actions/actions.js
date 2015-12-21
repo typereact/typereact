@@ -44,8 +44,8 @@ export function updateKeyMap(newKeyMap) {
   return { type: CHANGE_KEYMAP, keyMap: newKeyMap }
 }
 
-export function loadChallenge(unsolved, solved) {
-  return { type: LOAD_CHALLENGE, unsolved: unsolved, solved: solved }
+export function loadChallenge(unsolved, solved, stringDiff) {
+  return { type: LOAD_CHALLENGE, unsolved: unsolved, solved: solved, editDistance: stringDiff }
 }
 
 export function checkUser(loggedIn, username, picture, userId) {
