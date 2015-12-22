@@ -23,8 +23,6 @@ module.exports = function(express, passport, User, GitHubStrategy) {
     callbackURL: "http://localhost:8080/auth/github/callback"
   },
     function(accessToken, refreshToken, profile, done) {
-      console.log('findOrCreate')
-      console.log(profile)
       userController.findOrAdd(profile, done);
     }
   ));
@@ -37,7 +35,8 @@ module.exports = function(express, passport, User, GitHubStrategy) {
   authRouter.get('/github/callback', 
     passport.authenticate('github', { failureRedirect: '/login' }),
       function(req, res) {
-        res.redirect('/');
+        console.log('req headers', req.headers);
+        res.redirect(req.headers.referer);
   });
 
   authRouter.get('/logout', function(req, res) {
