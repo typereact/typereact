@@ -25,6 +25,7 @@ export const UPDATE_TOP_25_TIMES = 'UPDATE_TOP_25_TIMES'
 export const UPDATE_TOP_25_KEYSTROKES = 'UPDATE_TOP_25_KEYSTROKES'
 export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
 export const SHOW_CLOCK = 'SHOW_CLOCK'
+export const CODE_CHANGED = 'CODE_CHANGED'
 
 /*
  * action creators
@@ -109,4 +110,8 @@ export function updateTop25KeyStrokes (arr) {
 
 export function showClock() {
   return { type: SHOW_CLOCK }
+}
+
+export function updateCode (newCode) {
+  return { type: CODE_CHANGED, code: newCode }
 }
