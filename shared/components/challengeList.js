@@ -20,11 +20,29 @@ class ChallengeList extends Component {
   render() {
     var results = this.props.challenges;
     //consider rendering as Bootstrap elements
-    return (<ul>
-      {results.map(function(result) {
-        return <li className='listItem' key={result.id}><a href={'/playchallenge/' + result.id}>{result.challengeName}</a></li>;
-      })}
-    </ul>)
+    return (<div className="container">
+        <div className="table">
+          <h4>Please select a challenge to play</h4>
+          <table className="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Link</th>
+                <th>Difficulty</th>
+                <th>Number of Plays</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.map(function(result) {
+                return (<tr key={result.id}>
+                  <th><a href={'/playchallenge/' + result.id}>{result.challengeName}</a></th>
+                  <th>{result.difficultyLevel}</th>
+                  <th>{result.numPlays}</th>
+                </tr>)
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>)
   }
 }
 
