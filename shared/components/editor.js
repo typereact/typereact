@@ -63,6 +63,18 @@ class Editor extends Component {
         this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved, differential);
       }.bind(this)) 
     }
+
+    componentWillReceiveProps(nextProps) {
+      var that = this;
+      //when the timeBegan property changes over from null to the start time
+      if(this.props.timeBegan === null && nextProps.timeBegan !== null) {
+        //focus on the editor; the setTimeout is required otherwise the editor won't gain focus
+        setTimeout(function() {
+          that.refs.editor.focus();
+        }, 1)
+      }
+    }
+
     render() {
       // console.log('inside editor component', this.props.code)
         var options = {
@@ -115,6 +127,7 @@ function mapStateToProps(state) {
     timeStopped: state.editorState.timeStopped,
     isMatch: state.editorState.isMatch,
     readOnly: state.editorState.readOnly,
+    timeBegan: state.editorState.timeBegan
   }
 }
 
