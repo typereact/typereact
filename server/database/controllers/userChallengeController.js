@@ -5,13 +5,10 @@ var Challenge = db.Challenge;
 
 module.exports = {
   postUserChallenge: function(req, res, next) {
-    // var newUserChallenge = UserChallenge.build({
-    //   numKeyStrokes: 6,
-    //   keyStrokeList: '1 ,2, 3, 4, 5, 6',
-    //   timeToComplete: 30,
-    //   user_id: 12,
-    //   challenge_id: 2
-    // })
+    Challenge.findById(req.body.challengeID).then(function(chal) {
+      return chal.increment('numPlays');
+    })
+
     var newUserChallenge = UserChallenge.build({
       numKeyStrokes: req.body.numKeyStrokes,
       timeToComplete: req.body.timeToComplete,
@@ -20,26 +17,9 @@ module.exports = {
     })
     
     newUserChallenge.save().then(function(useChal) {
-      console.log('posted chal score:', useChal)
       res.send('success'); 
     })
   },
-  // getFirstChallenge: function(req, res, next) {
-  //   Challenge.findOne({
-  //     where: {
-  //       id: {
-  //         $gt: 0
-  //       }
-  //     }
-  //   }).then(function(chal, err) {
-  //     // if(chal = []) {
-  //     //   res.send('chal is empty');
-  //     // }
-  //     // console.log('found one challenge', chal);
-  //     console.log('this is the res',res);
-  //     res.send(undefined)
-  //   })
-  // }
 
   getTop25Times: function(req, res, next) {
     var chalID = Number(req._parsedOriginalUrl.query)
