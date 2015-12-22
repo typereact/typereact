@@ -22,8 +22,8 @@ body {
 .display-clock {
   display:block;
   position: fixed;
-  margin-left: 41%;
-  margin-top: 9%;
+  margin-left: 38%;
+  margin-top: 12%;
   z-index: 99999;
 }
 
@@ -36,27 +36,12 @@ body {
   background:rgba(255, 255, 255, 0.5);
 }
 
-/* TEXT EDITORS */
-#both-editors {
-  font-size:18px;
-  margin-left:67px;
-  color:#a9b7c0;
-  letter-spacing: .05em;
-}
 
-#solution-editors {
-  font-size:18px;
-  /*margin-left:67px;*/
-  color:#a9b7c0;
-  letter-spacing: .05em;
-}
 /* EDITOR OPTIONS */
 #all-options {
-  font-size:16px;
-  margin-top:6px;
-  float:left;
-  margin-left: 250px;
-  /*position:relative;*/
+  font-size:15px;
+  float:right;
+  margin-top: 4px;/
 }
 
 .emacs-option {
@@ -99,28 +84,22 @@ body {
   background-color:white;
   border-style: solid;
   border-color:black;
-  margin-left: 47%;
+  display: block;
+  margin: 0 auto;
   border-width: 1px;
 }
 
 
 #timer {
-  margin-left: 46%;
+  text-align: center;
 }
-
-/* STATUS */
-
-/*#status {
-  float:left;
-  margin-left: 50%;
-}*/
 
 /* COUNTER */
 
 #counter {
   margin-top:-2px;
   float:left;
-  margin-left: 165px;
+  /*margin-left: 165px;*/
 }
 
 /* NAVBAR */
@@ -143,10 +122,6 @@ body {
   width: 110px;
 }
 
-#navbar {
-  /*background-color: #e5e5e5;*/
-  /*color:white;*/
-}
 
 #navbar-links {
 color:#a9b7c0;
@@ -157,9 +132,16 @@ font-size:22px;
   color:white;
 }
 
+.navbar-default .navbar-nav>li>a {
+  color: #a9b7c0;
+}
+
 /* PROGRESS BAR */
 
 #progress-bar {
-  width: 600px;
-  color: red;
+  width: 50%;
+  color: black;
+  display: block;
+  margin: 0 auto;
 }
+
