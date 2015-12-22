@@ -10,6 +10,23 @@ body {
   /*background-color: #fdfcfd;*/
 }
 
+/* COUNTDOWN CLOCK */
+.countdown-clock {
+  display:none;
+}
+
+.remove-display {
+  display:block;
+}
+
+.show-display {
+  display:block;
+}
+
+.countdown-clock-display {
+  display:none;
+}
+
 /* TEXT EDITORS */
 #both-editors {
   font-size:18px;

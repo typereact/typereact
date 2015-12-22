@@ -6,6 +6,7 @@ import { countDown, countDownBySecond, startTimer, stopTimer, clockRunning, sett
 import { PropTypes } from 'react';
 import thunk from 'redux-thunk';
 
+import $ from 'jquery';
 
 let Start = React.createClass ({
   // getInitialState: function () {
@@ -58,9 +59,14 @@ let Start = React.createClass ({
   //   this.setState({timeStopped: new Date()});
   //   clearInterval(this.state.started);
   // },
+  showClock() {
+    console.log('inside showClock')
+    $('.countdown-clock').addClass('remove-display')
+    // $('.countdown-clock').removeClass('.countdown-clock').addClass('.countdown-clock-display')
+  },
   render () {
     return(<div>
-      <button id='start-timer' onClick={this.props.onStartTimer}>Start Timer</button>
+      <button id='start-timer' onClick={this.showClock}>Start Timer</button>
       <br></br><div id='timer'><h2>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</h2></div>
       </div>
       )
