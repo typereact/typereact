@@ -24,7 +24,7 @@ const initEditorState = {
   ms:'0',
   countdown: 3,
   hasPosted: false,
-  editDistance: 100
+  editDistance: 100,
   hideClock: true,
 }
 
@@ -52,7 +52,7 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
           hideClock: state.hideClock
         }
       } else {
@@ -75,7 +75,7 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
           hideClock: state.hideClock
         }
       }
@@ -100,7 +100,7 @@ function editorState(state = initEditorState, action) {
             ms: state.ms,
             countdown: state.countdown,
             hasPosted: state.hasPosted,
-            editDistance: state.editDistance
+            editDistance: state.editDistance,
             hideClock: state.hideClock
         }
         } else {
@@ -195,7 +195,7 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
           hideClock: state.hideClock
       }
     case LOAD_CHALLENGE:
@@ -218,7 +218,7 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: action.editDistance
+          editDistance: action.editDistance,
           hideClock: state.hideClock
       }
       case START_TIMER:
@@ -242,7 +242,7 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: true,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance
+        editDistance: state.editDistance,
         hideClock: true
       }
     case STOP_TIMER:
@@ -266,7 +266,7 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: false,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance
+        editDistance: state.editDistance,
         hideClock: state.hideClock
       }
     case CLOCK_RUNNING:
@@ -300,7 +300,7 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: state.clockRunning,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance
+        editDistance: state.editDistance,
         hideClock: state.hideClock
        }
     case SETTING_INTERVAL:
@@ -323,7 +323,7 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: state.clockRunning,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance 
+        editDistance: state.editDistance,
         hideClock: state.hideClock
       }
     case CLOCK_STOP:
@@ -347,7 +347,7 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: state.clockRunning,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance 
+        editDistance: state.editDistance,
         hideClock: state.hideClock
       }
     case SHOW_CLOCK: 
