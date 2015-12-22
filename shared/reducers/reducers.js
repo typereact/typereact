@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
@@ -24,7 +24,8 @@ const initEditorState = {
   ms:'0',
   countdown: 3,
   hasPosted: false,
-  editDistance: 100
+  editDistance: 100,
+  hideClock: true,
 }
 
 function editorState(state = initEditorState, action) {
@@ -51,7 +52,8 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
+          hideClock: state.hideClock
         }
       } else {
         return {
@@ -73,7 +75,8 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
+          hideClock: state.hideClock
         }
       }
     case INCREMENT_COUNTER:
@@ -97,7 +100,8 @@ function editorState(state = initEditorState, action) {
             ms: state.ms,
             countdown: state.countdown,
             hasPosted: state.hasPosted,
-            editDistance: state.editDistance
+            editDistance: state.editDistance,
+            hideClock: state.hideClock
         }
         } else {
           return state
@@ -191,7 +195,8 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
+          hideClock: state.hideClock
       }
     case LOAD_CHALLENGE:
       return {
@@ -213,9 +218,11 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: state.hasPosted,
-          editDistance: action.editDistance
+          editDistance: action.editDistance,
+          hideClock: state.hideClock
       }
       case START_TIMER:
+      $('.countdown-clock').removeClass('display-background')
       return {
         mode: state.mode,
         readOnly: false,
@@ -235,7 +242,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: true,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance
+        editDistance: state.editDistance,
+        hideClock: true
       }
     case STOP_TIMER:
     // console.log('timestop is: ', action.timeStopped);
@@ -258,7 +266,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: false,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance
+        editDistance: state.editDistance,
+        hideClock: state.hideClock
       }
     case CLOCK_RUNNING:
       if(state.clockRunning === true) {
@@ -291,7 +300,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: state.clockRunning,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance
+        editDistance: state.editDistance,
+        hideClock: state.hideClock
        }
     case SETTING_INTERVAL:
       return {
@@ -313,7 +323,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: state.clockRunning,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance 
+        editDistance: state.editDistance,
+        hideClock: state.hideClock
       }
     case CLOCK_STOP:
       // clearInterval(state.started);
@@ -336,7 +347,33 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         clockRunning: state.clockRunning,
         hasPosted: state.hasPosted,
-        editDistance: state.editDistance 
+        editDistance: state.editDistance,
+        hideClock: state.hideClock
+      }
+    case SHOW_CLOCK: 
+        console.log('inside show_clock')
+        $('.actual-countdown-clock').addClass('display-clock')
+        $('.countdown-clock').addClass('display-background')
+        
+        return {
+        mode: state.mode,
+        readOnly: state.readOnly,
+        solvedCode: state.solvedCode,
+        statusText: state.statusText,
+        isMatch: state.isMatch,
+        code: state.code,
+        counter: state.counter,
+        keyMap: state.keyMap,
+        timeStopped: state.timeStopped,
+        timeBegan: state.timeBegan,
+        stoppedDuration: state.stoppedDuration,
+        started: null,
+        min: state.min,
+        sec: state.sec,
+        ms: state.ms,
+        countdown: state.countdown,
+        clockRunning: state.clockRunning,
+        hideClock: false
       }
     default:
       return state

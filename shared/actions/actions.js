@@ -23,6 +23,8 @@ export const SHOW_MODAL = 'SHOW_MODAL'
 export const INCREMENT_KEY_HANDLED = 'INCREMENT_KEY_HANDLED'
 export const UPDATE_TOP_25_TIMES = 'UPDATE_TOP_25_TIMES'
 export const UPDATE_TOP_25_KEYSTROKES = 'UPDATE_TOP_25_KEYSTROKES'
+export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
+export const SHOW_CLOCK = 'SHOW_CLOCK'
 
 /*
  * action creators
@@ -103,4 +105,8 @@ export function incrementKeyHandled () {
 
 export function updateTop25KeyStrokes (arr) {
   return { type: UPDATE_TOP_25_KEYSTROKES, top25KeyStrokes: arr }
+}
+
+export function showClock() {
+  return { type: SHOW_CLOCK }
 }
