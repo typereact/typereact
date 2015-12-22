@@ -373,6 +373,8 @@ function editorState(state = initEditorState, action) {
         ms: state.ms,
         countdown: state.countdown,
         clockRunning: state.clockRunning,
+        hasPosted: state.hasPosted,
+        editDistance: state.editDistance,
         hideClock: false
       }
     default:
