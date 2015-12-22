@@ -127,7 +127,8 @@ function editorState(state = initEditorState, action) {
           ms: state.ms,
           countdown: state.countdown,
           hasPosted: true,
-          editDistance: state.editDistance
+          editDistance: state.editDistance,
+          hideClock: state.hideClock
         }
       } else if (state.readOnly === false){
           return {
@@ -149,7 +150,8 @@ function editorState(state = initEditorState, action) {
             ms: state.ms,
             countdown: state.countdown,
             hasPosted: state.hasPosted,
-            editDistance: state.editDistance
+            editDistance: state.editDistance,
+            hideClock: state.hideClock
           }
         } else {
           return state
