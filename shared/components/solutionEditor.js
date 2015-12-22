@@ -22,7 +22,7 @@ class SolutionEditor extends Component {
       mode: this.props.mode,
       readOnly: this.props.readOnly,
     };
-    return <Codemirror className="solutionEditor" ref="solutionEditor" value={this.props.solvedCode} options={options} />
+    return <div className="col-md-5"><Codemirror className="solutionEditor" ref="solutionEditor" value={this.props.solvedCode} options={options} /></div>
   }
 };
 

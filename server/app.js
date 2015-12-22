@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Start from '../shared/components/start.js';
 import Editor from '../shared/components/editor.js';
@@ -20,16 +20,41 @@ import $ from 'jquery';
 export default class App extends Component {
   render() {
     return <div>
-      <Countdown />
-      <Start />
-      <GameProgress /> 
-      <div id='editors'>
-      <Editor chalID={this.props.params.challengeID}/>
-      <SolutionEditor/>
+      <div>
+        <Countdown />
+        <Start />
+        <GameProgress /> 
       </div>
-      <Counter />
+
+      <div className='row'>
+        <div className='col-md-1'></div>
+        <div className='col-md-5'>
+        Make this code...
+        </div>
+        <div className='col-md-5'>
+        Look like this code 
+        </div>
+        <div className='col-md-1'></div>
+      </div>
+
+      <div id='editors' className='row'>
+      <div className='col-md-1'>
+      </div>
+        <Editor chalID={this.props.params.challengeID}/>
+        <div className='col-sm-.5'>
+        </div>
+        <SolutionEditor/>
+      </div>
+
+      <div className='row'>
+        <div className='col-md-1'>
+        </div>
+        <div className='col-md-5'>
+          <Counter />
+          <EditorOptions />
+        </div>
+      </div>
       <PostData chalID={this.props.params.challengeID} />
-      <EditorOptions />
       <div>{this.props.children}</div>
     </div>
   }

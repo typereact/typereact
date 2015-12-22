@@ -87,7 +87,7 @@ class Editor extends Component {
             matchBrackets: true,
             autoCloseBrackets: true
         };
-        return <div><div id='both-editors'>Your Code</div><Codemirror ref="editor" className="userEditor" value={this.props.code} onChange={this.props.onCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} options={options} /></div>
+        return <div className="col-md-5"><Codemirror ref="editor" className="userEditor" value={this.props.code} onChange={this.props.onCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} options={options} /></div>
     }
 }
 
