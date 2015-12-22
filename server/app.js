@@ -10,10 +10,6 @@ import EditorOptions from '../shared/components/editorOptions.js';
 import GameProgress from '../shared/components/progressBar.js';
 import { connect } from 'react-redux';
 import Countdown from '../shared/components/countdown.js'
-// import ReactCountdownClock from 'react-countdown-clock';
-// var ReactCountdownClock = require('react-countdown-clock/build/react-countdown-clock.js');
-// require('../shared/css/codemirror.css')
-// require('../shared/css/styles.css');
 import PostData from '../shared/components/postData.js';
 
 
