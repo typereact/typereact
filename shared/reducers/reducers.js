@@ -225,6 +225,7 @@ function editorState(state = initEditorState, action) {
       }
       case START_TIMER:
       $('.countdown-clock').removeClass('display-background')
+      $('#start-timer').html('GO!')
       return {
         mode: state.mode,
         readOnly: false,
@@ -356,6 +357,7 @@ function editorState(state = initEditorState, action) {
         console.log('inside show_clock')
         $('.actual-countdown-clock').addClass('display-clock')
         $('.countdown-clock').addClass('display-background')
+        $('#start-timer').attr('disabled', 'disabled').html('Get ready!')
         
         return {
         mode: state.mode,

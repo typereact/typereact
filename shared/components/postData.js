@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { storeResults } from '../actions/actions.js'; //UPDATE as needed.
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 import $ from 'jquery';
+import Modal from 'react-bootstrap/lib/Modal.js';
+import Button from 'react-bootstrap/lib/Button.js';
 
 class PostData extends Component {
   postResults(props) {
@@ -40,10 +42,17 @@ class PostData extends Component {
       this.postResults(props)
     }
     return(
-      <div>
-      <div id="test-is-match" style= {{display: this.props.isMatch ? '' : 'none'}}> This should appear on match </div>
-      <button id="post-it" onClick={ () => {this.postResults(props)} } style= {{visibility: this.props.isMatch ? '' : 'hidden'}}>Save Results</button>
-      </div>
+      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.lgShow} onHide={this.props.hideCheatSheet}>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-lg"><strong>TEST</strong></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>test</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.props.hideCheatSheet}>Close</Button>
+        </Modal.Footer>
+      </Modal>
       )
   }
 
@@ -62,7 +71,8 @@ function mapStateToProps(state) {
     ms: state.editorState.ms,
     user: state.loggedInState.user,
     currentUserId: state.loggedInState.currentUserId,
-    hasPosted: state.editorState.hasPosted
+    hasPosted: state.editorState.hasPosted,
+    lgShow: state.loggedInState.bool,
   }
 }
 
