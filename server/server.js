@@ -59,6 +59,11 @@ app.get('/challengeList', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'))
 })
 
+//routes user to add new challenges
+app.get('/addChallenge', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+})
+
 //use webpack Middleware to build index.html script
 app.use(webpackMiddleware(compiler));
 

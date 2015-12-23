@@ -13,16 +13,27 @@ module.exports = {
     // })
     //will need to attach challenge information to post request from front end
     var newChallenge = Challenge.build({
+      challengeInstructions: req.body.challengeInstructions,
+      challengeName: req.body.challengeName,
+      challengeCategory: req.body.challengeCategory,
       challengeUnsolved: req.body.challengeUnsolved,
       challengeSolved: req.body.challengeSolved,
       difficultyLevel: req.body.difficultyLevel,
       goldMedalTime: req.body.goldMedalTime,
       silverMedalTime: req.body.silverMedalTime,
-      bronzeMedalTime: req.body.bronzeMedalTime
+      bronzeMedalTime: req.body.bronzeMedalTime,
+      goldKeyStrokes: req.body.goldKeyStrokes,
+      silverKeyStrokes: req.body.silverKeyStrokes,
+      bronzeKeyStrokes: req.body.bronzeKeyStrokes,
+      numPlays: req.body.numPlays,
+      numRatings: req.body.numRatings,
+      totalRatingScore: req.body.totalRatingScore
     })
 
     newChallenge.save().then(function(user) {
-      res.redirect('/');
+      console.log('added challenge');
+      res.send('success');
+      // res.redirect('/');
     })
   },
   getFirstChallenge: function(req, res, next) {
