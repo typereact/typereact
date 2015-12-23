@@ -156,3 +156,9 @@ font-size:22px;
 #landing-slogan {
   font-style: italic;
 }
+
+#landing-button-text {
+  font-size: 14px;
+  height: 47px;
+  width: 218px;
+}

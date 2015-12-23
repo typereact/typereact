@@ -2,11 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateTop25Times, updateTop25KeyStrokes } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
+import Bootstrap_social from 'bootstrap-social/bootstrap-social.css';
 import $ from 'jquery';
 
 export default class LandingPage extends Component {
 
   render() {
+
+    var githubButton = <a href="/auth/github" className='btn btn-lg col-md-3 btn-social btn-github' id='landing-button-text'><span className="fa fa-github"></span>Log in With Github</a>;
+
     return <div className="container landing-page">
       <div className="row row-spacer"></div>
       <div className="row row-spacer"></div>
@@ -18,15 +22,15 @@ export default class LandingPage extends Component {
       <div className="row row-spacer"></div>
       <div className="row row-spacer"></div>
       <div className="row col-md-offset-3">  
-        <button className="btn btn-default btn-lg col-md-3 matrix">Play As Guest</button>
+        <a href='/playchallenge/1' className="btn btn-default btn-lg col-md-3 matrix">Play As Guest</a>
         <span className='col-md-1'></span>
-        <button className="btn btn-default btn-lg col-md-3 matrix">Login with Github</button>
+        {githubButton}
       </div>
       <div className="row row-spacer"></div>
       <div className="row col-md-offset-3">  
-        <button className="btn btn-default btn-lg col-md-3 matrix">FAQs</button>
+        <a href='/'className="btn btn-default btn-lg col-md-3 matrix">What Is TypeReact?</a>
         <span className='col-md-1'></span>
-        <button className="btn btn-default btn-lg col-md-3 matrix">Fourth Option</button>
+        <a href='/challengelist' className="btn btn-default btn-lg col-md-3 matrix">View All Challenges</a>
       </div>
       <div className="row row-spacer"></div>
       <div className="row row-spacer"></div>
