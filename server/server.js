@@ -37,9 +37,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //redirect to play challenge when navigating to home page
-app.get('/', function(req, res) {
-  res.redirect('/playchallenge/1');
-})
+// app.get('/', function(req, res) {
+//   res.redirect('/playchallenge/1');
+// })
 
 //the static middleware is not used at the moment because of the redirect immediately above
 app.use(express.static(path.join(__dirname,'/../')));

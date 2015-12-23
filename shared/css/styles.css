@@ -145,3 +145,14 @@ font-size:22px;
   margin: 0 auto;
 }
 
+.row-spacer {
+  margin-top: 27px;
+}
+
+#landing-title {
+  font-size: 85px;
+}
+
+#landing-slogan {
+  font-style: italic;
+}
