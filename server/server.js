@@ -37,31 +37,35 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //redirect to play challenge when navigating to home page
-// app.get('/', function(req, res) {
-//   res.redirect('/playchallenge/1');
-// })
+app.get('/', function(req, res) {
+  if(req.user) {
+    res.redirect('/challengeList');
+  } else {
+    res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+  }
+})
 
 //the static middleware is not used at the moment because of the redirect immediately above
 app.use(express.static(path.join(__dirname,'/../')));
 
 //routes user to specific challenge page
 app.get('/playchallenge/*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
 //routes user to specific results page
 app.get('/results/*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
 //routes user to challenge listing
 app.get('/challengeList', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
 //routes user to add new challenges
 app.get('/addChallenge', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
 //use webpack Middleware to build index.html script
