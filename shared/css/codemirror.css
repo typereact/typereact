@@ -1,13 +1,8 @@
 /* BASICS */
 
-#editors {
+/*#editors {
   margin-left:95px;
-}
-
-.solutionEditor {
-  /*width: 40%;*/
-  /*margin-left: 20px;*/
-}
+}*/
 
 /*.userEditor {
   margin-left: 200px;
@@ -22,11 +17,7 @@
   border-width:2px;
   border-style:solid;
   border-color:#cccccc;
-  width: 40%;
-  margin-top: 10px;
-  margin-left:70px;
-  /*margin-left: 40px;*/
-  float: left;
+  /*width:400px;*/
 }
 
 /* PADDING */
