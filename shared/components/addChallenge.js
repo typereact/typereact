@@ -12,27 +12,30 @@ require('codemirror/addon/edit/closebrackets.js')
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import { updateCode } from '../actions/actions.js'; //UPDATE as needed.
+import { updateSolvedCode, updateUnsolvedCode } from '../actions/actions.js'; //UPDATE as needed.
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 
 class AddChallenge extends Component {
   postChallenge (props) {
     // data needs to match challengeController
     var data = {
-      challengeUnsolved: req.body.challengeUnsolved,
-      challengeSolved: req.body.challengeSolved,
-      // below are optional from db standpoint?
-      challengeName: challengeName,
-      challengeCategory: challengeCategory,
-      challengeInstructions: challengeInstructions,
-      challengeSubmittedByID: challengeSubmittedByID, // number
-      difficultyLevel: req.body.difficultyLevel, // string
-      goldMedalTime: req.body.goldMedalTime,  // number
-      silverMedalTime: req.body.silverMedalTime, // number
-      bronzeMedalTime: req.body.bronzeMedalTime, // number
-
+      challengeUnsolved: this.props.codeSolved,
+      challengeSolved: this.props.codeUnsolved,
+      challengeName: 'challengeName',
+      challengeCategory: 'javascript',
+      challengeInstructions: 'do your best',
+      difficultyLevel: 'hard',
+      goldMedalTime: 10,
+      silverMedalTime: 20,
+      bronzeMedalTime: 30,
+      goldKeyStrokes: 10,
+      silverKeyStrokes: 20,
+      bronzeKeyStrokes: 30,
+      numPlays: 0,
+      numRatings: 0,
+      totalRatingScore: 0
     };
-
+    console.log(data);
     $.ajax({
       type: "POST",
       url: '/challenge/postChallenge',
@@ -43,7 +46,7 @@ class AddChallenge extends Component {
 
   }
   render() {
-    // var props = this.props;
+    var props = this.props;
     var optionsSolved = {
       mode: 'javascript',
       readOnly: false,
@@ -62,7 +65,7 @@ class AddChallenge extends Component {
       tabSize: 2,
       showCursorWhenSelecting: true,
       matchBrackets: true,
-      autoCloseBrackets: true
+      autoCloseBrackets: true,
     };
     console.log('code solved state is ' + this.props.codeSolved);
     console.log('unsolved code state is ' + this.props.codeUnsolved);
@@ -74,7 +77,7 @@ class AddChallenge extends Component {
         <Codemirror ref="editorAddUnsolved" className="editorAddUnsolved" value={this.props.codeUnsolved} options={optionsUnsolved} onChange={this.props.onUnsolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
       </div>
       <div>
-        <button id='save-challenge' onClick={this.props.onSaveChallenge}>Save Challenge</button>
+        <button id='save-challenge' onClick={ () => {this.postChallenge(props)} }>Save Challenge</button>
       </div>
     </div>
   }
@@ -94,23 +97,22 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, getState, state) {
   return {
     onSolvedCodeChange: function(newCode) {
-      dispatch(updateCode(newCode));
+      dispatch(updateSolvedCode(newCode));
     },
     onUnsolvedCodeChange: function(newCode) {
-      dispatch(updateCode(newCode));
+      dispatch(updateUnsolvedCode(newCode));
     },
     onSaveChallenge: function () {
-      dispatch(some_action);
+      // setup for future use
+      // dispatch(some_action);
     },
     handleKey: function(newCode) {
-      // dispatch(incrementKeyHandled());
-      // dispatch(updateCode(newCode));
-      console.log('handleKey');
+      // this handler just needs to exist. 
+      // console.log('handleKey');
     },
     handleKeyPress: function(newCode) {
-      // dispatch(incrementCounter());
-      // dispatch(updateCode(newCode));
-      console.log('handleKeyPress');
+      // this handler just needs to exist. 
+      // console.log('handleKeyPress');
     },
   }
 }

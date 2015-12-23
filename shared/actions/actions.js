@@ -25,7 +25,8 @@ export const UPDATE_TOP_25_TIMES = 'UPDATE_TOP_25_TIMES'
 export const UPDATE_TOP_25_KEYSTROKES = 'UPDATE_TOP_25_KEYSTROKES'
 export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
 export const SHOW_CLOCK = 'SHOW_CLOCK'
-export const CODE_CHANGED = 'CODE_CHANGED'
+export const SOLVED_CODE_CHANGED = 'SOLVED_CODE_CHANGED'
+export const UNSOLVED_CODE_CHANGED = 'UNSOLVED_CODE_CHANGED'
 
 /*
  * action creators
@@ -112,6 +113,12 @@ export function showClock() {
   return { type: SHOW_CLOCK }
 }
 
-export function updateCode (newCode) {
-  return { type: CODE_CHANGED, code: newCode }
+// Add Challenge
+
+export function updateSolvedCode (newCode) {
+  return { type: SOLVED_CODE_CHANGED, code: newCode }
+}
+
+export function updateUnsolvedCode (newCode) {
+  return { type: UNSOLVED_CODE_CHANGED, code: newCode }
 }
