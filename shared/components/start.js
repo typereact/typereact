@@ -9,61 +9,6 @@ import thunk from 'redux-thunk';
 import $ from 'jquery';
 
 let Start = React.createClass ({
-  // getInitialState: function () {
-  //   return {
-  //   timeStopped: null,
-  //   timeBegan: null,
-  //   stoppedDuration: 0,
-  //   started: null,
-  //   min: '0',
-  //   sec: '0',
-  //   ms:'0',
-  //   countdown: 3
-  //   };  
-  // },
-  // countDown: function () {
-  //   setTimeout(this.props.oncountDownBySecond, 1000)
-  //   console.log('counting down')
-  // },
-  // countDownBySecond: function () {
-  //   if(this.state.countdown === 0){
-  //     this.startTimer();
-  //   } else {
-  //     this.setState({countdown: this.state.countdown-1});
-  //     this.countDown();
-  //   }
-  // },
-  // startTimer: function () {
-  //   if(this.state.timeBegan === null) {
-  //     // this.state.timeBegan = new Date();
-  //     this.setState({timeBegan: new Date()})
-  //   }
-  //   if(this.state.timeStopped !== null) {
-  //     this.setState({stoppedDuration: this.state.stoppedDuration += (new Date() -this.state.timeStopped)})
-  //   }
-  //   this.setState({started: setInterval(this.clockRunning, 10)})
-  // }, 
-  // clockRunning: function() {
-  //   var currentTime = new Date(), 
-  //   timeElapsed = new Date(currentTime-this.state.timeBegan-this.state.stoppedDuration)
-  //   this.setState({
-  //     min: timeElapsed.getUTCMinutes(),
-  //     sec: timeElapsed.getUTCSeconds(),
-  //     ms: timeElapsed.getUTCMilliseconds()
-  //   })
-
-  //   //work on removing third digit of milliseconds
-  //   console.log(this.state.min + ' ' + this.state.sec + ' ' + this.state.ms)
-  // },
-  // stopTrigger: function () {
-  //   this.setState({timeStopped: new Date()});
-  //   clearInterval(this.state.started);
-  // },
-  // showClock() {
-  //   console.log('inside showClock')
-  //   $('.countdown-clock').addClass('remove-display')
-  //   // $('.countdown-clock').removeClass('.countdown-clock').addClass('.countdown-clock-display')
-  // },
   render () {
     return(<div>
       <button id='start-timer' onClick={this.props.onShowClock}>Start Timer</button>
