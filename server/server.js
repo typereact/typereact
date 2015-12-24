@@ -36,11 +36,14 @@ app.use(session({ secret: 'typereact secret' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//redirect to play challenge when navigating to home page
+//if the user navigates to the home page
 app.get('/', function(req, res) {
+  //if logged in, redirect to challenge list
   if(req.user) {
     res.redirect('/challengeList');
-  } else {
+  } 
+  //otherwise, send to landing page
+  else {
     res.sendFile(path.resolve(__dirname, '..', 'index.html'));
   }
 })
@@ -65,6 +68,16 @@ app.get('/challengeList', function(req, res) {
 
 //routes user to add new challenges
 app.get('/addChallenge', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+})
+
+//routes user to about page
+app.get('/about', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+})
+
+//routes user to faqs page
+app.get('/faqs', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
