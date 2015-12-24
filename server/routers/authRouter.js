@@ -36,7 +36,7 @@ module.exports = function(express, passport, User, GitHubStrategy) {
     passport.authenticate('github', { failureRedirect: '/login' }),
       function(req, res) {
         console.log('req headers', req.headers);
-        res.redirect(req.headers.referer);
+        res.redirect('/');
   });
 
   authRouter.get('/logout', function(req, res) {

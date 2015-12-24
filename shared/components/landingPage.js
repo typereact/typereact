@@ -22,15 +22,15 @@ export default class LandingPage extends Component {
       <div className="row row-spacer"></div>
       <div className="row row-spacer"></div>
       <div className="row col-md-offset-3">  
-        <a href='/playchallenge/1' className="btn btn-default btn-lg col-md-3 matrix">Play As Guest</a>
+        <a href='/playchallenge/1' className="btn btn-default btn-lg col-md-3">Play As Guest</a>
         <span className='col-md-1'></span>
         {githubButton}
       </div>
       <div className="row row-spacer"></div>
       <div className="row col-md-offset-3">  
-        <a href='/'className="btn btn-default btn-lg col-md-3 matrix">What Is TypeReact?</a>
+        <a href='/faqs'className="btn btn-default btn-lg col-md-3">FAQs</a>
         <span className='col-md-1'></span>
-        <a href='/challengelist' className="btn btn-default btn-lg col-md-3 matrix">View All Challenges</a>
+        <a href='/challengelist' className="btn btn-default btn-lg col-md-3">View All Challenges</a>
       </div>
       <div className="row row-spacer"></div>
       <div className="row row-spacer"></div>

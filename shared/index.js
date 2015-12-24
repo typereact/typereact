@@ -15,6 +15,8 @@ import TopFive from './components/topFive.js';
 import AddChallenge from './components/addChallenge.js';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import LandingPage from './components/landingPage.js';
+import About from './components/about.js';
+import FAQs from './components/FAQs.js';
 const history = createBrowserHistory();
 
 
@@ -38,6 +40,8 @@ render(
         <Route path='challengeList' component={ChallengeList}/>
         <Route path='results/:challengeID' component={TopFive}/>
         <Route path='addChallenge' component={AddChallenge}/>
+        <Route path='faqs' component={FAQs}/>
+        <Route path='about' component={About}/>
       </Route>
     </Router>
   </Provider>,
