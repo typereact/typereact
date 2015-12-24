@@ -33,7 +33,6 @@ module.exports = {
     newChallenge.save().then(function(user) {
       console.log('added challenge');
       res.send('success');
-      // res.redirect('/');
     })
   },
   getFirstChallenge: function(req, res, next) {
