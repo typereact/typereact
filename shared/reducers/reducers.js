@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK, SOLVED_CODE_CHANGED, UNSOLVED_CODE_CHANGED } from '../actions/actions.js'
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK, SOLVED_CODE_CHANGED, UNSOLVED_CODE_CHANGED, FIELD_CHANGED } from '../actions/actions.js'
 // import { countDown, countDownBySecond } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
@@ -458,6 +458,7 @@ function challengeState(state = initChallengeState, action){
 const initAddChallengeState = {
   codeSolved: '//add your code challenge here',
   codeUnsolved: '//add code to be fixed here',
+  challengeName: '',
 }
 
 function addChallengeState(state = initAddChallengeState, action){
@@ -465,12 +466,20 @@ function addChallengeState(state = initAddChallengeState, action){
     case SOLVED_CODE_CHANGED:
       return {
         codeSolved: action.code,
-        codeUnsolved: state.codeUnsolved
+        codeUnsolved: state.codeUnsolved,
+        challengeName: state.challengeName, 
       }
     case UNSOLVED_CODE_CHANGED:
       return {
         codeSolved: state.codeSolved,
-        codeUnsolved: action.code 
+        codeUnsolved: action.code, 
+        challengeName: state.challengeName, 
+      }
+    case FIELD_CHANGED:
+      return {
+        codeSolved: state.codeSolved,
+        codeUnsolved: state.codeUnsolved,
+        challengeName: action.text, 
       }
     default:
       return state

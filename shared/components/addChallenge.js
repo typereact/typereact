@@ -12,18 +12,17 @@ require('codemirror/addon/edit/closebrackets.js')
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import { updateSolvedCode, updateUnsolvedCode } from '../actions/actions.js'; //UPDATE as needed.
+import { updateSolvedCode, updateUnsolvedCode, updateField } from '../actions/actions.js'; //UPDATE as needed.
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 
 class AddChallenge extends Component {
   postChallenge (props) {
-    // data needs to match challengeController
     var data = {
       challengeUnsolved: this.props.codeSolved,
       challengeSolved: this.props.codeUnsolved,
-      challengeName: 'challengeName',
+      challengeName: this.refs.challengeName.value.trim(),
       challengeCategory: 'javascript',
-      challengeInstructions: 'do your best',
+      challengeInstructions: this.refs.challengeInstructions.value.trim(),
       difficultyLevel: 'hard',
       goldMedalTime: 10,
       silverMedalTime: 20,
@@ -67,21 +66,47 @@ class AddChallenge extends Component {
       matchBrackets: true,
       autoCloseBrackets: true,
     };
-    console.log('code solved state is ' + this.props.codeSolved);
-    console.log('unsolved code state is ' + this.props.codeUnsolved);
+    // console.log('code solved state is ' + this.props.codeSolved);
     return <div>
-      <div id="add-solved-challenge">
-        <Codemirror ref="editorAddSolved" className="editorAddSolved" value={this.props.codeSolved} options={optionsSolved} onChange={this.props.onSolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
+      <div className="row">
+        <div className="col-md-1"></div>
+        <div className="col-md-5">
+        Make this code...
+        </div>
+        <div className="col-md-5">
+        Look like this code
+        </div>
+        <div className="col-md-1"></div>
       </div>
-      <div id="add-unsolved-challenge">
-        <Codemirror ref="editorAddUnsolved" className="editorAddUnsolved" value={this.props.codeUnsolved} options={optionsUnsolved} onChange={this.props.onUnsolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
+
+      <div id="editors" className="row">
+        <div className="col-md-1"></div>
+        <div id="add-unsolved-challenge" className="col-md-5" >
+          <Codemirror ref="editorAddUnsolved" className="editorAddUnsolved" value={this.props.codeUnsolved} options={optionsUnsolved} onChange={this.props.onUnsolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
+        </div>
+        <div className="col-sm-.5"></div>
+        <div id="add-solved-challenge" className="col-md-5" >
+          <Codemirror ref="editorAddSolved" className="editorAddSolved" value={this.props.codeSolved} options={optionsSolved} onChange={this.props.onSolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
+        </div>
+        </div>
+
+      <div id="challenge-form-fields" className="row buffer-bottom" >
+        <br />
+        <div className="col-md-1"></div>
+        <div className="col-md-5">
+          <input type="text" className="resized-textbox form-group" ref="challengeName" id="form-field-challenge-name" placeholder="Challenge Name" />
+          <textarea ref="challengeInstructions form-group" id="form-field-challenge-instructions" placeholder="Challenge Instructions" className="form-control form-group" rows="3" ></textarea>
+          <button className="btn btn-default" id="save-challenge" onClick={ () => {this.postChallenge(props)} }>Save Challenge</button>
+        </div>
       </div>
-      <div>
-        <button id='save-challenge' onClick={ () => {this.postChallenge(props)} }>Save Challenge</button>
-      </div>
+
     </div>
   }
 }
+      // <form onSubmit={ () => {this.postChallenge(props)} }>
+      //   <input className="btn btn-default" id='submit' type="submit" value="Save Challenge" />
+      // </form>
+        // <input type="text" ref="challengeName" value={this.props.challengeName} onChange={this.props.onFieldChange} />
 
 AddChallenge.PropTypes = {
   onSaveChallenge: PropTypes.func,
@@ -91,6 +116,7 @@ function mapStateToProps(state) {
   return {
     codeSolved: state.addChallengeState.codeSolved,
     codeUnsolved: state.addChallengeState.codeUnsolved,
+    challengeName: state.addChallengeState.challengeName,
   }
 }
 
@@ -102,17 +128,20 @@ function mapDispatchToProps(dispatch, getState, state) {
     onUnsolvedCodeChange: function(newCode) {
       dispatch(updateUnsolvedCode(newCode));
     },
+    onFieldChange: function(newText) {
+      // this function is not working with input box as intended
+      dispatch(updateField(newText));
+    },
     onSaveChallenge: function () {
       // setup for future use
+      // console.log('inside onSaveChallenge');
       // dispatch(some_action);
     },
     handleKey: function(newCode) {
-      // this handler just needs to exist. 
-      // console.log('handleKey');
+      // known issue: this handler just needs to exist.
     },
     handleKeyPress: function(newCode) {
-      // this handler just needs to exist. 
-      // console.log('handleKeyPress');
+      // known issue: this handler just needs to exist.
     },
   }
 }

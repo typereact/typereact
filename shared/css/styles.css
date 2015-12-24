@@ -162,3 +162,40 @@ font-size:22px;
   height: 47px;
   width: 218px;
 }
+
+/* SAVE CHALLENGE TO DB */
+
+
+/* resized-textbox to match textarea bootstrap presets*/
+.resized-textbox {
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* trying to center
+challenge-form-fields currently has no effect
+
+.challenge-form-fields {
+  margin-top: 50px;
+  display: block;
+  margin: 0 auto;
+}
+*/
+
+/* trying to get a buffer between two rows, per stackoverflow.
+both of these don't work
+
+#top-buffer {
+  margin-top: 20px;
+}
+
+#buffer-bottom {
+  margin-bottom: 20px;
+}
+*/

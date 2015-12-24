@@ -27,6 +27,7 @@ export const UPDATE_TOP_FIVE_TIMES = 'UPDATE_TOP_FIVE_TIMES'
 export const SHOW_CLOCK = 'SHOW_CLOCK'
 export const SOLVED_CODE_CHANGED = 'SOLVED_CODE_CHANGED'
 export const UNSOLVED_CODE_CHANGED = 'UNSOLVED_CODE_CHANGED'
+export const FIELD_CHANGED = 'FIELD_CHANGED'
 
 /*
  * action creators
@@ -121,4 +122,8 @@ export function updateSolvedCode (newCode) {
 
 export function updateUnsolvedCode (newCode) {
   return { type: UNSOLVED_CODE_CHANGED, code: newCode }
+}
+
+export function updateField (newText) {
+  return { type: FIELD_CHANGED, text: newText }
 }
