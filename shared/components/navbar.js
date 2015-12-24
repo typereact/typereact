@@ -219,6 +219,8 @@ class Navigation extends Component{
             <MenuItem eventKey={4.2} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Vim')}>Vim</MenuItem>
             <MenuItem eventKey={4.3} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Emacs')}>Emacs</MenuItem>
           </NavDropdown>
+          <NavItem eventKey={5} href='/faqs'>FAQs</NavItem>
+          <NavItem eventKey={6} href='/about'>About</NavItem>
         </Nav>
         <Nav pullRight>
           {userDisplay}
