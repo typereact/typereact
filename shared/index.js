@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
-import { DefaultRoute, Link, Route, RouteHandler } from "react-router";
+import { DefaultRoute, Link, Route, RouteHandler,IndexRoute } from "react-router";
 import thunk from 'redux-thunk';
 import Router from "react-router";  
 import App from '../server/app';
@@ -14,6 +14,7 @@ import ChallengeList from './components/challengeList.js';
 import TopFive from './components/topFive.js';
 import AddChallenge from './components/addChallenge.js';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
+import LandingPage from './components/landingPage.js';
 const history = createBrowserHistory();
 
 
@@ -32,6 +33,7 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={Navbar}>
+        <IndexRoute component={LandingPage}/>
         <Route path='playchallenge/:challengeID' component={App}/>
         <Route path='challengeList' component={ChallengeList}/>
         <Route path='results/:challengeID' component={TopFive}/>

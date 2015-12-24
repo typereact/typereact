@@ -67,7 +67,7 @@ class Editor extends Component {
     componentWillReceiveProps(nextProps) {
       var that = this;
       //when the timeBegan property changes over from null to the start time
-      if(this.props.timeBegan === null && nextProps.timeBegan !== null) {
+      if((this.props.timeBegan === null && nextProps.timeBegan !== null) || (this.props.keyMap !== nextProps.keyMap)) {
         //focus on the editor; the setTimeout is required otherwise the editor won't gain focus
         setTimeout(function() {
           that.refs.editor.focus();
