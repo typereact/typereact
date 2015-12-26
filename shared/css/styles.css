@@ -10,6 +10,22 @@ body {
   /*background-color: #fdfcfd;*/
 }
 
+/* RESULTS MODAL */
+.resultsModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.resultsHead {
+  text-align: center;
+}
+
+.resultsBody {
+  text-align: center;
+}
+
 /* COUNTDOWN CLOCK */
 .countdown-clock {
   display:none;
