@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { storeResults } from '../actions/actions.js'; //UPDATE as needed.
+import { challengeComplete } from '../actions/actions.js'; //UPDATE as needed.
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 import $ from 'jquery';
 import Modal from 'react-bootstrap/lib/Modal.js';
 import Button from 'react-bootstrap/lib/Button.js';
+import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar.js';
+
 
 class PostData extends Component {
   postResults(props) {
@@ -35,22 +37,33 @@ class PostData extends Component {
     });
   }
 
+  componentWillReceiveProps() {
+    if (this.props.isMatch) {
+      this.props.showResults();
+    }
+  }
+  /* Need to resolve what happens when 'Next Challenge' is clicked with no more available challenges in the db */
   render() {
     var props = this.props;
-    // console.log(this.props)
     if (this.props.isMatch && !this.props.hasPosted) {
-      this.postResults(props)
+      this.postResults(props);
     }
+    
     return(
-      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.lgShow} onHide={this.props.hideCheatSheet}>
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg"><strong>TEST</strong></Modal.Title>
+      <Modal {...this.props} show={this.props.resultsShow} className='resultsModal'>
+        <Modal.Header>
+          <Modal.Title className='resultsHead'><strong>Results</strong></Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <p>test</p>
+        <Modal.Body className='resultsBody'>
+          <p>Keystrokes: {this.props.counter}</p>
+          <p>Time: {this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.hideCheatSheet}>Close</Button>
+          <ButtonToolbar>
+            <Button href={'/playchallenge/' + (Number(this.props.chalID) + 1)}>Next Challenge</Button>
+            <Button href={'/playchallenge/' + this.props.chalID}>Repeat This Challenge</Button>
+            <Button href={'/results/' + this.props.chalID}>Leaderboards</Button>
+          </ButtonToolbar>
         </Modal.Footer>
       </Modal>
       )
@@ -72,12 +85,19 @@ function mapStateToProps(state) {
     user: state.loggedInState.user,
     currentUserId: state.loggedInState.currentUserId,
     hasPosted: state.editorState.hasPosted,
-    lgShow: state.loggedInState.bool,
+    resultsShow: state.editorState.resultsShow,
+    timeStopped: state.editorState.timeStopped,
+    timeBegan: state.editorState.timeBegan,
+    clockRunning: state.editorState.clockRunning,
   }
 }
 
 function mapDispatchToProps(dispatch, getState, state) {
-  return {}
+  return {
+    showResults: function() {
+      dispatch(challengeComplete())
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostData);

@@ -28,6 +28,8 @@ export const SHOW_CLOCK = 'SHOW_CLOCK'
 export const SOLVED_CODE_CHANGED = 'SOLVED_CODE_CHANGED'
 export const UNSOLVED_CODE_CHANGED = 'UNSOLVED_CODE_CHANGED'
 export const FIELD_CHANGED = 'FIELD_CHANGED'
+export const CHALLENGE_COMPLETE = 'CHALLENGE_COMPLETE'
+
 
 /*
  * action creators
@@ -74,8 +76,6 @@ export function stopTimer (timestamp) {
 }
 
 export function clockRunning (timeelapsed) {
-  // var currentTime = new Date();
-  // var elapsed = new Date(currentTime-state.timeBegan-state.stoppedDuration);
   return { type: CLOCK_RUNNING }
 }
 
@@ -126,4 +126,8 @@ export function updateUnsolvedCode (newCode) {
 
 export function updateField (newText) {
   return { type: FIELD_CHANGED, text: newText }
+}
+
+export function challengeComplete() {
+  return { type: CHALLENGE_COMPLETE }
 }
