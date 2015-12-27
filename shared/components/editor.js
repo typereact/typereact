@@ -8,7 +8,8 @@ require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
 require('codemirror/keymap/emacs');
 require('codemirror/keymap/vim');
-require('codemirror/addon/edit/closebrackets.js')
+require('codemirror/addon/comment/comment.js');
+require('codemirror/addon/edit/closebrackets.js');
 var beautify = require('js-beautify').js_beautify
 
 import $ from 'jquery';
