@@ -10,7 +10,7 @@ class countDown extends Component {
   render() {
     return this.props.hideClock ? <div className='countdown-clock'><div className='actual-countdown-clock'></div></div> : 
     <div className='countdown-clock'><div className='actual-countdown-clock'><ReactCountdownClock seconds={5}
-                      color="#a0adb5"
+                      color="#fec34a"
                      alpha={0.9}
                      size={300} onComplete={this.props.onStartTimer}/></div></div>
   }
