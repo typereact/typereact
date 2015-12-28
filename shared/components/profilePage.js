@@ -7,8 +7,17 @@ import { connect } from 'react-redux';
 class profilePage extends Component {
   render () {
     return <div>
-    <div id='profile-pic'><img src={this.props.profilePic} /></div>
-    <CompletedChallenges />
+    <div className='row'>
+      <div className='col-md-2'></div>
+      <div className='col-md-8 main-container'>
+      <img className='profile-pic' src={this.props.profilePic} />
+      <div className='row'>
+      <CompletedChallenges />
+      </div>
+      </div>
+      <div className='col-md-2'></div>
+    </div>
+
     </div>
   }
 }

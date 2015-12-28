@@ -409,6 +409,29 @@ font-size:22px;
   width: 218px;
 }
 
+/*PROFILE PAGE*/
+
+.profile-pic {
+  border-radius: 50%;
+  /*border-radius: 120px;*/
+}
+
+#bg-justified-dropdown {
+  width: 310px;
+  border-radius: 0px;
+  background-color: white;
+}
+#bg-justified-dropdown:hover {
+  background-color:white;
+}
+
+.main-container {
+  text-align: center;
+}
+
+.dropdown-menu {
+  width: 310px;
+}
 /* SAVE CHALLENGE TO DB */
 
 
