@@ -9,7 +9,7 @@ module.exports = function(express) {
 
   userChallengeRouter.post('/postuserchallenge', userChallengeController.postUserChallenge)
 
-  userChallengeRouter.use('/topFive', userChallengeController.getTopFive)
+  // userChallengeRouter.use('/topFive', userChallengeController.getTopFive)
   
   // userChallengeRouter.get('/profileStats', userChallengeController)
   return userChallengeRouter;

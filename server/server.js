@@ -79,16 +79,11 @@ app.get('/about', function(req, res) {
 //routes user to faqs page
 app.get('/faqs', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'));
-  
-//routes user to profile page
-app.get('/profile', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'index.html'))
 })
 
-app.post('/testurl', function(req, res) {
-  console.log('trying to post');
-  console.log(req.body);
-  userChallengeController.postUserChallenge(req, res);
+//routes user to profile page
+app.get('/profile', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
 //use webpack Middleware to build index.html script
