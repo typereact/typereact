@@ -18,8 +18,8 @@ import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 class AddChallenge extends Component {
   postChallenge (props) {
     var data = {
-      challengeUnsolved: this.props.codeSolved,
-      challengeSolved: this.props.codeUnsolved,
+      challengeUnsolved: this.props.codeUnsolved,
+      challengeSolved: this.props.codeSolved,
       challengeName: this.refs.challengeName.value.trim(),
       challengeCategory: 'javascript',
       challengeInstructions: this.refs.challengeInstructions.value.trim(),
@@ -95,7 +95,7 @@ class AddChallenge extends Component {
         <div className="col-md-1"></div>
         <div className="col-md-5">
           <input type="text" className="resized-textbox form-group" ref="challengeName" id="form-field-challenge-name" placeholder="Challenge Name" />
-          <textarea ref="challengeInstructions form-group" id="form-field-challenge-instructions" placeholder="Challenge Instructions" className="form-control form-group" rows="3" ></textarea>
+          <textarea ref="challengeInstructions" id="form-field-challenge-instructions" placeholder="Challenge Instructions" className="form-control form-group" rows="3" ></textarea>
           <button className="btn btn-default" id="save-challenge" onClick={ () => {this.postChallenge(props)} }>Save Challenge</button>
         </div>
       </div>
