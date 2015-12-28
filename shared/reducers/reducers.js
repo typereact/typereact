@@ -52,7 +52,8 @@ function editorState(state = initEditorState, action) {
           countdown: state.countdown,
           hasPosted: state.hasPosted,
           editDistance: state.editDistance,
-          hideClock: state.hideClock
+          hideClock: state.hideClock,
+          resultsShow: true
         }
       } else {
         return {
