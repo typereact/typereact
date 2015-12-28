@@ -14,13 +14,13 @@ class GameProgress extends Component {
     var percentProgress = Math.round(((totalChanges - changesToGo) / totalChanges) * 100);
     var barColor;
     if(percentProgress > 75) {
-      barColor = 'green';
+      barColor = '#89ba85';
     } else if (percentProgress > 50) {
-      barColor = 'yellow'
+      barColor = '#fec34a'
     } else if (percentProgress > 25) {
-      barColor = 'orange'
+      barColor = '#fca548'
     } else {
-      barColor = "red";
+      barColor = "#fc5848";
     }
     var divStyle = {
       width: percentProgress.toString()+'%',
@@ -28,20 +28,20 @@ class GameProgress extends Component {
       color: 'black',
     }
     return <div className="container">
-        <div className="col-sm-6 col-sm-offset-3">
-          Current Progress: {percentProgress} %
           <div className='progress'>
-            <div className='progress-bar progress-bar-striped active'
+            <div className='progress-bar active'
               role='progressbar'
               aria-valuemin='0'
               aria-valuemax='100'
               style={divStyle}>
             </div>
           </div>
+          <div className='current-progress'>Current Progress: {percentProgress} %</div>
         </div>
-      </div>
   }
 }
+      // </div>
+      //   <div className="col-sm-6 col-sm-offset-3">
     // return <div id='progress-bar'>Current Progress: {percentProgress}%<ProgressBar active now={percentProgress} /></div>
 
 function mapStateToProps(state) {

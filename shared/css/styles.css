@@ -5,6 +5,16 @@
   /*src: url('./Avenir.ttc');*/
 }
 
+@font-face {
+  font-family: Facile-Sans;
+  src: url('./Facile Sans.ttf');
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url('./Avenir.ttc');
+}
+
 body {
   font-family: Consolas;
   /*background-color: #fdfcfd;*/
@@ -24,6 +34,12 @@ body {
 
 .resultsBody {
   text-align: center;
+}
+
+.logo {
+  background-image: url('./logo.png');
+  width:179px;
+  height: 36px;
 }
 
 /* COUNTDOWN CLOCK */
@@ -63,28 +79,41 @@ body {
 .emacs-option {
   background-color:white;
   border-style: solid;
-  border-width: 1px;
-  border-color:black;
+  border-width: 1.5px;
+  border-color:#85baba;
   border-left:none;
 }
 
+.emacs-option:focus {
+  outline:none;
+}
+
 .sublime-option {
-  border-width: 1px;
+  border-width: 1.5px;
   background-color:white;
   border-style: solid;
-  border-color:black;
+  border-color:#85baba;
   border-right:none;
 }
 
+.sublime-option:focus {
+  outline:none;
+}
+
 .vim-option {
-  border-width: 1px;
+  border-width: 1.5px;
   background-color:white;
   border-style: solid;
-  border-color:black;
+  border-color:#85baba;
+}
+
+.vim-option:focus {
+  outline:none;
 }
 
 .editor-option-clicked {
-  background-color:#a9b7c0;
+  /*background-color:#a9b7c0;*/
+  background-color: #85baba;
   color:white;
 }
 
@@ -93,16 +122,36 @@ body {
   text-align:center;
 }
 
+/*FOOTER*/
+
+#footer {
+  background-color:white;
+  border-color:white;
+  text-align:center;
+  font-family:Avenir;
+}
+
+.footer-elements {
+  margin-left: 30px;
+}
+
+.footer-container {
+  margin-top:100px;
+  width: 1332px;
+}
+
 /* TIMER */
 
-#start-timer {
-  font-size:16px;
+.start-timer {
+  /*margin-left:10px;*/
+  /*font-weight:bold;*/
+/*  font-size:16px;
   background-color:white;
   border-style: solid;
   border-color:black;
   display: block;
   margin: 0 auto;
-  border-width: 1px;
+  border-width: 1px;*/
 }
 
 
@@ -120,27 +169,51 @@ body {
 
 /* NAVBAR */
 
+#navbar {
+  background-color:white;
+  border-bottom-color:#cccccc;
+  font-family:Avenir;
+  /*font-family: Facile-Sans;*/
+  /*font-weight: lighter;*/
+}
+
+.container-fluid {
+  height:70px;
+}
+
 .fa-github {
-  margin-right: 5px;
+  /*margin-right: 10px;*/
+  /*background-color:white;*/
 }
 
 #dropdown-link {
   text-align: right;
-  color:#a9b7c0;  
+  /*color:#a9b7c0;*/
+  color:#575858;
 }
 
 #user-display-name {
+  margin-top:10px;
   pointer-events: none;
-  color:#a9b7c0;
+  /*color:#4ca0a0;*/
+  color: #cccccc;
 }
 
 .dropdown-menu {
   width: 110px;
 }
 
+#github-button {
+  background-color:white;
+  color:#575858;
+}
+
+
 
 #navbar-links {
-color:#a9b7c0;
+margin-top:10px;
+/*color:#4ca0a0;*/
+color:#cccccc;
 font-size:22px;
 }
 
@@ -148,17 +221,174 @@ font-size:22px;
   color:white;
 }
 
-.navbar-default .navbar-nav>li>a {
-  color: #a9b7c0;
+.user-display {
+  /*color:#cccccc;*/
+  margin-top:10px;
+}
+
+.user-right {
+  margin-right: 5px;
 }
 
 /* PROGRESS BAR */
 
-#progress-bar {
-  width: 50%;
-  color: black;
-  display: block;
+.container {
+  margin-top: 5px;
+  width:570px;
+  margin-left: -15px;
+  /*height:40px;*/
+}
+.progress {
+  height:15px;
+  /*height:10px;*/
+  /*width: 50%;*/
+  /*color: black;*/
+  /*display: block;*/
+  /*margin: 0 auto;*/
+}
+
+.current-progress {
+  float:right;
+  margin-top: -15px;
+}
+
+/*FOOTER ICONS*/
+
+.fa {
+  color:#fc5848;
+  cursor:pointer;
+}
+
+.fa:hover {
+  /*cursor:pointer;*/
+  color:#fdc1bc;
+}
+
+/* CREATIVE LINKS */
+
+.navbar-default .navbar-nav>li>a {
+  margin-top:17px;
+  margin-left: 10px;
+  color:#575858;
+  padding: 6px;
+  font-weight: 700;
+  text-shadow: none;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.navbar-default .navbar-nav>li>a::before,
+.navbar-default .navbar-nav>li>a::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background:#fec34a;
+  content: '';
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  -moz-transition: opacity 0.3s, -moz-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.navbar-default .navbar-nav>li>a::before {
+  top: 0;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.navbar-default .navbar-nav>li>a::after {
+  bottom: 0;
+  -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #fc5848;
+}
+
+.navbar-default .navbar-nav>li>a:hover::before,
+.navbar-default .navbar-nav>li>a:focus::before,
+.navbar-default .navbar-nav>li>a:hover::after,
+.navbar-default .navbar-nav>li>a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+/*3D-BUTTON-EFFECT*/
+
+/*.start-timer:hover,
+.start-timer:active {
+  color: #0e83cd;
+  background: red;
+}*/
+
+.button {
+  /*margin-left:30px;*/
+  font-weight:bold;
+  font-size:16px;
+  background-color:white;
+  border-style: solid;
+  border-color:#85baba;
+  color: #85baba;
   margin: 0 auto;
+  border-width: 2px;
+  cursor: pointer;
+  padding: 8px 14px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.button:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.start-timer:after {
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  background: #fff;
+  /*margin-left: 30px;*/
+}
+
+.start-timer:hover,
+.start-timer:active {
+  color: white;
+  background:#85baba;
+  border-color:#85baba;
+  margin-left: 30px;
+}
+
+.start-timer:hover:after,
+.start-timer:active:after {
+  height: 100%;
+  margin-left: 30px;
+}
+
+.start-timer {
+  margin-top:10px;
+  margin-left: 30px;
 }
 
 .row-spacer {
@@ -215,3 +445,8 @@ both of these don't work
   margin-bottom: 20px;
 }
 */
+.timing {
+  /*background-color: #4ca0a0;*/
+  /*opacity: 0.9;*/
+  /*width:50%;*/
+}

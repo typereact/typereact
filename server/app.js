@@ -11,7 +11,7 @@ import GameProgress from '../shared/components/progressBar.js';
 import { connect } from 'react-redux';
 import Countdown from '../shared/components/countdown.js'
 import PostData from '../shared/components/postData.js';
-
+import Footer from '../shared/components/footer.js';
 
 import $ from 'jquery';
 
@@ -20,19 +20,22 @@ import $ from 'jquery';
 export default class App extends Component {
   render() {
     return <div>
-      <div>
         <Countdown />
-        <Start />
-        <GameProgress /> 
+      <div className='row'>
+        <div className='col-md-5'></div>
+          <div className='col-md-2 timing'>
+          <Start />
+          </div>
+        <div className='col-md-5'></div>
       </div>
 
       <div className='row'>
         <div className='col-md-1'></div>
         <div className='col-md-5'>
-        Make this code...
+        Make <font color='#fec34a'>this code</font>...
         </div>
         <div className='col-md-5'>
-        Look like this code 
+        ...Look like <font color='#fec34a'>this code</font>
         </div>
         <div className='col-md-1'></div>
       </div>
@@ -53,7 +56,12 @@ export default class App extends Component {
           <Counter />
           <EditorOptions />
         </div>
+        <div className='col-md-4'>
+        <GameProgress /> 
+        </div>
+        <div className='col-md-2'></div>
       </div>
+      <Footer />
       <PostData chalID={this.props.params.challengeID} />
       <div>{this.props.children}</div>
     </div>

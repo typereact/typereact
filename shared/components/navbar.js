@@ -147,7 +147,7 @@ class Navigation extends Component{
     $.get('/isLoggedIn', function(response) {
       // console.log('Login Status: ' + JSON.stringify(response, null, 2));
       var loggedIn = Boolean(response);
-      var username = response.githubName ? response.githubName.split(' ')[0] : 'Guest';
+      var username = response.githubName ? response.githubName.split(' ')[0].toLowerCase() : 'guest';
       var pic = response.githubProfile || null;
       var currentUserId = response.id || 1;
       this.props.storeUser(loggedIn, username, pic, currentUserId);
@@ -172,22 +172,22 @@ class Navigation extends Component{
     // console.log('Challenges saved to props: ' + JSON.stringify(this.props.challenges, null, 2));
     var githubButton;
     if(!this.props.isLoggedIn) {
-      githubButton = <div style={{position: 'relative', display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
+      githubButton = <div className='user-display' style={{display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" id='github-button' className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
     } else {
       githubButton =
-          <NavDropdown eventKey={3} title="My account" id="basic-nav-dropdown" style={{float: 'right'}}>
-            <MenuItem eventKey={3.1} id='dropdown-link'>My Profile</MenuItem>
-            <MenuItem eventKey={3.2} id='dropdown-link'>Stats</MenuItem>
+          <NavDropdown eventKey={3} title="my account" id="basic-nav-dropdown" style={{float: 'right'}}>
+            <MenuItem eventKey={3.1} id='dropdown-link'>my profile</MenuItem>
+            <MenuItem eventKey={3.2} id='dropdown-link'>stats</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={3.3} href="/auth/logout" id='dropdown-link'>Log out</MenuItem>
+            <MenuItem eventKey={3.3} href="/auth/logout" id='dropdown-link'>log out</MenuItem>
           </NavDropdown>
       // githubButton = <div style={{position: 'relative', display: 'inline-block', padding: '8px 0px', float: 'right'}}><a href="/auth/logout" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Logout</a></div>;
     }
     var userDisplay;
     if(!this.props.profilePic) {
-      userDisplay = <NavItem id='user-display-name'>Welcome, {this.props.user}</NavItem>;
+      userDisplay = <NavItem id='user-display-name'>welcome, <font color='#fc5848'>{this.props.user}</font></NavItem>;
     } else {
-      userDisplay = <div style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div style={{display: 'inline-block', color:'#a9b7c0', padding: '0px 10px'}}>Welcome, {this.props.user}</div></div>
+      userDisplay = <div className='user-display' style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div className='user-display' style={{display: 'inline-block', color:'#575858', padding: '0px 10px'}}><b>welcome, <font color='#fc5848'>{this.props.user}</font></b></div></div>
     }
     // console.log('navbar props: ' + JSON.stringify(this.props));
     var cheatSheet = <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.lgShow} onHide={this.props.hideCheatSheet}>
@@ -205,24 +205,24 @@ class Navigation extends Component{
 
     return (
     <div>
-      <Navbar fluid>
+      <Navbar fluid id='navbar'>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/" id='navbar-links'>TypeReact</a>
+            <a href='/'><div className='logo'></div></a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav className='navbar-challenges'>
-          <NavItem eventKey={1} href="/challengeList">Challenges</NavItem>
-          <NavItem eventKey={2} href="#">Users</NavItem>
-          <NavDropdown eventKey={4} title="Cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>
-            <MenuItem eventKey={4.1} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Sublime Text')}>Sublime</MenuItem>
-            <MenuItem eventKey={4.2} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Vim')}>Vim</MenuItem>
-            <MenuItem eventKey={4.3} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Emacs')}>Emacs</MenuItem>
+          <NavItem eventKey={1} href="/challengeList" data-hover='challenges'>challenges</NavItem>
+          <NavItem eventKey={2} href="#" data-hover='users'>users</NavItem>
+          <NavDropdown eventKey={4}  data-hover='cheatsheets' title="cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>
+            <MenuItem eventKey={4.1} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Sublime Text')}>sublime</MenuItem>
+            <MenuItem eventKey={4.2} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Vim')}>vim</MenuItem>
+            <MenuItem eventKey={4.3} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Emacs')}>emacs</MenuItem>
           </NavDropdown>
           <NavItem eventKey={5} href='/faqs'>FAQs</NavItem>
           <NavItem eventKey={6} href='/about'>About</NavItem>
         </Nav>
-        <Nav pullRight>
+        <Nav className='user-right' pullRight>
           {userDisplay}
           {githubButton}
           {cheatSheet}
@@ -233,6 +233,8 @@ class Navigation extends Component{
     )
   }
 };
+            // <div className='logo'></div>
+            // <a href="/" id='navbar-links'>TypeReact</a>
 
 Navigation.propTypes = {
   isLoggedIn: PropTypes.bool,
