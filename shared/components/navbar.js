@@ -172,7 +172,7 @@ class Navigation extends Component{
     // console.log('Challenges saved to props: ' + JSON.stringify(this.props.challenges, null, 2));
     var githubButton;
     if(!this.props.isLoggedIn) {
-      githubButton = <div className='user-display' style={{position: 'relative', display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
+      githubButton = <div className='user-display' style={{display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" id='github-button' className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
     } else {
       githubButton =
           <NavDropdown eventKey={3} title="my account" id="basic-nav-dropdown" style={{float: 'right'}}>

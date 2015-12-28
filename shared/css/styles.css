@@ -10,6 +10,11 @@
   src: url('./Facile Sans.ttf');
 }
 
+@font-face {
+  font-family: Avenir;
+  src: url('./Avenir.ttc');
+}
+
 body {
   font-family: Consolas;
   /*background-color: #fdfcfd;*/
@@ -117,6 +122,24 @@ body {
   text-align:center;
 }
 
+/*FOOTER*/
+
+#footer {
+  background-color:white;
+  border-color:white;
+  text-align:center;
+  font-family:Avenir;
+}
+
+.footer-elements {
+  margin-left: 30px;
+}
+
+.footer-container {
+  margin-top:100px;
+  width: 1332px;
+}
+
 /* TIMER */
 
 .start-timer {
@@ -149,6 +172,7 @@ body {
 #navbar {
   background-color:white;
   border-bottom-color:#cccccc;
+  font-family:Avenir;
   /*font-family: Facile-Sans;*/
   /*font-weight: lighter;*/
 }
@@ -179,6 +203,12 @@ body {
   width: 110px;
 }
 
+#github-button {
+  background-color:white;
+  color:#575858;
+}
+
+
 
 #navbar-links {
 margin-top:10px;
@@ -189,12 +219,6 @@ font-size:22px;
 
 .navbar-challenges {
   color:white;
-}
-
-.navbar-default .navbar-nav>li>a {
-/*  margin-top:10px;
-  color: #4ca0a0;
-  height:10px;*/
 }
 
 .user-display {
@@ -226,6 +250,18 @@ font-size:22px;
 .current-progress {
   float:right;
   margin-top: -15px;
+}
+
+/*FOOTER ICONS*/
+
+.fa {
+  color:#fc5848;
+  cursor:pointer;
+}
+
+.fa:hover {
+  /*cursor:pointer;*/
+  color:#fdc1bc;
 }
 
 /* CREATIVE LINKS */
@@ -333,7 +369,7 @@ font-size:22px;
   top: 0;
   left: 0;
   background: #fff;
-  margin-left: 30px;
+  /*margin-left: 30px;*/
 }
 
 .start-timer:hover,
