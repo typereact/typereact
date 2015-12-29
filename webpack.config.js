@@ -7,11 +7,10 @@ var PROD = true;
 
 module.exports = {  
     entry: [
-    //for es6
+      // for es6
       'babel-polyfill', 
-      // 'webpack/hot/only-dev-server',
-      // "./server/app.js",
       "./shared/index.js",
+      // 'webpack/hot/only-dev-server',
       // 'webpack-dev-server/client?http://localhost:8080'
     ],
     output: {
@@ -53,7 +52,9 @@ module.exports = {
     plugins: PROD ? [
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
-            // for developers: keeps track of the current line/column in the output and can trivially generate a source mapping to the original code
+            // for developers: keeps track of the current line/column in the output 
+            // and can trivially generate a source mapping to the original code
+            // requires firefox/chrome 
             sourceMap: false,
             // reduce names of local variables to (usually) single-letters
             mangle: true,
@@ -62,6 +63,14 @@ module.exports = {
                 warnings: false
             },
             minimize: true
+        }),
+        // Setting DefinePlugin affects React library size!
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+
+        // You can set this to JSON.stringify('development') for your
+        // development target to force NODE_ENV to development mode
+        // no matter what
         })
     ] : [
         new webpack.NoErrorsPlugin()
