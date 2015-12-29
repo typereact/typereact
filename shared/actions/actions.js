@@ -140,13 +140,13 @@ export function hideResultsModal() {
 //Profile Page
 
 export function addCompletedChallenges(challenges, results) {
-  return {type: ADD_COMPLETED_CHALLENGES, allChallenges: challenges, challengeResults: results}
+  return {type: ADD_COMPLETED_CHALLENGES, allChallenges: challenges, challengeResults: results};
 }
 
 export function selectMenuItem(challenge) {
-  return {type: SELECT_MENU_ITEM, dropDownDisplay: challenge}
+  return {type: SELECT_MENU_ITEM, dropDownDisplay: challenge};
 }
 
 export function changingOrderOptions(event) {
-  return {type: CHANGE_ORDER_OPTION, orderOptions: event}
+  return {type: CHANGE_ORDER_OPTION, orderOptions: event};
 }

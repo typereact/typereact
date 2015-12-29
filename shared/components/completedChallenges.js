@@ -13,7 +13,7 @@ class completedChallenges extends Component {
   componentDidMount() {
     if(this.props.allChallenges.length === 0) {
       $.get('/userChallenge/profileStats', this.props.currentUserId.toString(), function(results) {
-        console.log('results is ', results)
+        console.log('results is ', results);
         var allChallenges =[];
         for(var i=0; i < results.length; i++) {
           if(allChallenges.indexOf(results[i].challengeID) === -1 ) {
@@ -25,7 +25,7 @@ class completedChallenges extends Component {
         });
         this.props.addAllChallenges(allChallenges, results);
       }.bind(this));
-    };
+    }
   }
 
   render() {

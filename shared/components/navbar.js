@@ -147,7 +147,7 @@ class Navigation extends Component{
     // console.log(this.props.challenges);
     $.get('/isLoggedIn', function(response) {
       // console.log('Login Status: ' + JSON.stringify(response, null, 2));
-      console.log('response is ', response)
+      console.log('response is ', response);
       var loggedIn = Boolean(response);
       var username = response.githubName ? response.githubName.split(' ')[0].toLowerCase() : 'guest';
       var pic = response.githubProfile || null;

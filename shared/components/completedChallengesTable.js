@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 class completedChallengesTable extends Component {
   render() {
-    var challenge = this.props.dropDownDisplay.substr(11)
+    var challenge = this.props.dropDownDisplay.substr(11);
     return this.props.dropDownDisplay === 'Completed Challenges' ? <div></div> : 
     <div>
       <nav className='cl-effect-19'>
