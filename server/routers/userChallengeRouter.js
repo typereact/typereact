@@ -11,6 +11,7 @@ module.exports = function(express) {
 
   // userChallengeRouter.use('/topFive', userChallengeController.getTopFive)
   
-  // userChallengeRouter.get('/profileStats', userChallengeController)
+  userChallengeRouter.get('/profileStats', userChallengeController.getCompletedChallenges)
+  
   return userChallengeRouter;
 }

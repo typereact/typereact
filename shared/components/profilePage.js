@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component, PropTypes } from 'react';
 import CompletedChallenges from './completedChallenges.js';
@@ -18,7 +18,7 @@ class profilePage extends Component {
       <div className='col-md-2'></div>
     </div>
 
-    </div>
+    </div>;
   }
 }
 
@@ -30,7 +30,7 @@ profilePage.PropTypes = {
 function mapStateToProps(state) {
   return {
     profilePic: state.loggedInState.profilePic
-    }
+  };
 }
 
-export default connect(mapStateToProps)(profilePage)
+export default connect(mapStateToProps)(profilePage);

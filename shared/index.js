@@ -17,7 +17,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import LandingPage from './components/landingPage.js';
 import About from './components/about.js';
 import FAQs from './components/FAQs.js';
-import profilePage from './components/profilePage.js'
+import profilePage from './components/profilePage.js';
 const history = createBrowserHistory();
 
 
