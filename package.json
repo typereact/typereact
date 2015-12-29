@@ -39,6 +39,7 @@
     "babel": "^6.3.13",
     "babel-cli": "^6.3.13",
     "babel-core": "^6.3.13",
+    "babel-eslint": "^5.0.0-beta6",
     "babel-loader": "^6.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.3.13",
     "babel-plugin-transform-runtime": "^6.3.13",
@@ -48,10 +49,13 @@
     "chai-http": "^1.0.0",
     "chai-immutable": "^1.5.3",
     "css-loader": "^0.23.0",
+    "eslint": "^1.10.3",
+    "eslint-loader": "^1.1.1",
+    "eslint-plugin-react": "^3.13.1",
     "mocha": "^2.3.4",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-dev-middleware": "^1.4.0"
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^1.14.0"
   },
   "scripts": {
     "start": "nodemon server/server.js",

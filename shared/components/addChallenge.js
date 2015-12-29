@@ -8,7 +8,7 @@ require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
 require('codemirror/keymap/emacs');
 require('codemirror/keymap/vim');
-require('codemirror/addon/edit/closebrackets.js')
+require('codemirror/addon/edit/closebrackets.js');
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
@@ -16,6 +16,7 @@ import { updateSolvedCode, updateUnsolvedCode, updateField } from '../actions/ac
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 
 class AddChallenge extends Component {
+
   postChallenge (props) {
     var data = {
       challengeUnsolved: this.props.codeUnsolved,
@@ -34,16 +35,20 @@ class AddChallenge extends Component {
       numRatings: 0,
       totalRatingScore: 0
     };
-    console.log(data);
+    // console.log(data);
     $.ajax({
-      type: "POST",
+      type: 'POST',
       url: '/challenge/postChallenge',
       data: JSON.stringify(data),
-      success: function() {console.log('challenge saved to db')},
+      success: function() {
+        $( '.submit-success' ).append( '<p>Challenge saved to DB</p>' );
+        // console.log('challenge saved to db');
+      },
       contentType: 'application/json'
     });
 
   }
+  
   render() {
     var props = this.props;
     var optionsSolved = {
@@ -64,43 +69,48 @@ class AddChallenge extends Component {
       tabSize: 2,
       showCursorWhenSelecting: true,
       matchBrackets: true,
-      autoCloseBrackets: true,
+      autoCloseBrackets: true
     };
     // console.log('code solved state is ' + this.props.codeSolved);
-    return <div>
-      <div className="row">
-        <div className="col-md-1"></div>
-        <div className="col-md-5">
-        Make this code...
+    return (
+      <div>
+        <div className="row">
+          <div className="col-md-1"></div>
+          <div className="col-md-5">
+          Make this code...
+          </div>
+          <div className="col-md-5">
+          Look like this code
+          </div>
+          <div className="col-md-1"></div>
         </div>
-        <div className="col-md-5">
-        Look like this code
+
+        <div id="editors" className="row">
+          <div className="col-md-1"></div>
+          <div id="add-unsolved-challenge" className="col-md-5" >
+            <Codemirror ref="editorAddUnsolved" className="editorAddUnsolved" value={this.props.codeUnsolved} options={optionsUnsolved} onChange={this.props.onUnsolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
+          </div>
+          <div className="col-sm-.5"></div>
+          <div id="add-solved-challenge" className="col-md-5" >
+            <Codemirror ref="editorAddSolved" className="editorAddSolved" value={this.props.codeSolved} options={optionsSolved} onChange={this.props.onSolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
+          </div>
+          </div>
+
+        <div id="challenge-form-fields" className="row buffer-bottom" >
+          <br />
+          <div className="col-md-1"></div>
+          <div className="col-md-5">
+            <input type="text" className="resized-textbox form-group" ref="challengeName" id="form-field-challenge-name" placeholder="Challenge Name" />
+            <textarea ref="challengeInstructions" id="form-field-challenge-instructions" placeholder="Challenge Instructions" className="form-control form-group" rows="3" ></textarea>
+            <button className="btn btn-default" id="save-challenge" onClick={() => {this.postChallenge(props);}}>Save Challenge</button>
+          </div>
         </div>
-        <div className="col-md-1"></div>
+
+        <div id="submit-success">
+        </div>
+
       </div>
-
-      <div id="editors" className="row">
-        <div className="col-md-1"></div>
-        <div id="add-unsolved-challenge" className="col-md-5" >
-          <Codemirror ref="editorAddUnsolved" className="editorAddUnsolved" value={this.props.codeUnsolved} options={optionsUnsolved} onChange={this.props.onUnsolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
-        </div>
-        <div className="col-sm-.5"></div>
-        <div id="add-solved-challenge" className="col-md-5" >
-          <Codemirror ref="editorAddSolved" className="editorAddSolved" value={this.props.codeSolved} options={optionsSolved} onChange={this.props.onSolvedCodeChange} onkeyPressHandled={this.props.handleKeyPress} onkeyHandled={this.props.handleKey} />
-        </div>
-        </div>
-
-      <div id="challenge-form-fields" className="row buffer-bottom" >
-        <br />
-        <div className="col-md-1"></div>
-        <div className="col-md-5">
-          <input type="text" className="resized-textbox form-group" ref="challengeName" id="form-field-challenge-name" placeholder="Challenge Name" />
-          <textarea ref="challengeInstructions" id="form-field-challenge-instructions" placeholder="Challenge Instructions" className="form-control form-group" rows="3" ></textarea>
-          <button className="btn btn-default" id="save-challenge" onClick={ () => {this.postChallenge(props)} }>Save Challenge</button>
-        </div>
-      </div>
-
-    </div>
+    );
   }
 }
       // <form onSubmit={ () => {this.postChallenge(props)} }>
@@ -109,15 +119,15 @@ class AddChallenge extends Component {
         // <input type="text" ref="challengeName" value={this.props.challengeName} onChange={this.props.onFieldChange} />
 
 AddChallenge.PropTypes = {
-  onSaveChallenge: PropTypes.func,
+  onSaveChallenge: PropTypes.func
 };
 
 function mapStateToProps(state) {
   return {
     codeSolved: state.addChallengeState.codeSolved,
     codeUnsolved: state.addChallengeState.codeUnsolved,
-    challengeName: state.addChallengeState.challengeName,
-  }
+    challengeName: state.addChallengeState.challengeName
+  };
 }
 
 function mapDispatchToProps(dispatch, getState, state) {
@@ -139,11 +149,13 @@ function mapDispatchToProps(dispatch, getState, state) {
     },
     handleKey: function(newCode) {
       // known issue: this handler just needs to exist.
+      newCode = newCode || '';
     },
     handleKeyPress: function(newCode) {
       // known issue: this handler just needs to exist.
-    },
-  }
+      newCode = newCode || '';
+    }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddChallenge);

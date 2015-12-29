@@ -11,8 +11,15 @@ import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar.js';
 
 
 class PostData extends Component {
+  
+  componentWillReceiveProps() {
+    if (this.props.isMatch) {
+      this.props.showResults();
+    }
+  }
+
   postResults(props) {
-    console.log(props)
+    // console.log(props);
     var userID = this.props.currentUserId;
     var challengeID = Number(this.props.chalID);
     var numKeyStrokes = props.counter;
@@ -29,19 +36,14 @@ class PostData extends Component {
     };
 
     $.ajax({
-      type: "POST",
+      type: 'POST',
       url: '/userchallenge/postuserchallenge',
       data: JSON.stringify(data),
-      success: function() {console.log('results saved to db')},
+      success: function() {console.log('results saved to db');},
       contentType: 'application/json'
     });
   }
 
-  componentWillReceiveProps() {
-    if (this.props.isMatch) {
-      this.props.showResults();
-    }
-  }
   /* Need to resolve what happens when 'Next Challenge' is clicked with no more available challenges in the db */
   render() {
     var props = this.props;
@@ -50,11 +52,11 @@ class PostData extends Component {
     }
     
     return(
-      <Modal {...this.props} show={this.props.resultsShow} className='resultsModal'>
+      <Modal {...this.props} show={this.props.resultsShow} className="resultsModal">
         <Modal.Header>
-          <Modal.Title className='resultsHead'><strong>Results</strong></Modal.Title>
+          <Modal.Title className="resultsHead"><strong>Results</strong></Modal.Title>
         </Modal.Header>
-        <Modal.Body className='resultsBody'>
+        <Modal.Body className="resultsBody">
           <p>Keystrokes: {this.props.counter}</p>
           <p>Time: {this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</p>
         </Modal.Body>
@@ -66,7 +68,7 @@ class PostData extends Component {
           </ButtonToolbar>
         </Modal.Footer>
       </Modal>
-      )
+      );
   }
 
 }
@@ -88,16 +90,16 @@ function mapStateToProps(state) {
     resultsShow: state.editorState.resultsShow,
     timeStopped: state.editorState.timeStopped,
     timeBegan: state.editorState.timeBegan,
-    clockRunning: state.editorState.clockRunning,
-  }
+    clockRunning: state.editorState.clockRunning
+  };
 }
 
 function mapDispatchToProps(dispatch, getState, state) {
   return {
     showResults: function() {
-      dispatch(challengeComplete())
+      dispatch(challengeComplete());
     }
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostData);

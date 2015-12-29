@@ -9,37 +9,39 @@ export default class LandingPage extends Component {
 
   render() {
 
-    var githubButton = <a href="/auth/github" className='btn btn-lg col-md-3 btn-social btn-github' id='landing-button-text'><span className="fa fa-github"></span>Log in With Github</a>;
+    var githubButton = <a href="/auth/github" className="btn btn-lg col-md-3 btn-social btn-github" id="landing-button-text"><span className="fa fa-github"></span>Log in With Github</a>;
 
-    return <div className="container landing-page">
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className='row'>
-        <h1 className='text-center' id='landing-title'>TypeReact</h1>
-        <h3 className='text-center' id='landing-slogan'>code with efficiency</h3>
+    return (
+      <div className="container landing-page">
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row">
+          <h1 className="text-center" id="landing-title">TypeReact</h1>
+          <h3 className="text-center" id="landing-slogan">code with efficiency</h3>
+        </div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row col-md-offset-3">  
+          <a href="/playchallenge/1" className="btn btn-default btn-lg col-md-3">Play As Guest</a>
+          <span className="col-md-1"></span>
+          {githubButton}
+        </div>
+        <div className="row row-spacer"></div>
+        <div className="row col-md-offset-3">  
+          <a href="/faqs"className="btn btn-default btn-lg col-md-3">FAQs</a>
+          <span className="col-md-1"></span>
+          <a href="/challengelist" className="btn btn-default btn-lg col-md-3">View All Challenges</a>
+        </div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
+        <div className="row row-spacer"></div>
       </div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row col-md-offset-3">  
-        <a href='/playchallenge/1' className="btn btn-default btn-lg col-md-3">Play As Guest</a>
-        <span className='col-md-1'></span>
-        {githubButton}
-      </div>
-      <div className="row row-spacer"></div>
-      <div className="row col-md-offset-3">  
-        <a href='/faqs'className="btn btn-default btn-lg col-md-3">FAQs</a>
-        <span className='col-md-1'></span>
-        <a href='/challengelist' className="btn btn-default btn-lg col-md-3">View All Challenges</a>
-      </div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-      <div className="row row-spacer"></div>
-    </div>
+    );
   }
 
 }
