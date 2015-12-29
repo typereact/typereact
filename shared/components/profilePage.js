@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component, PropTypes } from 'react';
 import CompletedChallenges from './completedChallenges.js';
+import CompletedChallengesTable from './completedChallengesTable.js';
+import OrderOptions from './orderOptions.js';
 import { connect } from 'react-redux';
 
 class profilePage extends Component {
@@ -9,12 +11,17 @@ class profilePage extends Component {
     return <div>
     <div className='row'>
       <div className='col-md-2'></div>
+
       <div className='col-md-8 main-container'>
       <img className='profile-pic' src={this.props.profilePic} />
       <div className='row'>
-      <CompletedChallenges />
+      <CompletedChallenges /><OrderOptions />
       </div>
+        <div className='row'>
+        <CompletedChallengesTable />
+        </div>
       </div>
+      
       <div className='col-md-2'></div>
     </div>
 

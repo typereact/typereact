@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component, PropTypes } from 'react';
 import editorApp from '../reducers/reducers.js';
@@ -24,11 +24,11 @@ class completedChallengesTable extends Component {
               <td>{result.key}</td>
               <td>{result.time}</td>
               </tr>
-              )
+              );
           })}
         </tbody>
       </table>
-    </div>
+    </div>;
   }
 }
 
@@ -36,8 +36,8 @@ function mapStateToProps(state) {
   return {
     dropDownDisplay: state.profilePageState.dropDownDisplay,
     keyStrokeTable: state.profilePageState.keyStrokeTable
-  }
+  };
 }
 
-export default connect(mapStateToProps)(completedChallengesTable)
+export default connect(mapStateToProps)(completedChallengesTable);
 

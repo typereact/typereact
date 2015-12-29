@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK, SOLVED_CODE_CHANGED, UNSOLVED_CODE_CHANGED, FIELD_CHANGED, HIDE_RESULTS_MODAL } from '../actions/actions.js';
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK, SOLVED_CODE_CHANGED, UNSOLVED_CODE_CHANGED, FIELD_CHANGED, HIDE_RESULTS_MODAL, CHALLENGE_COMPLETE, ADD_COMPLETED_CHALLENGES, SELECT_MENU_ITEM } from '../actions/actions.js'
 import $ from 'jquery';
 /* REDUCER */
 
@@ -535,11 +535,55 @@ function addChallengeState(state = initAddChallengeState, action){
   }
 }
 
+const initprofilePageState = {
+  allChallenges: [],
+  dropDownDisplay: 'Completed Challenges',
+  challengeResults: [],
+  keyStrokeTable: [],
+  orderOptions: 'Order By'
+}
+
+function profilePageState(state = initprofilePageState, action) {
+  switch (action.type) {
+    case ADD_COMPLETED_CHALLENGES:
+      return {
+        allChallenges: action.allChallenges,
+        dropDownDisplay: state.dropDownDisplay,
+        challengeResults: action.challengeResults,
+        keyStrokeTable: state.keyStrokeTable,
+        orderOptions: state.orderOptions
+      }
+    case SELECT_MENU_ITEM:
+      var tableArr= [];
+      var rankingNum = 1;
+      for(var i=0; i < state.challengeResults.length; i++) {
+        if(state.challengeResults[i].challengeID === action.dropDownDisplay) {
+          var tableObj = {};
+          tableObj.ranking = rankingNum;
+          tableObj.key = state.challengeResults[i].numKeyStrokes;
+          tableObj.time = state.challengeResults[i].timeToComplete;
+          tableArr.push(tableObj);
+          rankingNum++;
+        }
+      }
+      return {
+        allChallenges: state.allChallenges,
+        dropDownDisplay: 'Challenge #' + action.dropDownDisplay,
+        challengeResults: state.challengeResults,
+        keyStrokeTable: tableArr,
+        orderOptions: state.orderOptions 
+      }
+    default:
+      return state
+  }
+}
+
 const editorApp = combineReducers({
   challengeState,
   editorState,
   loggedInState,
-  addChallengeState
+  addChallengeState,
+  profilePageState
 });
 
 export default editorApp;
