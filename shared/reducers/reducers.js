@@ -32,7 +32,7 @@ function editorState(state = initEditorState, action) {
   switch (action.type) {
   case STRING_CHANGED:
     if (action.code === state.solvedCode) {
-      $('.start-timer').html("It's a match!");
+      $('.start-timer').html('It\'s a match!');
       return {
         mode: state.mode,
         readOnly: 'nocursor',
@@ -408,7 +408,6 @@ function editorState(state = initEditorState, action) {
       hideClock: false
     };
   case HIDE_RESULTS_MODAL:
-  console.log('hidiing')
     return {
       mode: state.mode,
       readOnly: state.readOnly,
