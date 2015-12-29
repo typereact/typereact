@@ -28,7 +28,7 @@ export const SHOW_CLOCK = 'SHOW_CLOCK';
 export const SOLVED_CODE_CHANGED = 'SOLVED_CODE_CHANGED';
 export const UNSOLVED_CODE_CHANGED = 'UNSOLVED_CODE_CHANGED';
 export const FIELD_CHANGED = 'FIELD_CHANGED';
-export const CHALLENGE_COMPLETE = 'CHALLENGE_COMPLETE';
+export const HIDE_RESULTS_MODAL = 'HIDE_RESULTS_MODAL';
 
 
 /*
@@ -128,6 +128,6 @@ export function updateField (newText) {
   return { type: FIELD_CHANGED, text: newText };
 }
 
-export function challengeComplete() {
-  return { type: CHALLENGE_COMPLETE };
+export function hideResultsModal() {
+  return { type: HIDE_RESULTS_MODAL };
 }
