@@ -51,22 +51,21 @@ export default class App extends Component {
           <SolutionEditor/>
         </div>
 
-        <div className="row">
-          <div className="col-md-1">
-          </div>
-          <div className="col-md-5">
-            <Counter />
-            <EditorOptions />
-          </div>
-          <div className="col-md-4">
-          <GameProgress /> 
-          </div>
-          <div className="col-md-2"></div>
+      <div className="row">
+        <div className="col-md-1"></div>
+        <div className="col-md-5">
+          <Counter />
+          <EditorOptions />
         </div>
-        <Footer />
-        <PostData chalID={this.props.params.challengeID} />
-        <div>{this.props.children}</div>
+        <div className="col-md-5">
+        <GameProgress /> 
+        </div>
       </div>
+
+      <Footer />
+      <PostData chalID={this.props.params.challengeID} />
+      <div>{this.props.children}</div>
+    </div>
     );
   }
 }

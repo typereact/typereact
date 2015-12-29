@@ -81,6 +81,15 @@ app.get('/faqs', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 })
 
+//routes user to profile page
+app.get('/profile', function(req, res) {
+  if(req.user) {
+    res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+  } else {
+    res.redirect('/')
+  }
+})
+
 //use webpack Middleware to build index.html script
 app.use(webpackMiddleware(compiler));
 

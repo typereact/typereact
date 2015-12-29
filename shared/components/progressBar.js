@@ -28,11 +28,16 @@ class GameProgress extends Component {
       color: 'black'
     };
     return (
-      <div className="container">
-        <div className="progress">
-          <div className="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style={divStyle}></div>
-        </div>
-        <div className="current-progress">Current Progress: {percentProgress} %</div>
+      <div className="progress-container">
+          <div className='progress'>
+            <div className='progress-bar active'
+              role='progressbar'
+              aria-valuemin='0'
+              aria-valuemax='100'
+              style={divStyle}>
+            </div>
+          </div>
+          <div className='current-progress'>Current Progress: {percentProgress} %</div>
       </div>
     );
   }

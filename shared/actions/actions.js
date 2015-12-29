@@ -29,6 +29,11 @@ export const SOLVED_CODE_CHANGED = 'SOLVED_CODE_CHANGED';
 export const UNSOLVED_CODE_CHANGED = 'UNSOLVED_CODE_CHANGED';
 export const FIELD_CHANGED = 'FIELD_CHANGED';
 export const HIDE_RESULTS_MODAL = 'HIDE_RESULTS_MODAL';
+export const CHALLENGE_COMPLETE = 'CHALLENGE_COMPLETE';
+export const ADD_COMPLETED_CHALLENGES = 'ADD_COMPLETED_CHALLENGES';
+export const SELECT_MENU_ITEM = 'SELECT_MENU_ITEM';
+export const CHANGE_ORDER_OPTION = 'CHANGE_ORDER_OPTION';
+
 
 
 /*
@@ -130,4 +135,18 @@ export function updateField (newText) {
 
 export function hideResultsModal() {
   return { type: HIDE_RESULTS_MODAL };
+}
+
+//Profile Page
+
+export function addCompletedChallenges(challenges, results) {
+  return {type: ADD_COMPLETED_CHALLENGES, allChallenges: challenges, challengeResults: results};
+}
+
+export function selectMenuItem(challenge) {
+  return {type: SELECT_MENU_ITEM, dropDownDisplay: challenge};
+}
+
+export function changingOrderOptions(event) {
+  return {type: CHANGE_ORDER_OPTION, orderOptions: event};
 }

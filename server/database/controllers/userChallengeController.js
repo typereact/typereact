@@ -73,5 +73,19 @@ module.exports = {
       }
       res.send(times);
     })
+  },
+
+  getCompletedChallenges: function(req, res, next) {
+    var userID= Number(req._parsedOriginalUrl.query)
+    console.log('req is ', req._parsedOriginalUrl)
+    UserChallenge.findAll({
+      where: {
+        userID: userID
+      },
+      order: 'numKeyStrokes ASC'
+    }).then(function(results) {
+      console.log('results in completed challenges is ', results)
+      res.send(results)
+    })
   }
 }

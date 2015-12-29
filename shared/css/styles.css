@@ -137,7 +137,7 @@ body {
 
 .footer-container {
   margin-top:100px;
-  width: 1332px;
+  width: 1200px;
 }
 
 /* TIMER */
@@ -232,19 +232,12 @@ font-size:22px;
 
 /* PROGRESS BAR */
 
-.container {
+.progress-container {
   margin-top: 5px;
-  width:570px;
-  margin-left: -15px;
-  /*height:40px;*/
 }
+
 .progress {
   height:15px;
-  /*height:10px;*/
-  /*width: 50%;*/
-  /*color: black;*/
-  /*display: block;*/
-  /*margin: 0 auto;*/
 }
 
 .current-progress {
@@ -409,6 +402,60 @@ font-size:22px;
   width: 218px;
 }
 
+/*PROFILE PAGE*/
+
+.table-header {
+  text-align:center;
+  background-color: #c0dbdb;
+}
+
+.chosen-header {
+  color:white;
+  background-color:#85baba;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  /*border-radius: 120px;*/
+}
+
+#bg-justified-dropdown {
+  width: 195px;
+  border-radius: 0px;
+  background-color: white;
+}
+#bg-justified-dropdown:hover {
+  border-color:#85baba;
+  background-color:white;
+}
+
+.main-container {
+  text-align: center;
+}
+
+.menu-item {
+  /*background-color:red;*/
+  /*width:310px;*/
+}
+
+.challenge-order {
+  margin-top:10px;
+  margin-bottom:20px;
+}
+
+#completed-challenges {
+  float:right;
+  /*width:195px;*/
+}
+
+#order-options {
+  float:left;
+  /*width: 195px;*/
+}
+
+.second-row {
+  text-align: center;
+}
 /* SAVE CHALLENGE TO DB */
 
 
@@ -445,8 +492,6 @@ both of these don't work
   margin-bottom: 20px;
 }
 */
-.timing {
-  /*background-color: #4ca0a0;*/
-  /*opacity: 0.9;*/
-  /*width:50%;*/
-}
+
+
+/*PLAY CHALLENGE BUTTON*/
