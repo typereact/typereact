@@ -58,12 +58,17 @@ var bindings = {
 };
 
 class Editor extends Component {
-  
+
   componentDidMount() {
     $.get('/challenge/getChallengeByIndex', this.props.chalID, function(dbChallenge) {
-      var differential = editDistanceCalculator(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved);
-      this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved, differential);
-    }.bind(this));
+      if(dbChallenge==='null') {
+        window.location.href = '/playchallenge/1';
+      }
+      else {
+        var differential = editDistanceCalculator(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved);
+        this.props.updateChallenge(dbChallenge.challengeUnsolved, dbChallenge.challengeSolved, differential);
+      }
+    }.bind(this)); 
   }
 
   componentWillReceiveProps(nextProps) {

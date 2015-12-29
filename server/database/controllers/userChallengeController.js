@@ -15,10 +15,32 @@ module.exports = {
       userID: req.body.userID,
       challengeID: req.body.challengeID,
     })
-    
-    newUserChallenge.save().then(function(useChal) {
-      res.send('success'); 
+
+    var currentTime = new Date((new Date() - 1000));
+    UserChallenge.update({
+      numKeyStrokes: req.body.numKeyStrokes,
+      timeToComplete: req.body.timeToComplete,
+      userID: req.body.userID,
+      challengeID: req.body.challengeID,
+    }, {
+      where: {
+        userID: req.body.userID,
+        challengeID: req.body.challengeID,
+        updated_at: {
+          $gt: currentTime
+        }
+      }
+    }).spread(function(arr, arr2) {
+      if(arr === 0) {
+        newUserChallenge.save().then(function(savedchal) {
+          console.log('challenge saved!');
+          res.send('success')
+        })
+      } else {
+        res.send('success');
+      }
     })
+    
   },
 
   getTop25Times: function(req, res, next) {

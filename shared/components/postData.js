@@ -12,14 +12,8 @@ import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar.js';
 
 class PostData extends Component {
   
-  componentWillReceiveProps() {
-    if (this.props.isMatch) {
-      this.props.showResults();
-    }
-  }
 
   postResults(props) {
-    // console.log(props);
     var userID = this.props.currentUserId;
     var challengeID = Number(this.props.chalID);
     var numKeyStrokes = props.counter;
@@ -44,10 +38,25 @@ class PostData extends Component {
     });
   }
 
-  /* Need to resolve what happens when 'Next Challenge' is clicked with no more available challenges in the db */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isMatch) {
+      this.props.showResults();
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if(nextProps.isMatch && nextProps.resultsShow) {
+      console.log('true')
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   render() {
     var props = this.props;
-    if (this.props.isMatch && !this.props.hasPosted) {
+    if (this.props.isMatch && this.props.resultsShow) {
       this.postResults(props);
     }
     
