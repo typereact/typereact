@@ -60,7 +60,7 @@ module.exports = {
       if (chal === null) {
         res.send('no challenges retrieved')
       }
-      res.send(chal)
+      res.send(chal);
     })
   },
   getChallengeByIndex: function(req, res, next) {
@@ -71,9 +71,10 @@ module.exports = {
       }
     }).then(function(chal, err) {
       if (chal === null) {
-        res.send('no challenges retrieved')
+        res.send('null');
+      } else {
+        res.send(chal);
       }
-      res.send(chal)
     })
   }
 }
