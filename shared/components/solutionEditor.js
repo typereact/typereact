@@ -20,11 +20,13 @@ class SolutionEditor extends Component {
     var options = {
       lineNumbers: true,
       mode: this.props.mode,
-      readOnly: this.props.readOnly,
+      readOnly: this.props.readOnly
     };
-    return <div className="col-md-5"><Codemirror className="solutionEditor" ref="solutionEditor" value={this.props.solvedCode} options={options} /></div>
+    return (
+      <div className="col-md-5"><Codemirror className="solutionEditor" ref="solutionEditor" value={this.props.solvedCode} options={options} /></div>
+    );
   }
-};
+}
 
 SolutionEditor.propTypes = {
   onCodeChange: PropTypes.func,
@@ -36,12 +38,12 @@ SolutionEditor.propTypes = {
 SolutionEditor.defaultProps = {
   readOnly: 'nocursor',
   mode: 'javascript'
-}
+};
 
 function mapStateToProps(state) {
   return {
     solvedCode: state.editorState.solvedCode
-  }
+  };
 }
 
 export default connect(mapStateToProps)(SolutionEditor);

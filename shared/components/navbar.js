@@ -53,7 +53,7 @@ var sublimeKeys =
     <p>⌘ + Up  Scroll to start of file</p>
     <p>⌘ + K, ⌘ + U  Transform to Uppercase</p>
     <p>⌘ + K, ⌘ + L  Transform to Lowercase</p>
-  </div>
+  </div>;
 
 var vimKeys = 
   <div>
@@ -137,11 +137,12 @@ var vimKeys =
 var emacsKeys =
   <div>
     <p>Emacs keys</p>
-  </div>
+  </div>;
 
-var test = <p>Please try again.</p>
+var test = <p>Please try again.</p>;
 
 class Navigation extends Component{
+  
   componentDidMount() {
     // console.log(this.props.challenges);
     $.get('/isLoggedIn', function(response) {
@@ -151,45 +152,45 @@ class Navigation extends Component{
       var pic = response.githubProfile || null;
       var currentUserId = response.id || 1;
       this.props.storeUser(loggedIn, username, pic, currentUserId);
-    }.bind(this))
+    }.bind(this));
   }
 
   render() {
     var hotkeys;
     switch (this.props.cheatSheet) {
-      case 'Sublime Text':
-        hotkeys = sublimeKeys;
-        break;
-      case 'Vim':
-        hotkeys = vimKeys;
-        break;
-        case 'Emacs':
-        hotkeys = emacsKeys;
-        break;
-      default:
-        hotkeys = <p>Something happened! Please try again.</p>
+    case 'Sublime Text':
+      hotkeys = sublimeKeys;
+      break;
+    case 'Vim':
+      hotkeys = vimKeys;
+      break;
+    case 'Emacs':
+      hotkeys = emacsKeys;
+      break;
+    default:
+      hotkeys = <p>Something happened! Please try again.</p>;
     }
     // console.log('Challenges saved to props: ' + JSON.stringify(this.props.challenges, null, 2));
     var githubButton;
     if(!this.props.isLoggedIn) {
-      githubButton = <div className='user-display' style={{display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" id='github-button' className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Log in With Github</a></div>;
+      githubButton = <div className="user-display" style={{display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" id="github-button" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Log in With Github</a></div>;
     } else {
       githubButton =
           <NavDropdown eventKey={3} title="my account" id="basic-nav-dropdown" style={{float: 'right'}}>
-            <MenuItem eventKey={3.1} id='dropdown-link'>my profile</MenuItem>
-            <MenuItem eventKey={3.2} id='dropdown-link'>stats</MenuItem>
+            <MenuItem eventKey={3.1} id="dropdown-link">my profile</MenuItem>
+            <MenuItem eventKey={3.2} id="dropdown-link">stats</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={3.3} href="/auth/logout" id='dropdown-link'>log out</MenuItem>
-          </NavDropdown>
-      // githubButton = <div style={{position: 'relative', display: 'inline-block', padding: '8px 0px', float: 'right'}}><a href="/auth/logout" className='btn btn-block btn-social btn-github'><span className="fa fa-github"></span>Logout</a></div>;
+            <MenuItem eventKey={3.3} href="/auth/logout" id="dropdown-link">log out</MenuItem>
+          </NavDropdown>;
+      // githubButton = <div style={{position: "relative", display: "inline-block", padding: "8px 0px", float: "right"}}><a href="/auth/logout" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Logout</a></div>;
     }
     var userDisplay;
     if(!this.props.profilePic) {
-      userDisplay = <NavItem id='user-display-name'>welcome, <font color='#fc5848'>{this.props.user}</font></NavItem>;
+      userDisplay = <NavItem id="user-display-name">welcome, <font color="#fc5848">{this.props.user}</font></NavItem>;
     } else {
-      userDisplay = <div className='user-display' style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div className='user-display' style={{display: 'inline-block', color:'#575858', padding: '0px 10px'}}><b>welcome, <font color='#fc5848'>{this.props.user}</font></b></div></div>
+      userDisplay = <div className="user-display" style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div className="user-display" style={{display: 'inline-block', color:'#575858', padding: '0px 10px'}}><b>welcome, <font color="#fc5848">{this.props.user}</font></b></div></div>;
     }
-    // console.log('navbar props: ' + JSON.stringify(this.props));
+    // console.log("navbar props: " + JSON.stringify(this.props));
     var cheatSheet = <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.lgShow} onHide={this.props.hideCheatSheet}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg"><strong>{this.props.cheatSheet}</strong></Modal.Title>
@@ -201,28 +202,28 @@ class Navigation extends Component{
           <Button onClick={this.props.hideCheatSheet}>Close</Button>
         </Modal.Footer>
       </Modal>;
-      console.log(this.props.user, this.props.currentUserId)
+    // console.log(this.props.user, this.props.currentUserId);
 
     return (
     <div>
-      <Navbar fluid id='navbar'>
+      <Navbar fluid id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
-            <a href='/'><div className='logo'></div></a>
+            <a href="/"><div className="logo"></div></a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav className='navbar-challenges'>
-          <NavItem eventKey={1} href="/challengeList" data-hover='challenges'>challenges</NavItem>
-          <NavItem eventKey={2} href="#" data-hover='users'>users</NavItem>
-          <NavDropdown eventKey={4}  data-hover='cheatsheets' title="cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>
-            <MenuItem eventKey={4.1} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Sublime Text')}>sublime</MenuItem>
-            <MenuItem eventKey={4.2} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Vim')}>vim</MenuItem>
-            <MenuItem eventKey={4.3} id='dropdown-link' onClick={this.props.showCheatSheet.bind(this, 'Emacs')}>emacs</MenuItem>
+        <Nav className="navbar-challenges">
+          <NavItem eventKey={1} href="/challengeList" data-hover="challenges">challenges</NavItem>
+          <NavItem eventKey={2} href="#" data-hover="users">users</NavItem>
+          <NavDropdown eventKey={4}  data-hover="cheatsheets" title="cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>
+            <MenuItem eventKey={4.1} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Sublime Text')}>sublime</MenuItem>
+            <MenuItem eventKey={4.2} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Vim')}>vim</MenuItem>
+            <MenuItem eventKey={4.3} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Emacs')}>emacs</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={5} href='/faqs'>FAQs</NavItem>
-          <NavItem eventKey={6} href='/about'>About</NavItem>
+          <NavItem eventKey={5} href="/faqs">FAQs</NavItem>
+          <NavItem eventKey={6} href="/about">About</NavItem>
         </Nav>
-        <Nav className='user-right' pullRight>
+        <Nav className="user-right" pullRight>
           {userDisplay}
           {githubButton}
           {cheatSheet}
@@ -230,9 +231,9 @@ class Navigation extends Component{
       </Navbar>
       <div>{this.props.children}</div>
     </div>
-    )
+    );
   }
-};
+}
             // <div className='logo'></div>
             // <a href="/" id='navbar-links'>TypeReact</a>
 
@@ -242,7 +243,10 @@ Navigation.propTypes = {
   profilePic: PropTypes.string,
   lgShow: PropTypes.bool,
   cheatSheet: PropTypes.string,
-  currentUserId: PropTypes.number
+  currentUserId: PropTypes.number,
+  hideCheatSheet: PropTypes.func,
+  showCheatSheet: PropTypes.func,
+  storeUser: PropTypes.func
 };
 
 function mapStateToProps(state) {
@@ -253,7 +257,7 @@ function mapStateToProps(state) {
     lgShow: state.loggedInState.lgShow,
     cheatSheet: state.loggedInState.cheatSheet,
     currentUserId: state.loggedInState.currentUserId
-  }
+  };
 }
 
 
@@ -263,12 +267,12 @@ function mapDispatchToProps(dispatch) {
       dispatch(checkUser(loggedIn, username, picture, currentUserId));
     },
     hideCheatSheet: function() {
-      dispatch(hideModal())
+      dispatch(hideModal());
     },
     showCheatSheet: function(cheatSheet) {
-      dispatch(showModal(cheatSheet))
+      dispatch(showModal(cheatSheet));
     }
-  }
+  };
 }
 //add dispatch if creating new actions
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
