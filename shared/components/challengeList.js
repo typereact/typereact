@@ -11,16 +11,17 @@ class ChallengeList extends Component {
   componentDidMount() {
     if (this.props.challenges.length === 0) {
       $.get('/challenge/getAllChallenges', function(response) {
-        console.log('getting challenges: ' + JSON.stringify(response, null, 2));
+        // console.log('getting challenges: ' + JSON.stringify(response, null, 2));
         this.props.storeChallengeList(response);
-      }.bind(this))
+      }.bind(this));
     }
   }
 
   render() {
     var results = this.props.challenges;
     //consider rendering as Bootstrap elements
-    return (<div className="container">
+    return (
+      <div className="container">
         <div className="table">
           <h4>Please select a challenge to play</h4>
           <table className="table table-striped table-bordered">
@@ -37,27 +38,28 @@ class ChallengeList extends Component {
                   <th><a href={'/playchallenge/' + result.id}>{result.challengeName}</a></th>
                   <th>{result.difficultyLevel}</th>
                   <th>{result.numPlays}</th>
-                </tr>)
+                </tr>);
               })}
             </tbody>
           </table>
         </div>
-      </div>)
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    challenges: state.challengeState.challenges,
-  }
+    challenges: state.challengeState.challenges
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     storeChallengeList: function(challengeList) {
-      dispatch(storeChallenges(challengeList))
+      dispatch(storeChallenges(challengeList));
     }
-  }
+  };
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(ChallengeList);

@@ -3,24 +3,28 @@ import ReactDOM from 'react-dom';
 import editorApp from '../reducers/reducers.js';
 import { connect } from 'react-redux';
 import { countDown, countDownBySecond, startTimer, stopTimer, clockRunning, settingInterval, clockStop, showClock } from '../actions/actions.js';
-import { PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import thunk from 'redux-thunk';
 
 import $ from 'jquery';
 
-let Start = React.createClass ({
+class Start extends Component {
+  
   render () {
-    return(<div>
-      <button className='button start-timer' onClick={this.props.onShowClock}>Start Timer</button>
-      <br></br><div id='timer'><h2>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</h2></div>
+    return(
+      <div>
+        <button className="button start-timer" onClick={this.props.onShowClock}>Start Timer</button>
+        <br></br>
+        <div id="timer"><h2>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</h2></div>
       </div>
-      )
+    );
   }
-});
+}
 
 Start.propTypes = {
   onCountDown: PropTypes.func,
   onCountDownBySecond: PropTypes.func,
+  onShowClock: PropTypes.func,
   // onStartTimer: PropTypes.func,
   onStopTimer: PropTypes.func,
   countdown: PropTypes.number,
@@ -32,7 +36,7 @@ Start.propTypes = {
   clockRunning: PropTypes.bool,
   hideClock: PropTypes.bool
   // timeStopped: PropTypes.date,
-}
+};
 
 // Timer.propTypes = {
 // }
@@ -51,7 +55,7 @@ function mapStateToProps(state) {
     code: state.editorState.code,
     isMatch: state.editorState.isMatch,
     hideClock: state.editorState.hideClock
-  }
+  };
 }
 function mapDispatchToProps(dispatch, state) {
   return {
@@ -62,7 +66,7 @@ function mapDispatchToProps(dispatch, state) {
     //   dispatch(clockRunning(timeElapsed))
     // },
     onShowClock: function () {
-      dispatch(showClock())
+      dispatch(showClock());
     },
     // onStartTimer: function () {
     //   var timeStamp = new Date();
@@ -85,9 +89,9 @@ function mapDispatchToProps(dispatch, state) {
     onCountDownBySecond: function () {
       dispatch(countDownBySecond());
     }
-  }
+  };
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Start)
+export default connect(mapStateToProps, mapDispatchToProps)(Start);
 

@@ -17,16 +17,23 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
+        // preLoaders: [
+        //   {
+        //     test: /\.jsx?$/, 
+        //     loader: 'eslint-loader', 
+        //     exclude: /node_modules/
+        //   }
+        // ],
         loaders: [
             { 
                 test: /\.jsx?$/, 
                 // include: path.join(__dirname, 'src'),
                 loader: 'babel-loader', 
                 query: {
-                    plugins: ['transform-runtime', 'transform-es2015-modules-commonjs'],
+                    plugins: ['transform-runtime', 'transform-es2015-modules-commonjs'], 
                     presets: ['es2015', 'react']
                 },
-                exclude: /node_modules/ 
+                exclude: /node_modules/
             },
             // {
             //     test: /\.js$/,
@@ -36,7 +43,7 @@ module.exports = {
                 // { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
             { 
                 test: /\.css$/, 
-                loader: "style-loader!css-loader" 
+                loader: 'style-loader!css-loader'
             }
         ]
     },
