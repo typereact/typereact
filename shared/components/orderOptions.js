@@ -11,8 +11,8 @@ import {connect} from 'react-redux';
 class completedChallengesTable extends Component {
   render() {
     var that =this;
-    return <div id='order-options'>
-    <DropdownButton title={this.props.orderOptions} id='bg-justified-dropdown'>
+    return <div id="order-options">
+    <DropdownButton title={this.props.orderOptions} id="bg-justified-dropdown">
       <MenuItem eventKey="1" onSelect={function(){that.props.changeOrderOptions(this.eventKey)}}>Key Stroke</MenuItem>
       <MenuItem eventKey="2" onSelect={function(){that.props.changeOrderOptions(this.eventKey)}}>Time</MenuItem>
     </DropdownButton>

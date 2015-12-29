@@ -6,14 +6,18 @@ import { connect } from 'react-redux';
 
 class completedChallengesTable extends Component {
   render() {
+    var challenge = this.props.dropDownDisplay.substr(11)
     return this.props.dropDownDisplay === 'Completed Challenges' ? <div></div> : 
     <div>
+      <nav className='cl-effect-19'>
+        <a href={'/playchallenge/' + challenge}><span title="Play Challenge Again">Play Challenge Again</span></a>
+      </nav>
       <table className="table table-striped table-bordered">
         <thead>
           <tr>
-            <th className='table-header'>Ranking</th>
-            <th className='table-header keystroke-header'>Keystroke</th>
-            <th className='table-header time-header'>Time</th>
+            <th className="table-header">Ranking</th>
+            <th className="table-header keystroke-header">Keystroke</th>
+            <th className="table-header time-header">Time</th>
           </tr>
         </thead>
         <tbody>

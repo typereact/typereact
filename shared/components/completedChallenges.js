@@ -13,6 +13,7 @@ class completedChallenges extends Component {
   componentDidMount() {
     if(this.props.allChallenges.length === 0) {
       $.get('/userChallenge/profileStats', this.props.currentUserId.toString(), function(results) {
+        console.log('results is ', results)
         var allChallenges =[];
         for(var i=0; i < results.length; i++) {
           if(allChallenges.indexOf(results[i].challengeID) === -1 ) {
@@ -30,7 +31,7 @@ class completedChallenges extends Component {
   render() {
     var completedChallenges = this.props.allChallenges;
     var that = this;
-    return <div id='completed-challenges'>
+    return <div id="completed-challenges">
     <DropdownButton title={this.props.dropDownDisplay} id="bg-justified-dropdown">
       {completedChallenges.map(function(result, i){
         return (<MenuItem className='menu-item' eventKey={i+1} onSelect={function(){that.props.onSelectMenuItem(result);}}>Challenge #{result}</MenuItem>);
