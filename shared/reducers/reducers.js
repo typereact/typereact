@@ -7,10 +7,10 @@ import $ from 'jquery';
 const initEditorState = {
   mode: 'javascript',
   readOnly: true,
-  solvedCode: 'console.log("hello");',
+  solvedCode: 'We are fetching a challenge for you to play!',
   statusText: 'NOT A MATCH',
   isMatch: false,
-  code: 'for(var i=0;i < array.length;',
+  code: 'Wait a moment please...',
   counter: 0,
   keyMap: 'sublime',
   clockRunning: false,
@@ -32,6 +32,7 @@ function editorState(state = initEditorState, action) {
   switch (action.type) {
   case STRING_CHANGED:
     if (action.code === state.solvedCode) {
+
       return {
         mode: state.mode,
         readOnly: 'nocursor',
@@ -56,6 +57,7 @@ function editorState(state = initEditorState, action) {
         resultsShow: true
       };
     } else {
+
       return {
         mode: state.mode,
         readOnly: state.readOnly,
@@ -76,7 +78,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         hasPosted: state.hasPosted,
         editDistance: state.editDistance,
-        hideClock: state.hideClock
+        hideClock: state.hideClock,
+        resultsShow: state.resultsShow
       };
     }
     break;
@@ -126,7 +129,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         hasPosted: true,
         editDistance: state.editDistance,
-        hideClock: state.hideClock
+        hideClock: state.hideClock,
+        resultsShow: state.resultsShow
       };
     } else if (state.readOnly === false) {
       return {
@@ -149,7 +153,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         hasPosted: state.hasPosted,
         editDistance: state.editDistance,
-        hideClock: state.hideClock
+        hideClock: state.hideClock,
+        resultsShow: state.resultsShow
       };
     } else {
       return state;
@@ -177,7 +182,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         hasPosted: true,
         editDistance: state.editDistance,
-        hideClock: state.hideClock
+        hideClock: state.hideClock,
+        resultsShow: state.resultsShow
       };
     } else if (state.readOnly === false){
       return {
@@ -200,7 +206,8 @@ function editorState(state = initEditorState, action) {
         countdown: state.countdown,
         hasPosted: state.hasPosted,
         editDistance: state.editDistance,
-        hideClock: state.hideClock
+        hideClock: state.hideClock,
+        resultsShow: state.resultsShow
       };
     } else {
       return state;
