@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 var beautify = require('js-beautify').js_beautify;
-import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK, SOLVED_CODE_CHANGED, UNSOLVED_CODE_CHANGED, FIELD_CHANGED, CHALLENGE_COMPLETE } from '../actions/actions.js';
+import { LOAD_CHALLENGE, CHECK_USER, KEY_PRESSED, STRING_CHANGED, INCREMENT_COUNTER, COUNT_DOWN, COUNT_DOWN_BY_SECOND, START_TIMER, STOP_TIMER, CLOCK_RUNNING, SETTING_INTERVAL, CLOCK_STOP, CHANGE_KEYMAP, STORE_CHALLENGES, UPDATE_TOP_25_TIMES, HIDE_MODAL, SHOW_MODAL, UPDATE_TOP_25_KEYSTROKES, INCREMENT_KEY_HANDLED, SHOW_CLOCK, SOLVED_CODE_CHANGED, UNSOLVED_CODE_CHANGED, FIELD_CHANGED, HIDE_RESULTS_MODAL } from '../actions/actions.js';
 import $ from 'jquery';
 /* REDUCER */
 
@@ -32,7 +32,7 @@ function editorState(state = initEditorState, action) {
   switch (action.type) {
   case STRING_CHANGED:
     if (action.code === state.solvedCode) {
-
+      $('.start-timer').html("It's a match!");
       return {
         mode: state.mode,
         readOnly: 'nocursor',
@@ -83,30 +83,6 @@ function editorState(state = initEditorState, action) {
       };
     }
     break;
-  case CHALLENGE_COMPLETE:
-    return {
-      mode: state.mode,
-      readOnly: state.readOnly,
-      solvedCode: state.solvedCode,
-      statusText: state.statusText,
-      isMatch: state.isMatch,
-      code: state.code,
-      counter: state.counter,
-      keyMap: state.keyMap,
-      clockRunning: state.clockRunning,
-      timeStopped: state.timeStopped,
-      timeBegan: state.timeBegan,
-      stoppedDuration: state.stoppedDuration,
-      started: state.started,
-      min: state.min,
-      sec: state.sec,
-      ms: state.ms,
-      countdown: state.countdown,
-      hasPosted: state.hasPosted,
-      editDistance: state.editDistance,
-      hideClock: state.hideClock,
-      resultsShow: true
-    };
   case INCREMENT_COUNTER:
     if(state.isMatch) {
       return {
@@ -430,6 +406,31 @@ function editorState(state = initEditorState, action) {
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
       hideClock: false
+    };
+  case HIDE_RESULTS_MODAL:
+  console.log('hidiing')
+    return {
+      mode: state.mode,
+      readOnly: state.readOnly,
+      solvedCode: state.solvedCode,
+      statusText: state.statusText,
+      isMatch: state.isMatch,
+      code: state.code,
+      counter: state.counter,
+      keyMap: state.keyMap,
+      clockRunning: state.clockRunning,
+      timeStopped: state.timeStopped,
+      timeBegan: state.timeBegan,
+      stoppedDuration: state.stoppedDuration,
+      started: state.started,
+      min: state.min,
+      sec: state.sec,
+      ms: state.ms,
+      countdown: state.countdown,
+      hasPosted: state.hasPosted,
+      editDistance: state.editDistance,
+      hideClock: state.hideClock,
+      resultsShow: false
     };
   default:
     return state;

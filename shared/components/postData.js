@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { challengeComplete } from '../actions/actions.js'; //UPDATE as needed.
+import { hideResultsModal } from '../actions/actions.js'; //UPDATE as needed.
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 import $ from 'jquery';
 import Modal from 'react-bootstrap/lib/Modal.js';
@@ -38,15 +38,10 @@ class PostData extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isMatch) {
-      this.props.showResults();
-    }
-  }
-
   shouldComponentUpdate(nextProps) {
-    if(nextProps.isMatch && nextProps.resultsShow) {
-      console.log('true');
+
+    if(nextProps.isMatch) {
+      console.log('true')
       return true;
     }
     else {
@@ -61,8 +56,8 @@ class PostData extends Component {
     }
     
     return(
-      <Modal {...this.props} show={this.props.resultsShow} className="resultsModal">
-        <Modal.Header>
+      <Modal {...this.props} show={this.props.resultsShow} className="resultsModal" onHide={this.props.hideResults}>
+        <Modal.Header closeButton>
           <Modal.Title className="resultsHead"><strong>Results</strong></Modal.Title>
         </Modal.Header>
         <Modal.Body className="resultsBody">
@@ -105,8 +100,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, getState, state) {
   return {
-    showResults: function() {
-      dispatch(challengeComplete());
+    hideResults: function() {
+      dispatch(hideResultsModal());
     }
   };
 }
