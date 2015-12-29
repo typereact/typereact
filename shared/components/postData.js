@@ -46,7 +46,7 @@ class PostData extends Component {
 
   shouldComponentUpdate(nextProps) {
     if(nextProps.isMatch && nextProps.resultsShow) {
-      console.log('true')
+      console.log('true');
       return true;
     }
     else {

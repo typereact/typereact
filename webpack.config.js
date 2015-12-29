@@ -2,6 +2,9 @@ var webpack = require('webpack');
 var path = require('path');
 require('es6-promise').polyfill();
 
+// var PROD = JSON.parse(process.env.PROD_DEV || "0");
+var PROD = true;
+
 module.exports = {  
     entry: [
     //for es6
@@ -17,13 +20,13 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
-        // preLoaders: [
-        //   {
-        //     test: /\.jsx?$/, 
-        //     loader: 'eslint-loader', 
-        //     exclude: /node_modules/
-        //   }
-        // ],
+        preLoaders: [
+          {
+            test: /\.jsx?$/, 
+            loader: 'eslint-loader', 
+            exclude: /node_modules/
+          }
+        ],
         loaders: [
             { 
                 test: /\.jsx?$/, 
@@ -47,9 +50,23 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-      new webpack.NoErrorsPlugin()
+    plugins: PROD ? [
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            // for developers: keeps track of the current line/column in the output and can trivially generate a source mapping to the original code
+            sourceMap: false,
+            // reduce names of local variables to (usually) single-letters
+            mangle: true,
+            // suppress warning while compressing
+            compress: {
+                warnings: false
+            },
+            minimize: true
+        })
+    ] : [
+        new webpack.NoErrorsPlugin()
     ]
+
 
 };
 
