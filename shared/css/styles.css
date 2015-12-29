@@ -404,17 +404,28 @@ font-size:22px;
 
 /*PROFILE PAGE*/
 
+.table-header {
+  text-align:center;
+  background-color: #c0dbdb;
+}
+
+.chosen-header {
+  color:white;
+  background-color:#85baba;
+}
+
 .profile-pic {
   border-radius: 50%;
   /*border-radius: 120px;*/
 }
 
 #bg-justified-dropdown {
-  /*width: 310px;*/
+  width: 195px;
   border-radius: 0px;
   background-color: white;
 }
 #bg-justified-dropdown:hover {
+  border-color:#85baba;
   background-color:white;
 }
 
@@ -425,6 +436,25 @@ font-size:22px;
 .menu-item {
   /*background-color:red;*/
   /*width:310px;*/
+}
+
+.challenge-order {
+  margin-top:10px;
+  margin-bottom:20px;
+}
+
+#completed-challenges {
+  float:right;
+  /*width:195px;*/
+}
+
+#order-options {
+  float:left;
+  /*width: 195px;*/
+}
+
+.second-row {
+  text-align: center;
 }
 /* SAVE CHALLENGE TO DB */
 
@@ -462,8 +492,3 @@ both of these don't work
   margin-bottom: 20px;
 }
 */
-.timing {
-  /*background-color: #4ca0a0;*/
-  /*opacity: 0.9;*/
-  /*width:50%;*/
-}

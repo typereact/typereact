@@ -32,6 +32,8 @@ export const HIDE_RESULTS_MODAL = 'HIDE_RESULTS_MODAL';
 export const CHALLENGE_COMPLETE = 'CHALLENGE_COMPLETE';
 export const ADD_COMPLETED_CHALLENGES = 'ADD_COMPLETED_CHALLENGES';
 export const SELECT_MENU_ITEM = 'SELECT_MENU_ITEM';
+export const CHANGE_ORDER_OPTION = 'CHANGE_ORDER_OPTION';
+
 
 
 /*
@@ -143,4 +145,8 @@ export function addCompletedChallenges(challenges, results) {
 
 export function selectMenuItem(challenge) {
   return {type: SELECT_MENU_ITEM, dropDownDisplay: challenge}
+}
+
+export function changingOrderOptions(event) {
+  return {type: CHANGE_ORDER_OPTION, orderOptions: event}
 }

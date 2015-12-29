@@ -11,9 +11,9 @@ class completedChallengesTable extends Component {
       <table className="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>Ranking</th>
-            <th>Keystroke</th>
-            <th>Time</th>
+            <th className='table-header'>Ranking</th>
+            <th className='table-header keystroke-header'>Keystroke</th>
+            <th className='table-header time-header'>Time</th>
           </tr>
         </thead>
         <tbody>
