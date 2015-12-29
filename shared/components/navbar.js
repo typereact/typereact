@@ -177,8 +177,8 @@ class Navigation extends Component{
     } else {
       githubButton =
           <NavDropdown eventKey={3} title="my account" id="basic-nav-dropdown" style={{float: 'right'}}>
-            <MenuItem eventKey={3.1} id="dropdown-link">my profile</MenuItem>
-            <MenuItem eventKey={3.2} id="dropdown-link">stats</MenuItem>
+            <MenuItem eventKey={3.1} id='dropdown-link' href='/profile'>my profile</MenuItem>
+            <MenuItem eventKey={3.2} id='dropdown-link'>stats</MenuItem>
             <MenuItem divider />
             <MenuItem eventKey={3.3} href="/auth/logout" id="dropdown-link">log out</MenuItem>
           </NavDropdown>;
@@ -220,8 +220,8 @@ class Navigation extends Component{
             <MenuItem eventKey={4.2} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Vim')}>vim</MenuItem>
             <MenuItem eventKey={4.3} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Emacs')}>emacs</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={5} href="/faqs">FAQs</NavItem>
-          <NavItem eventKey={6} href="/about">About</NavItem>
+          <NavItem eventKey={5} href='/faqs'>faqs</NavItem>
+          <NavItem eventKey={6} href='/about'>about</NavItem>
         </Nav>
         <Nav className="user-right" pullRight>
           {userDisplay}
