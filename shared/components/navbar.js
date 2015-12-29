@@ -243,7 +243,10 @@ Navigation.propTypes = {
   profilePic: PropTypes.string,
   lgShow: PropTypes.bool,
   cheatSheet: PropTypes.string,
-  currentUserId: PropTypes.number
+  currentUserId: PropTypes.number,
+  hideCheatSheet: PropTypes.func,
+  showCheatSheet: PropTypes.func,
+  storeUser: PropTypes.func
 };
 
 function mapStateToProps(state) {
