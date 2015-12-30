@@ -91,8 +91,6 @@ function mapStateToProps(state) {
     currentUserId: state.loggedInState.currentUserId,
     hasPosted: state.editorState.hasPosted,
     resultsShow: state.editorState.resultsShow,
-    timeStopped: state.editorState.timeStopped,
-    timeBegan: state.editorState.timeBegan,
     clockRunning: state.editorState.clockRunning
   };
 }

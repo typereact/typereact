@@ -40,7 +40,7 @@ app.use(passport.session());
 app.get('/', function(req, res) {
   //if logged in, redirect to challenge list
   if(req.user) {
-    res.redirect('/challengeList');
+    res.redirect('/profile');
   } 
   //otherwise, send to landing page
   else {
@@ -68,7 +68,11 @@ app.get('/challengeList', function(req, res) {
 
 //routes user to add new challenges
 app.get('/addChallenge', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+  if(req.user && req.user.role === 1) {
+    res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+  } else {
+    res.redirect('/');
+  }
 })
 
 //routes user to about page
