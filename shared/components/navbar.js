@@ -7,6 +7,7 @@ import NavItem from 'react-bootstrap/lib/Navitem.js';
 import MenuItem from 'react-bootstrap/lib/MenuItem.js';
 import Modal from 'react-bootstrap/lib/Modal.js';
 import Button from 'react-bootstrap/lib/Button.js';
+import Footer from './footer.js';
 // import Modal.Body from 'react-bootstrap/lib/ModalBody.js';
 // import Modal.Header from 'react-bootstrap/lib/ModalHeader.js';
 // import Modal.Footer from 'react-bootstrap/lib/ModalFooter.js';
@@ -179,9 +180,8 @@ class Navigation extends Component{
       githubButton =
           <NavDropdown eventKey={3} title="my account" id="basic-nav-dropdown" style={{float: 'right'}}>
             <MenuItem eventKey={3.1} id='dropdown-link' href='/profile'>my profile</MenuItem>
-            <MenuItem eventKey={3.2} id='dropdown-link'>stats</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={3.3} href="/auth/logout" id="dropdown-link">log out</MenuItem>
+            <MenuItem eventKey={3.2} href="/auth/logout" id="dropdown-link">log out</MenuItem>
           </NavDropdown>;
       // githubButton = <div style={{position: "relative", display: "inline-block", padding: "8px 0px", float: "right"}}><a href="/auth/logout" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Logout</a></div>;
     }
@@ -215,7 +215,6 @@ class Navigation extends Component{
         </Navbar.Header>
         <Nav className="navbar-challenges">
           <NavItem eventKey={1} href="/challengeList" data-hover="challenges">challenges</NavItem>
-          <NavItem eventKey={2} href="#" data-hover="users">users</NavItem>
           <NavDropdown eventKey={4}  data-hover="cheatsheets" title="cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>
             <MenuItem eventKey={4.1} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Sublime Text')}>sublime</MenuItem>
             <MenuItem eventKey={4.2} id="dropdown-link" onClick={this.props.showCheatSheet.bind(this, 'Vim')}>vim</MenuItem>
@@ -231,6 +230,7 @@ class Navigation extends Component{
         </Nav>
       </Navbar>
       <div>{this.props.children}</div>
+      <Footer />
     </div>
     );
   }
