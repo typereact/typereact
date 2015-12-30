@@ -229,7 +229,8 @@ function editorState(state = initEditorState, action) {
       countdown: state.countdown,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: state.hideClock
+      hideClock: state.hideClock,
+      resultsShow: state.resultsShow
     };
   case LOAD_CHALLENGE:
     return {
@@ -252,7 +253,8 @@ function editorState(state = initEditorState, action) {
       countdown: state.countdown,
       hasPosted: state.hasPosted,
       editDistance: action.editDistance,
-      hideClock: state.hideClock
+      hideClock: state.hideClock,
+      resultsShow: state.resultsShow
     };
   case START_TIMER:
     $('.countdown-clock').removeClass('display-background');
@@ -277,7 +279,8 @@ function editorState(state = initEditorState, action) {
       clockRunning: true,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: true
+      hideClock: true,
+      resultsShow: state.resultsShow
     };
   case STOP_TIMER:
     return {
@@ -300,7 +303,8 @@ function editorState(state = initEditorState, action) {
       clockRunning: false,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: state.hideClock
+      hideClock: state.hideClock,
+      resultsShow: state.resultsShow
     };
   case CLOCK_RUNNING:
     var timeElapsedMin, timeElapsedSec, timeElapsedMS;
@@ -337,7 +341,8 @@ function editorState(state = initEditorState, action) {
       clockRunning: state.clockRunning,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: state.hideClock
+      hideClock: state.hideClock,
+      resultsShow: state.resultsShow
     };
   case SETTING_INTERVAL:
     return {
@@ -360,7 +365,8 @@ function editorState(state = initEditorState, action) {
       clockRunning: state.clockRunning,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: state.hideClock
+      hideClock: state.hideClock,
+      resultsShow: state.resultsShow
     };
   case CLOCK_STOP:
     // clearInterval(state.started);
@@ -384,7 +390,8 @@ function editorState(state = initEditorState, action) {
       clockRunning: state.clockRunning,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: state.hideClock
+      hideClock: state.hideClock,
+      resultsShow: state.resultsShow
     };
   case SHOW_CLOCK: 
     // console.log('inside show_clock');
@@ -412,7 +419,8 @@ function editorState(state = initEditorState, action) {
       clockRunning: state.clockRunning,
       hasPosted: state.hasPosted,
       editDistance: state.editDistance,
-      hideClock: false
+      hideClock: false,
+      resultsShow: state.resultsShow
     };
   case HIDE_RESULTS_MODAL:
     return {
