@@ -11,7 +11,6 @@ import GameProgress from '../shared/components/progressBar.js';
 import { connect } from 'react-redux';
 import Countdown from '../shared/components/countdown.js';
 import PostData from '../shared/components/postData.js';
-import Footer from '../shared/components/footer.js';
 
 import $ from 'jquery';
 
@@ -62,11 +61,10 @@ export default class App extends Component {
         </div>
       </div>
 
-      <Footer />
       <PostData chalID={this.props.params.challengeID} />
       <div>{this.props.children}</div>
     </div>
     );
   }
 }
-      // <Status />
+
