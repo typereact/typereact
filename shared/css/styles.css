@@ -125,6 +125,7 @@ body {
 /*FOOTER*/
 
 #footer {
+  display:block;
   background-color:white;
   border-color:white;
   text-align:center;
@@ -136,7 +137,8 @@ body {
 }
 
 .footer-container {
-  /*margin-top:50px;*/
+  bottom:0;
+  /*margin-top:200px;*/
   /*margin-bottom:70px;*/
   /*width: 1200px;*/
 }
@@ -144,15 +146,7 @@ body {
 /* TIMER */
 
 .start-timer {
-  /*margin-left:10px;*/
-  /*font-weight:bold;*/
-/*  font-size:16px;
-  background-color:white;
-  border-style: solid;
-  border-color:black;
-  display: block;
-  margin: 0 auto;
-  border-width: 1px;*/
+  width:200px;
 }
 
 
@@ -169,6 +163,10 @@ body {
 }
 
 /* NAVBAR */
+
+#basic-nav-dropdown {
+  background-color:white;
+}
 
 #navbar {
   background-color:white;
@@ -301,6 +299,7 @@ font-size:22px;
   -webkit-transform: translateY(10px);
   -moz-transform: translateY(10px);
   transform: translateY(10px);
+  color: #fc5848;
 }
 
 .navbar-default .navbar-nav>li>a:hover,
@@ -319,12 +318,6 @@ font-size:22px;
 }
 
 /*3D-BUTTON-EFFECT*/
-
-/*.start-timer:hover,
-.start-timer:active {
-  color: #0e83cd;
-  background: red;
-}*/
 
 .button {
   /*margin-left:30px;*/
@@ -371,7 +364,6 @@ font-size:22px;
   color: white;
   background:#85baba;
   border-color:#85baba;
-  margin-left: 30px;
 }
 
 .start-timer:hover:after,
@@ -381,8 +373,9 @@ font-size:22px;
 }
 
 .start-timer {
+  width:200px;
   margin-top:10px;
-  margin-left: 30px;
+  /*margin-left: 30px;*/
 }
 
 .row-spacer {
@@ -417,6 +410,8 @@ font-size:22px;
 
 .profile-pic {
   border-radius: 50%;
+  width: 280px;
+  height:280px;
   /*border-radius: 120px;*/
 }
 
@@ -471,28 +466,6 @@ font-size:22px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
-/* trying to center
-challenge-form-fields currently has no effect
-
-.challenge-form-fields {
-  margin-top: 50px;
-  display: block;
-  margin: 0 auto;
-}
-*/
-
-/* trying to get a buffer between two rows, per stackoverflow.
-both of these don't work
-
-#top-buffer {
-  margin-top: 20px;
-}
-
-#buffer-bottom {
-  margin-bottom: 20px;
-}
-*/
 
 
 /*PLAY CHALLENGE BUTTON*/
