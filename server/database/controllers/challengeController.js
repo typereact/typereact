@@ -65,6 +65,9 @@ module.exports = {
   },
   getChallengeByIndex: function(req, res, next) {
     var chalID = Number(req._parsedOriginalUrl.query)
+    if(!Boolean(chalID)) {
+      res.send('null');
+    }
     Challenge.findOne({
       where: {
         id: chalID

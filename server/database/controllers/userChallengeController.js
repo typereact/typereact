@@ -5,9 +5,6 @@ var Challenge = db.Challenge;
 
 module.exports = {
   postUserChallenge: function(req, res, next) {
-    Challenge.findById(req.body.challengeID).then(function(chal) {
-      return chal.increment('numPlays');
-    })
 
     var newUserChallenge = UserChallenge.build({
       numKeyStrokes: req.body.numKeyStrokes,
@@ -32,10 +29,12 @@ module.exports = {
       }
     }).spread(function(arr, arr2) {
       if(arr === 0) {
-        newUserChallenge.save().then(function(savedchal) {
-          console.log('challenge saved!');
-          res.send('success')
-        })
+        return newUserChallenge.save().then(function(savedchal) {
+          return Challenge.findById(req.body.challengeID).then(function(chal) {
+            return chal.increment('numPlays');
+            res.send('success')
+          });
+        });
       } else {
         res.send('success');
       }
@@ -47,7 +46,10 @@ module.exports = {
     var chalID = Number(req._parsedOriginalUrl.query)
     UserChallenge.findAll({
       where: {
-        challengeID: chalID
+        challengeID: chalID,
+        userID: {
+          ne: 1
+        }
       },
       limit: 25,
       order: 'timeToComplete ASC'
@@ -63,7 +65,10 @@ module.exports = {
     var chalID = Number(req._parsedOriginalUrl.query)
     UserChallenge.findAll({
       where: {
-        challengeID: chalID
+        challengeID: chalID,
+        userID: {
+          ne: 1
+        }
       },
       limit: 25,
       order: 'numKeyStrokes ASC'
