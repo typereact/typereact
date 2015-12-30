@@ -16,15 +16,19 @@ import { updateSolvedCode, updateUnsolvedCode, updateField } from '../actions/ac
 import editorApp from '../reducers/reducers.js';   //UPDATE as needed.
 
 class AddChallenge extends Component {
+  constructor() {
+    super();
+    this._onClick = this.postChallenge.bind(this);
+  }
 
-  postChallenge (props) {
+  postChallenge () {
     var data = {
       challengeUnsolved: this.props.codeUnsolved,
       challengeSolved: this.props.codeSolved,
       challengeName: this.refs.challengeName.value.trim(),
       challengeCategory: 'javascript',
       challengeInstructions: this.refs.challengeInstructions.value.trim(),
-      difficultyLevel: 'hard',
+      difficultyLevel: 'easy',
       goldMedalTime: 10,
       silverMedalTime: 20,
       bronzeMedalTime: 30,
@@ -50,7 +54,6 @@ class AddChallenge extends Component {
   }
   
   render() {
-    var props = this.props;
     var optionsSolved = {
       mode: 'javascript',
       readOnly: false,
@@ -102,7 +105,7 @@ class AddChallenge extends Component {
           <div className="col-md-5">
             <input type="text" className="resized-textbox form-group" ref="challengeName" id="form-field-challenge-name" placeholder="Challenge Name" />
             <textarea ref="challengeInstructions" id="form-field-challenge-instructions" placeholder="Challenge Instructions" className="form-control form-group" rows="3" ></textarea>
-            <button className="btn btn-default" id="save-challenge" onClick={() => {this.postChallenge(props);}}>Save Challenge</button>
+            <button className="btn btn-default" id="save-challenge" onClick={this._onClick}>Save Challenge</button>
           </div>
         </div>
 
@@ -113,6 +116,7 @@ class AddChallenge extends Component {
     );
   }
 }
+            // <button className="btn btn-default" id="save-challenge" onClick={() => {this.postChallenge(props);}}>Save Challenge</button>
       // <form onSubmit={ () => {this.postChallenge(props)} }>
       //   <input className="btn btn-default" id='submit' type="submit" value="Save Challenge" />
       // </form>
