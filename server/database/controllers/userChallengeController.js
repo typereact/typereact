@@ -13,33 +13,42 @@ module.exports = {
       challengeID: req.body.challengeID,
     })
 
-    var currentTime = new Date((new Date() - 1000));
-    UserChallenge.update({
-      numKeyStrokes: req.body.numKeyStrokes,
-      timeToComplete: req.body.timeToComplete,
-      userID: req.body.userID,
-      challengeID: req.body.challengeID,
-    }, {
+    return newUserChallenge.save().then(function(savedchal) {
+      return Challenge.findById(req.body.challengeID).then(function(chal) {
+        return chal.increment('numPlays').then(function() {
+          return next();
+        });
+      });
+    });
+  },
+
+  checkForDuplicates: function(req, res, next) {
+    var currentTime = new Date((new Date() - 2000));
+
+    return UserChallenge.findOne({
       where: {
         userID: req.body.userID,
         challengeID: req.body.challengeID,
+        numKeyStrokes: {
+          $lt: req.body.numKeyStrokes
+        },
         updated_at: {
           $gt: currentTime
         }
       }
-    }).spread(function(arr, arr2) {
-      if(arr === 0) {
-        return newUserChallenge.save().then(function(savedchal) {
+    }).then(function(dupChallenge) {
+      if(dupChallenge !== null) {
+        return dupChallenge.destroy().then(function() {
           return Challenge.findById(req.body.challengeID).then(function(chal) {
-            return chal.increment('numPlays');
-            res.send('success')
+            return chal.decrement('numPlays').then(function() {
+              return res.send('success');
+            });
           });
         });
       } else {
-        res.send('success');
+        return res.send('success');
       }
     })
-    
   },
 
   getTop25Times: function(req, res, next) {

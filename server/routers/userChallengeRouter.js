@@ -7,7 +7,7 @@ module.exports = function(express) {
 
   userChallengeRouter.use('/toptwentyfivekeystrokes', userChallengeController.getTop25KeyStrokes);
 
-  userChallengeRouter.post('/postuserchallenge', userChallengeController.postUserChallenge)
+  userChallengeRouter.post('/postuserchallenge', userChallengeController.postUserChallenge, userChallengeController.checkForDuplicates)
 
   // userChallengeRouter.use('/topFive', userChallengeController.getTopFive)
   
