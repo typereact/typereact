@@ -83,7 +83,6 @@ class Editor extends Component {
   }
 
   render() {
-    // console.log('inside editor component', this.props.code)
     var options = {
       mode: this.props.mode,
       readOnly: this.props.readOnly,
@@ -110,19 +109,7 @@ Editor.propTypes = {
   handleKeyPress: PropTypes.func,
   onStopTimer: PropTypes.func,
   isMatch: PropTypes.bool
-  // readOnly: PropTypes.bool,
-  // clockRunning: PropTypes.bool,
-  // timeStopped: PropTypes.string,
-  // readOnly: PropTypes.string,
-  // statusText: PropTypes.string,
 };
-// Editor.defaultProps = {
-//   code: 'for(var i=0;i < array.length;',
-//   readOnly: false,
-//   mode: 'javascript'
-//   isMatch: false,
-//   statusText: 'MATCH COMPLETE',
-// }
 
 function mapStateToProps(state) {
   return {
@@ -155,7 +142,6 @@ function mapDispatchToProps(dispatch, state) {
       dispatch(loadChallenge(unsolved, solved, stringDiff));
     },
     test: function () {
-      // console.log('hello testing');
     }
   };
 }

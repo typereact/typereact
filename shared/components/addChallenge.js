@@ -39,14 +39,12 @@ class AddChallenge extends Component {
       numRatings: 0,
       totalRatingScore: 0
     };
-    // console.log(data);
     $.ajax({
       type: 'POST',
       url: '/challenge/postChallenge',
       data: JSON.stringify(data),
       success: function() {
         $( '.submit-success' ).append( '<p>Challenge saved to DB</p>' );
-        // console.log('challenge saved to db');
       },
       contentType: 'application/json'
     });
@@ -74,7 +72,6 @@ class AddChallenge extends Component {
       matchBrackets: true,
       autoCloseBrackets: true
     };
-    // console.log('code solved state is ' + this.props.codeSolved);
     return (
       <div>
         <div className="row">
@@ -116,11 +113,6 @@ class AddChallenge extends Component {
     );
   }
 }
-            // <button className="btn btn-default" id="save-challenge" onClick={() => {this.postChallenge(props);}}>Save Challenge</button>
-      // <form onSubmit={ () => {this.postChallenge(props)} }>
-      //   <input className="btn btn-default" id='submit' type="submit" value="Save Challenge" />
-      // </form>
-        // <input type="text" ref="challengeName" value={this.props.challengeName} onChange={this.props.onFieldChange} />
 
 AddChallenge.PropTypes = {
   onSaveChallenge: PropTypes.func
@@ -148,8 +140,6 @@ function mapDispatchToProps(dispatch, getState, state) {
     },
     onSaveChallenge: function () {
       // setup for future use
-      // console.log('inside onSaveChallenge');
-      // dispatch(some_action);
     },
     handleKey: function(newCode) {
       // known issue: this handler just needs to exist.
