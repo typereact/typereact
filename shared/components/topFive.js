@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateTop25Times, updateTop25KeyStrokes } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 import $ from 'jquery';
+import Modal from 'react-bootstrap/lib/Modal.js';
 // import BootstrapTable from 'react-bootstrap/lib/MenuItem.js';
 
 class TopFive extends Component {
@@ -47,6 +48,16 @@ class TopFive extends Component {
   render() {
     var globalTop25Times = this.props.globalTop25Times || [];
     var globalTop25KeyStrokes = this.props.globalTop25KeyStrokes || [];
+    if(globalTop25Times.length === 0 || globalTop25KeyStrokes.length === 0) {
+      return (
+        <Modal className="resultsModal" show={true}>
+          <Modal.Header>
+            <Modal.Title className="resultsHead"><strong>Loading Leaderboard</strong></Modal.Title>
+          </Modal.Header>
+        </Modal>
+      );
+    }
+
     return (
       <div className="container">
         <h1>Challenge {this.props.params.challengeID} Results</h1>
