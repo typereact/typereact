@@ -21,17 +21,18 @@ import { checkUser, storeChallenges, hideModal, showModal } from '../actions/act
 var sublimeKeys = 
   <div>
     <p>⌘ + X: Cut line</p>
+    <p>⌃ + ⇧ + K: Delete line</p>
     <p>⌘ + ↩: Insert line after</p>
     <p>⌘ + ⇧ + ↩: Insert line before</p>
     <p>⌘ + ⌃ + ↑: Move line/selection up</p>
     <p>⌘ + ⌃ + ↓: Move line/selection down</p>
     <p>⌘ + L: Select line - Repeat to select next lines</p>
+    <p>⌘ + ⇧ + L: Split line by selection</p>
+    <p>⌘ + ⇧ + D: Duplicate line</p>
     <p>⌘ + D: Select word - Repeat to select next occurrence</p>
-    <p>⌃ + ⌘ + G: Select all occurrences of current selection</p>
-    <p>⌃ + ⇧ + ↑: Extra cursor on the line above</p>
-    <p>⌃ + ⇧ + ↓: Extra cursor on the line below</p>
-    <p>⌃ + M: Jump to closing parentheses Repeat to jump to opening parentheses</p>
+    <p>⌃ + M: Jump to closing parentheses. Repeat to jump to opening parentheses</p>
     <p>⌃ + ⇧ + M: Select all contents of the current parentheses</p>
+    <p>⌘ + ⇧ + Space: Select current scope</p>
     <p>⌃ + A, ⌘ + Left: Move to beginning of line</p>
     <p>⌃ + E, ⌘ + Right: Move to end of line</p>
     <p>⌘ + K, ⌘ + K: Delete from cursor to end of line</p>
@@ -41,19 +42,14 @@ var sublimeKeys =
     <p>⌘ + ⇧ + D: Duplicate line(s)</p>
     <p>⌘ + J: Join line below to the end of the current line</p>
     <p>⌘ + /: Comment/un-comment current line</p>
-    <p>⌘ + ⌥ + /: Block comment current selection</p>
     <p>⌘ + Y: Redo, or repeat last keyboard shortcut command</p>
-    <p>⌘ + ⇧ + V: Paste and indent correctly</p>
-    <p>⌃ + Space: Select next auto-complete suggestion</p>
     <p>⌃ + U: Soft undo; jumps to your last change before undoing change when repeated</p>
-    <p>⌃ + ⇧ + Up: Column selection up</p>
-    <p>⌃ + ⇧ + Down: Column selection down</p>
-    <p>⌃ + ⇧ + W: Wrap Selection in html tag</p>
     <p>⌃ + ⇧ + K: Delete current line of cursor</p>
-    <p>⌘ + Down  Scroll to end of file</p>
-    <p>⌘ + Up  Scroll to start of file</p>
-    <p>⌘ + K, ⌘ + U  Transform to Uppercase</p>
-    <p>⌘ + K, ⌘ + L  Transform to Lowercase</p>
+    <p>⌘ + Down: Scroll to end of file</p>
+    <p>⌘ + Up:  Scroll to start of file</p>
+    <p>⌘ + K, ⌘ + U: Transform to Uppercase</p>
+    <p>⌘ + K, ⌘ + L: Transform to Lowercase</p>
+    <p>⌘ + Left Click: Add cursor at selection</p>
   </div>;
 
 var vimKeys = 
