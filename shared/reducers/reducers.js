@@ -303,12 +303,19 @@ function editorState(state = initEditorState, action) {
       hideClock: state.hideClock
     };
   case CLOCK_RUNNING:
+    var timeElapsedMin, timeElapsedSec, timeElapsedMS;
     if(state.clockRunning === true) {
       var currentTime = new Date();
       var timeElapsed = new Date(currentTime-state.timeBegan-state.stoppedDuration);
+      timeElapsedMin = timeElapsed.getUTCMinutes().toString();
+      timeElapsedSec = timeElapsed.getUTCSeconds().toString();
+      timeElapsedMS = timeElapsed.getUTCMilliseconds().toString();
     } 
     if(state.clockRunning === false) {
       clearInterval(state.started);
+      timeElapsedMin = 0;
+      timeElapsedSec = 0;
+      timeElapsedMS = 0;
     }
     return {
       mode: state.mode,
@@ -323,9 +330,9 @@ function editorState(state = initEditorState, action) {
       timeBegan: state.timeBegan,
       stoppedDuration: state.stoppedDuration,
       started: state.started,
-      min: timeElapsed.getUTCMinutes().toString(),
-      sec: timeElapsed.getUTCSeconds().toString(),
-      ms: timeElapsed.getUTCMilliseconds().toString(),
+      min: timeElapsedMin,
+      sec: timeElapsedSec,
+      ms: timeElapsedMS,
       countdown: state.countdown,
       clockRunning: state.clockRunning,
       hasPosted: state.hasPosted,
