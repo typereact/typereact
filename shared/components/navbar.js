@@ -57,83 +57,109 @@ var vimKeys =
     <h5>Cursor Movement</h5>
     <hr></hr>
     <p>h: Move left</p>
-    <p>j: move down</p>
-    <p>k: move up</p>
-    <p>l: move right</p>
-    <p>w: jump by start of words (punctuation considered words)</p>
-    <p>W: jump by words (spaces separate words)</p>
-    <p>e: jump to end of words (punctuation considered words)</p>
-    <p>E: jump to end of words (no punctuation)</p>
-    <p>b: jump backward by words (punctuation considered words)</p>
-    <p>B: jump backward by words (no punctuation)</p>
-    <p>0: (zero) start of line</p>
-    <p>^: first non-blank character of line</p>
-    <p>$: end of line</p>
+    <p>j: Move down</p>
+    <p>k: Move up</p>
+    <p>l: Move right</p>
+    <p>w: Jump by start of words (punctuation considered words)</p>
+    <p>W: Jump by words (spaces separate words)</p>
+    <p>e: Jump to end of words (punctuation considered words)</p>
+    <p>E: Jump to end of words (no punctuation)</p>
+    <p>b: Jump backward by words (punctuation considered words)</p>
+    <p>B: Jump backward by words (no punctuation)</p>
+    <p>0: (zero) Start of line</p>
+    <p>^: First non-blank character of line</p>
+    <p>$: End of line</p>
     <p>G: Go To command (prefix with number</p>
     <p>Note: Prefix a cursor movement command with a number to execute that command multiple times. For example, 4j moves down 4 lines.</p>
     <hr></hr>
     <h5>Insert Mode Inserting/Appending text</h5>
     <hr></hr>
-    <p>i: start insert mode at cursor</p>
-    <p>I: insert at the beginning of the line</p>
-    <p>a: append after the cursor</p>
-    <p>A: append at the end of the line</p>
-    <p>o: open (append) blank line below current line (no need to press return)</p>
-    <p>O: open blank line above current line</p>
-    <p>ea:  append at end of word</p>
-    <p>Esc: exit insert mode</p>
+    <p>i: Start insert mode at cursor</p>
+    <p>I: Insert at the beginning of the line</p>
+    <p>a: Append after the cursor</p>
+    <p>A: Append at the end of the line</p>
+    <p>o: Open (append) blank line below current line (no need to press return)</p>
+    <p>O: Open blank line above current line</p>
+    <p>ea:  Append at end of word</p>
+    <p>Esc: Exit insert mode</p>
     <hr></hr>
     <h5>Editing</h5>
     <hr></hr>
-    <p>r: replace a single character (does not use insert mode)</p>
-    <p>J: join line below to the current one</p>
-    <p>cc:  change (replace) an entire line</p>
-    <p>cw:  change (replace) to the end of word</p>
-    <p>c$:  change (replace) to the end of line</p>
-    <p>s: delete character at cursor and subsitute text</p>
-    <p>S: delete line at cursor and substitute text (same as cc)</p>
-    <p>xp:  transpose two letters (delete and paste, technically)</p>
-    <p>u: undo</p>
-    <p>.: repeat last command</p>
+    <p>r: Replace a single character (does not use insert mode)</p>
+    <p>J: Join line below to the current one</p>
+    <p>cc: Change (replace) an entire line</p>
+    <p>cw: Change (replace) to the end of word</p>
+    <p>c$: Change (replace) to the end of line</p>
+    <p>s: Delete character at cursor and subsitute text</p>
+    <p>S: Delete line at cursor and substitute text (same as cc)</p>
+    <p>xp: Transpose two letters (delete and paste, technically)</p>
+    <p>u: Undo</p>
+    <p>.: Repeat last command</p>
     <hr></hr>
     <h5>Marking text (visual mode)</h5>
     <hr></hr>
-    <p>v: start visual mode, mark lines, then do command (such as y-yank)</p>
-    <p>V: start Linewise visual mode</p>
-    <p>o: move to other end of marked area</p>
-    <p>Ctrl+v:  start visual block mode</p>
-    <p>O: move to Other corner of block</p>
-    <p>aw:  mark a word</p>
-    <p>ab:  a () block (with braces)</p>
-    <p>aB:  a {} block (with brackets)</p>
-    <p>ib:  inner () block</p>
-    <p>iB:  inner {} block</p>
-    <p>Esc: exit visual mode</p>
+    <p>v: Start visual mode, mark lines, then do command (such as y-yank)</p>
+    <p>V: Start Linewise visual mode</p>
+    <p>o: Move to other end of marked area</p>
+    <p>Ctrl+v:  Start visual block mode</p>
+    <p>O: Move to Other corner of block</p>
+    <p>aw: Mark a word</p>
+    <p>ab: A () block (with braces)</p>
+    <p>aB: A {} block (with brackets)</p>
+    <p>ib: Inner () block</p>
+    <p>iB: Inner {} block</p>
+    <p>Esc: Exit visual mode</p>
     <hr></hr>
     <h5>Visual commands</h5>
     <hr></hr>
-    <p>Right: shift right</p>
-    <p>Left: shift left</p>
-    <p>y: yank (copy) marked text</p>
-    <p>d: delete marked text</p>
-    <p>~: switch case</p>
+    <p>Right: Shift right</p>
+    <p>Left: Shift left</p>
+    <p>y: Yank (copy) marked text</p>
+    <p>d: Delete marked text</p>
+    <p>~: Switch case</p>
     <hr></hr>
     <h5>Cut and Paste</h5>
     <hr></hr>
-    <p>yy:  yank (copy) a line</p>
-    <p>2yy: yank 2 lines</p>
-    <p>yw: yank word</p>
-    <p>y$: yank to end of line</p>
-    <p>p: put (paste) the clipboard after cursor</p>
-    <p>P: put (paste) before cursor</p>
-    <p>dd: delete (cut) a line</p>
-    <p>dw: delete (cut) the current word</p>
-    <p>x: delete (cut) current character</p>
+    <p>yy: Yank (copy) a line</p>
+    <p>2yy: Yank 2 lines</p>
+    <p>yw: Yank word</p>
+    <p>y$: Yank to end of line</p>
+    <p>p: Put (paste) the clipboard after cursor</p>
+    <p>P: Put (paste) before cursor</p>
+    <p>dd: Delete (cut) a line</p>
+    <p>dw: Delete (cut) the current word</p>
+    <p>x: Delete (cut) current character</p>
   </div>;
 
 var emacsKeys =
   <div>
-    <p>Emacs keys</p>
+    <h5>Cursor Movement</h5>
+    <hr></hr>
+    <p>Arrow Keys: left, down, right, up</p>
+    <p>Ctrl + B: Back one character without deleting</p>
+    <p>Ctrl + F: Forward one character</p>
+    <p>Alt + B: Back one word without deleting</p>
+    <p>Alt + F: Forward one word</p>    
+    <p>Ctrl + P: Up one line</p>
+    <p>Ctrl + N: Down one line</p>
+    <p>Ctrl + A: Goto beginning of line</p>
+    <p>Ctrl + E: Goto end of line</p>
+    <p>Note: Adding shift to the previous commmands will select the traversed area</p>
+    <p>Alt + Shift + ,: Goto beginning of file</p>
+    <p>Alt + Shift + .: Goto end of file</p>
+    <hr></hr>
+    <h5>Insertion and Deletion</h5>
+    <hr></hr>
+    <p>Ctrl + d: Delete next characer</p>
+    <p>Alt + Delete: Delete previous word</p>
+    <p>Alt + D: Delete next word</p>
+    <p>Ctrl + K: Delete line to right of cursor</p>
+    <hr></hr>
+    <h5>Utility</h5>
+    <hr></hr>
+    <p>Alt + C: Capitalize first letter of word then move to next</p>
+    <p>Alt + L: Lower-case first letter of word then move to next</p>
+    <p>Alt + ;: Toggle comment</p>
   </div>;
 
 var test = <p>Please try again.</p>;
@@ -190,7 +216,7 @@ class Navigation extends Component{
     // console.log("navbar props: " + JSON.stringify(this.props));
     var cheatSheet = <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.lgShow} onHide={this.props.hideCheatSheet}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg"><strong>{this.props.cheatSheet}</strong></Modal.Title>
+          <Modal.Title id="contained-modal-title-lg"><strong>{this.props.cheatSheet} </strong><span style={{fontSize: '14px', float: 'right', marginRight: '16px', paddingTop: '3px'}}>{this.props.cheatSheet === 'Vim' ? 'Note: Vim keybindings are case-sensitive.' : ''}</span></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {hotkeys}
