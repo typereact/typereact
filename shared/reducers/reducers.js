@@ -313,9 +313,9 @@ function editorState(state = initEditorState, action) {
     } 
     if(state.clockRunning === false) {
       clearInterval(state.started);
-      timeElapsedMin = 0;
-      timeElapsedSec = 0;
-      timeElapsedMS = 0;
+      timeElapsedMin = state.min;
+      timeElapsedSec = state.sec;
+      timeElapsedMS = state.ms;
     }
     return {
       mode: state.mode,
