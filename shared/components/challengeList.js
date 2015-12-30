@@ -11,7 +11,6 @@ class ChallengeList extends Component {
   componentDidMount() {
     if (this.props.challenges.length === 0) {
       $.get('/challenge/getAllChallenges', function(response) {
-        // console.log('getting challenges: ' + JSON.stringify(response, null, 2));
         this.props.storeChallengeList(response);
       }.bind(this));
     }
@@ -19,7 +18,6 @@ class ChallengeList extends Component {
 
   render() {
     var results = this.props.challenges;
-    //consider rendering as Bootstrap elements
     return (
       <div className="container">
         <div className="table">
@@ -36,7 +34,7 @@ class ChallengeList extends Component {
             <tbody>
               {results.map(function(result) {
                 return (<tr key={result.id}>
-                  <th><a href={'/playchallenge/' + result.id}>{result.challengeName}</a></th>
+                  <th><a href={'/playchallenge/' + result.id}>{'Challenge #'+result.id}</a></th>
                   <th>{result.difficultyLevel}</th>
                   <th>{result.numPlays}</th>
                   <th><a href={'/results/' + result.id}>View Leaderboard</a></th>
