@@ -560,15 +560,18 @@ function profilePageState(state = initprofilePageState, action) {
       for(var i=0; i < state.challengeResults.length; i++) {
         if(state.challengeResults[i].challengeID === action.dropDownDisplay) {
           var tableObj = {};
-          tableObj.ranking = rankingNum;
+          tableObj.ranking = 0;
           tableObj.key = state.challengeResults[i].numKeyStrokes;
           tableObj.time = state.challengeResults[i].timeToComplete;
           tableArr.push(tableObj);
-          rankingNum++;
         }
       }
 
       tableArr.sort(function(a,b){return a.time-b.time;});
+      tableArr.forEach(function(result) {
+        result.ranking = rankingNum;
+        rankingNum++;
+      });
 
     } else {
       for(var j=0; j < state.challengeResults.length; j++) {
@@ -615,15 +618,19 @@ function profilePageState(state = initprofilePageState, action) {
       option = 'Time';
       for(var l=0; l < state.challengeResults.length; l++) {
         if(state.challengeResults[l].challengeID.toString() === challenge.toString()) {
+          console.log('rankingNum2 is ', rankingNum2);
           var tableObj4 = {};
-          tableObj4.ranking = rankingNum2;
+          tableObj4.ranking = 0;
           tableObj4.key = state.challengeResults[l].numKeyStrokes;
           tableObj4.time = state.challengeResults[l].timeToComplete;
           tableArr2.push(tableObj4);
-          rankingNum2++;
         }
       }
       tableArr2.sort(function(a,b){return a.time-b.time;});
+      tableArr2.forEach(function(result) {
+        result.ranking = rankingNum2;
+        rankingNum2++;
+      });
     }
 
     return {

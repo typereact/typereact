@@ -7,7 +7,9 @@ export default class Footer extends Component {
   
   render() {
     return (
-      <Navbar fixedBottom id="footer">
+    <div className='row'>
+    <div className='col-md-12'>
+      <Navbar id="footer">
         <div className="footer-container">
         <span className="footer-elements">TypeReact <a href="https://github.com/typereact/typereact" target="_blank"><i className="fa fa-github"></i></a></span>
         <span className="footer-elements">Chelsea Cheung <a href="https://github.com/chelseatcheung" target="_blank"><i className="fa fa-github"></i></a> <a href="https://www.linkedin.com/in/chelsea-cheung-6442399a
@@ -18,6 +20,8 @@ export default class Footer extends Component {
         <span className="footer-elements">Marc Reicher <a href="https://github.com/marcreicher" target="_blank"><i className="fa fa-github"></i></a> <a href="https://www.linkedin.com/in/marcreicher" target="_blank"><i className="fa fa-linkedin"></i></a></span>
         </div>
         </Navbar>
+    </div>
+    </div>
     );
   }
 }
