@@ -166,7 +166,7 @@ class Navigation extends Component{
       hotkeys = emacsKeys;
       break;
     default:
-      hotkeys = <p>Something happened! Please try again.</p>;
+      hotkeys = <p></p>;
     }
     // console.log('Challenges saved to props: ' + JSON.stringify(this.props.challenges, null, 2));
     var githubButton;
