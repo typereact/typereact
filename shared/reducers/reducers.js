@@ -671,7 +671,7 @@ function profilePageState(state = initprofilePageState, action) {
       $('.keystroke-header').addClass('chosen-header');
       $('.time-header').removeClass('chosen-header');
 
-      option = 'Key Stroke';
+      option = 'Keystrokes';
       for(var k=0; k < state.challengeResults.length; k++) {
         if(state.challengeResults[k].challengeID.toString() === challenge) {
           var tableObj3 = {};
