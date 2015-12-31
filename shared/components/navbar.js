@@ -8,9 +8,6 @@ import MenuItem from 'react-bootstrap/lib/MenuItem.js';
 import Modal from 'react-bootstrap/lib/Modal.js';
 import Button from 'react-bootstrap/lib/Button.js';
 import Footer from './footer.js';
-// import Modal.Body from 'react-bootstrap/lib/ModalBody.js';
-// import Modal.Header from 'react-bootstrap/lib/ModalHeader.js';
-// import Modal.Footer from 'react-bootstrap/lib/ModalFooter.js';
 import Bootstrap_social from 'bootstrap-social/bootstrap-social.css';
 import $ from 'jquery';
 import { connect } from 'react-redux';
@@ -164,9 +161,7 @@ var emacsKeys = <div>
 class Navigation extends Component{
   
   componentDidMount() {
-    // console.log(this.props.challenges);
     $.get('/isLoggedIn', function(response) {
-      // console.log('Login Status: ' + JSON.stringify(response, null, 2));
       console.log('response is ', response);  
       var loggedIn = Boolean(response);
       var username = response.githubName ? response.githubName : 'guest';
@@ -193,7 +188,6 @@ class Navigation extends Component{
     default:
       hotkeys = <p></p>;
     }
-    // console.log('Challenges saved to props: ' + JSON.stringify(this.props.challenges, null, 2));
     var githubButton;
     if(!this.props.isLoggedIn) {
       githubButton = <div className="user-display" style={{display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" id="github-button" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Log in With Github</a></div>;
@@ -204,7 +198,6 @@ class Navigation extends Component{
             <MenuItem divider />
             <MenuItem eventKey={3.2} href="/auth/logout" id="dropdown-link">log out</MenuItem>
           </NavDropdown>;
-      // githubButton = <div style={{position: "relative", display: "inline-block", padding: "8px 0px", float: "right"}}><a href="/auth/logout" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Logout</a></div>;
     }
     var userDisplay;
     if(!this.props.profilePic) {
@@ -212,7 +205,6 @@ class Navigation extends Component{
     } else {
       userDisplay = <div className="user-display" style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div className="user-display" style={{display: 'inline-block', color:'#575858', padding: '0px 10px'}}><b>welcome, <font color="#fc5848">{this.props.user}</font></b></div></div>;
     }
-    // console.log("navbar props: " + JSON.stringify(this.props));
     var cheatSheet = <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.lgShow} onHide={this.props.hideCheatSheet}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg"><strong>{this.props.cheatSheet} </strong><span style={{fontSize: '14px', float: 'right', marginRight: '16px', paddingTop: '3px'}}>{this.props.cheatSheet === 'Vim' ? 'Note: Vim keybindings are case-sensitive.' : ''}</span></Modal.Title>
@@ -224,7 +216,6 @@ class Navigation extends Component{
           <Button onClick={this.props.hideCheatSheet}>Close</Button>
         </Modal.Footer>
       </Modal>;
-    // console.log(this.props.user, this.props.currentUserId);
 
     return (
     <div>
@@ -233,7 +224,9 @@ class Navigation extends Component{
           <Navbar.Brand>
             <a href="/"><div className="logo"></div></a>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
+        <Navbar.Collapse>
         <Nav className="navbar-challenges">
           <NavItem eventKey={1} href="/challengeList" data-hover="challenges">challenges</NavItem>
           <NavDropdown eventKey={4}  data-hover="cheatsheets" title="cheatsheets" id="basic-nav-dropdown" style={{float: 'right'}}>
@@ -244,11 +237,12 @@ class Navigation extends Component{
           <NavItem eventKey={5} href="/faqs">faqs</NavItem>
           <NavItem eventKey={6} href="/about">about</NavItem>
         </Nav>
-        <Nav className="user-right" pullRight>
+        <Nav className="user-right" right>
           {userDisplay}
           {githubButton}
           {cheatSheet}
         </Nav>
+        </Navbar.Collapse>
       </Navbar>
       <div>{this.props.children}</div>
       <Footer />

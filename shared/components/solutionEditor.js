@@ -11,11 +11,7 @@ import { stringChanged } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 
 class SolutionEditor extends Component {
-  // componentWillReceiveProps: function(nextProps) {
-  //   this.setState({
-  //     code: beautify(nextProps.challengeSolved, {indent_size: 2})
-  //   })
-  // },
+
   render() {
     var options = {
       lineNumbers: true,
