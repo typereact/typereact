@@ -36,6 +36,9 @@ body {
   text-align: center;
 }
 
+.resultsButton {
+  margin-left: 65px;
+}
 .logo {
   background-image: url('./logo.png');
   width:179px;
