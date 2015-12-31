@@ -12,11 +12,11 @@ class completedChallengesTable extends Component {
       <nav className='cl-effect-19'>
         <a href={'/playchallenge/' + challenge}><span title="Play Challenge Again">Play Challenge Again</span></a>
       </nav>
-      <table className="table table-striped table-bordered">
+      <table className="table table-bordered profile-table">
         <thead>
           <tr>
             <th className="table-header">Ranking</th>
-            <th className="table-header keystroke-header">Keystroke</th>
+            <th className="table-header keystroke-header">Keystrokes</th>
             <th className="table-header time-header">Time</th>
           </tr>
         </thead>

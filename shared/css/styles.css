@@ -378,6 +378,11 @@ font-size:22px;
   /*margin-left: 30px;*/
 }
 
+.timer-background {
+  color:white;
+  background-color:#85baba;
+}
+
 .row-spacer {
   margin-top: 27px;
 }
@@ -398,14 +403,35 @@ font-size:22px;
 
 /*PROFILE PAGE*/
 
+.first-container {
+  /*background-color: #fec34a;*/
+  /*background-color: #c0dbdb;*/
+  margin-left:170px;
+  margin-right:170px;
+  color:black;
+}
+
+.profile-name {
+  margin-top:20px;
+  font-family:Avenir;
+  font-size:26px;
+  margin-bottom: 5px;
+}
+
+.profile-date {
+  font-family:Avenir;
+  margin-bottom:10px;
+}
+
 .table-header {
+  color:#575858;
   text-align:center;
   background-color: #c0dbdb;
 }
 
 .chosen-header {
   color:white;
-  background-color:#85baba;
+  background-color:#789595;
 }
 
 .profile-pic {
@@ -429,23 +455,25 @@ font-size:22px;
   text-align: center;
 }
 
-.menu-item {
-  /*background-color:red;*/
-  /*width:310px;*/
-}
-
 .challenge-order {
-  margin-top:10px;
+  /*margin-top:10px;*/
+  margin-left:170px;
+  margin-right: 170px;
   margin-bottom:20px;
+  /*background-color: #c0dbdb; */
 }
 
 #completed-challenges {
+  margin-top:10px;
+  margin-bottom: 10px;
   float:right;
   /*width:195px;*/
 }
 
 #order-options {
   float:left;
+  margin-top:10px;
+  margin-bottom: 10px;
   /*width: 195px;*/
 }
 

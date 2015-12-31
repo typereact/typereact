@@ -60,8 +60,8 @@ export function loadChallenge(unsolved, solved, stringDiff) {
   return { type: LOAD_CHALLENGE, unsolved: unsolved, solved: solved, editDistance: stringDiff };
 }
 
-export function checkUser(loggedIn, username, picture, userId) {
-  return { type: CHECK_USER, loggedIn: loggedIn, username: username, picture: picture, currentUserId: userId };
+export function checkUser(loggedIn, username, picture, userId, createdDate) {
+  return { type: CHECK_USER, loggedIn: loggedIn, username: username, picture: picture, currentUserId: userId, createdDate: createdDate };
 }
 
 export function countDown() {

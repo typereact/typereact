@@ -14,7 +14,9 @@ class profilePage extends Component {
 
       <div className='col-md-8 main-container'>
 
-        <div className='row'>
+        <div className='row first-container'>
+          <div className='profile-name'>{this.props.username}</div>
+          <div className='profile-date'><b>User since:</b> {this.props.createdDate[1]} {this.props.createdDate[2]}, {this.props.createdDate[0]}</div>
           <img className='profile-pic' src={this.props.profilePic} />
         </div>
 
@@ -51,7 +53,9 @@ profilePage.PropTypes = {
 
 function mapStateToProps(state) {
   return {
-    profilePic: state.loggedInState.profilePic
+    profilePic: state.loggedInState.profilePic,
+    username: state.loggedInState.username,
+    createdDate: state.loggedInState.createdDate
   };
 }
 

@@ -394,10 +394,9 @@ function editorState(state = initEditorState, action) {
       resultsShow: state.resultsShow
     };
   case SHOW_CLOCK: 
-    // console.log('inside show_clock');
     $('.actual-countdown-clock').addClass('display-clock');
     $('.countdown-clock').addClass('display-background');
-    $('.start-timer').attr('disabled', 'disabled').html('Get ready!');
+    $('.start-timer').attr('disabled', 'disabled').html('Get ready!').addClass('timer-background');
     
     return {
       mode: state.mode,
@@ -453,27 +452,61 @@ function editorState(state = initEditorState, action) {
 
 const initLoggedInState = {
   loggedIn: false,
-  user: 'Guest',
+  user: 'guest',
   profilePic: null,
   lgShow: false,
-  currentUserId: 1
+  currentUserId: 1,
+  username: '',
+  createdDate: '',
+  cheatSheet: ''
 };
 
 function loggedInState(state = initLoggedInState, action) {
   switch(action.type) {
   case CHECK_USER:
+    var months = {
+      1: 'January',
+      2: 'February',
+      3: 'March',
+      4: 'April',
+      5: 'May',
+      6: 'June',
+      7: 'July',
+      8: 'August',
+      9: 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December'
+    };
+    var firstName;
+    if(action.username !== 'guest') {
+      firstName = action.username.split(' ')[0].toLowerCase();
+    } else {
+      firstName = 'guest';
+    }
+
+    action.createdDate[1] = months[action.createdDate[1]];
+    console.log('check user action is ', action);
     return {
       loggedIn: action.loggedIn,
-      user: action.username,
+      user: firstName,
       profilePic: action.picture,
-      currentUserId: action.currentUserId
+      lgShow: state.lgShow,
+      currentUserId: action.currentUserId,
+      username: action.username,
+      createdDate: action.createdDate,
+      cheatSheet: state.cheatSheet
     };
   case HIDE_MODAL:
     return {
       loggedIn: state.loggedIn,
       user: state.user,
       profilePic: state.profilePic,
-      lgShow: false
+      lgShow: false,
+      currentUserId: state.currentUserId,
+      username: state.username,
+      createdDate: state.createdDate,
+      cheatSheet: state.cheatSheet
     };
   case SHOW_MODAL:
     return {
@@ -481,6 +514,9 @@ function loggedInState(state = initLoggedInState, action) {
       user: state.user,
       profilePic: state.profilePic,
       lgShow: true,
+      currentUserId: state.currentUserId,
+      username: state.username,
+      createdDate: state.createdDate,
       cheatSheet: action.cheatSheet
     };
   default:
