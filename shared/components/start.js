@@ -15,7 +15,7 @@ class Start extends Component {
       <div>
         <button className="button start-timer" onClick={this.props.onShowClock}>Begin Challenge</button>
         <br></br>
-        <div id="timer"><h2>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + this.props.ms : '00' + this.props.ms}</h2></div>
+        <div id="timer"><h2>{this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + Number(this.props.ms) : '00' + Number(this.props.ms)}</h2></div>
       </div>
     );
   }
