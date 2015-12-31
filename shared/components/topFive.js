@@ -50,7 +50,7 @@ class TopFive extends Component {
     var globalTop25KeyStrokes = this.props.globalTop25KeyStrokes || [];
     if(globalTop25Times.length === 0 || globalTop25KeyStrokes.length === 0) {
       return (
-        <Modal className="resultsModal" show={true} animation={false}>
+        <Modal className="resultsModal" show animation={false}>
           <Modal.Header>
             <Modal.Title className="resultsHead"><strong>Loading Leaderboard</strong></Modal.Title>
           </Modal.Header>

@@ -4,7 +4,7 @@ import Codemirror from 'react-codemirror';
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/keymap/sublime');
-var beautify = require('js-beautify').js_beautify;
+// var beautify = require('js-beautify').js_beautify;
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { stringChanged } from '../actions/actions.js';
