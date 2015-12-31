@@ -313,7 +313,13 @@ function editorState(state = initEditorState, action) {
       var timeElapsed = new Date(currentTime-state.timeBegan-state.stoppedDuration);
       timeElapsedMin = timeElapsed.getUTCMinutes().toString();
       timeElapsedSec = timeElapsed.getUTCSeconds().toString();
-      timeElapsedMS = timeElapsed.getUTCMilliseconds().toString();
+      if(timeElapsed.getUTCMilliseconds() < 10) {
+        timeElapsedMS = '00' + timeElapsed.getUTCMilliseconds();
+      } else if(timeElapsed.getUTCMilliseconds() < 100) {
+        timeElapsedMS = '0' + timeElapsed.getUTCMilliseconds();
+      } else {
+        timeElapsedMS = timeElapsed.getUTCMilliseconds();
+      }
     } 
     if(state.clockRunning === false) {
       clearInterval(state.started);
