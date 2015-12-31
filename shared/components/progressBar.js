@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import ProgressBar from 'react-bootstrap/lib/ProgressBar.js';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import editorApp from '../reducers/reducers.js';

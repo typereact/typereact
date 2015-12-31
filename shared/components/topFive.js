@@ -4,7 +4,6 @@ import { updateTop25Times, updateTop25KeyStrokes } from '../actions/actions.js';
 import editorApp from '../reducers/reducers.js';
 import $ from 'jquery';
 import Modal from 'react-bootstrap/lib/Modal.js';
-// import BootstrapTable from 'react-bootstrap/lib/MenuItem.js';
 
 class TopFive extends Component {
 
