@@ -11,7 +11,14 @@ import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar.js';
 
 
 class PostData extends Component {
-  
+  shouldComponentUpdate(nextProps) {
+    if(nextProps.isMatch) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
   postResults(props) {
     var userID = this.props.currentUserId;
@@ -36,16 +43,6 @@ class PostData extends Component {
       success: function() {console.log('results saved to db');},
       contentType: 'application/json'
     });
-  }
-
-  shouldComponentUpdate(nextProps) {
-
-    if(nextProps.isMatch) {
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 
   render() {

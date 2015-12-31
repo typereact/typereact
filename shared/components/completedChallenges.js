@@ -31,13 +31,16 @@ class completedChallenges extends Component {
   render() {
     var completedChallenges = this.props.allChallenges;
     var that = this;
-    return <div id="completed-challenges">
-    <DropdownButton title={this.props.dropDownDisplay} id="bg-justified-dropdown">
-      {completedChallenges.map(function(result, i){
-        return (<MenuItem className='menu-item' eventKey={i+1} onSelect={function(){that.props.onSelectMenuItem(result);}}>Challenge #{result}</MenuItem>);
-      })}
-    </DropdownButton>
-    </div>;
+    return (
+      <div id="completed-challenges">
+        <DropdownButton title={this.props.dropDownDisplay} id="bg-justified-dropdown">
+          {completedChallenges.map(function(result, i){
+            return (<MenuItem className="menu-item" eventKey={i+1} onSelect={function(){that.props.onSelectMenuItem(result);}}>Challenge #{result}</MenuItem>
+            );
+          })}
+        </DropdownButton>
+      </div>
+    );
   }
 }
 

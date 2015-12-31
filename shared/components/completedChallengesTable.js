@@ -9,7 +9,7 @@ class completedChallengesTable extends Component {
     var challenge = this.props.dropDownDisplay.substr(11);
     return this.props.dropDownDisplay === 'Completed Challenges' ? <div></div> : 
     <div>
-      <nav className='cl-effect-19'>
+      <nav className="cl-effect-19">
         <a href={'/playchallenge/' + challenge}><span title="Play Challenge Again">Play Challenge Again</span></a>
       </nav>
       <table className="table table-bordered profile-table">
