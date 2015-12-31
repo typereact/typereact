@@ -484,12 +484,25 @@ function loggedInState(state = initLoggedInState, action) {
       11: 'November',
       12: 'December'
     };
+    console.log('action is ', action);
     var firstName;
-    if(action.username !== 'guest') {
+    if(action.loggedIn && action.username !== null) {
       firstName = action.username.split(' ')[0].toLowerCase();
+    } 
+    else if (action.loggedIn && action.username === null) {
+      firstName = 'User';
     } else {
       firstName = 'guest';
     }
+
+    // if(action.username !== 'guest') {
+    //   firstName = action.username.split(' ')[0].toLowerCase();
+    // } 
+    // else if (action.username === null) {
+    //   firstName = 'guest';
+    // } else {
+    //   firstName = 'guest'
+    // }
 
     action.createdDate[1] = months[action.createdDate[1]];
     console.log('check user action is ', action);
@@ -658,7 +671,7 @@ function profilePageState(state = initprofilePageState, action) {
       $('.keystroke-header').addClass('chosen-header');
       $('.time-header').removeClass('chosen-header');
 
-      option = 'Key Stroke';
+      option = 'Keystrokes';
       for(var k=0; k < state.challengeResults.length; k++) {
         if(state.challengeResults[k].challengeID.toString() === challenge) {
           var tableObj3 = {};

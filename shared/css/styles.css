@@ -410,6 +410,8 @@ font-size:22px;
   font-size: 14px;
   height: 47px;
   width: 218px;
+  background-color:white;
+  color:black;
 }
 
 /*PROFILE PAGE*/
@@ -505,6 +507,5 @@ font-size:22px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 
 /*PLAY CHALLENGE BUTTON*/

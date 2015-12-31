@@ -32,7 +32,7 @@ class TopFive extends Component {
       var counter = 0;
       top25KeyStrokes.forEach(function(score, rankIndex) {
         $.get('/user/find', score.userID.toString(), function(userInfo) {
-          score.name = userInfo.githubName;
+          score.name = userInfo.username;
           score.pic = userInfo.githubProfile;
           counter++;
           if(counter === top25KeyStrokes.length) {
