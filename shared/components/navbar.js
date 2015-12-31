@@ -35,7 +35,6 @@ var sublimeKeys = <div>
   <p>⌘ + K + ⌫: Delete from cursor to start of line</p>
   <p>⌘ + ]: Indent current line(s)</p>
   <p>⌘ + [: Un-indent current line(s)</p>
-  <p>⌘ + ⇧ + D: Duplicate line(s)</p>
   <p>⌘ + J: Join line below to the end of the current line</p>
   <p>⌘ + /: Comment/un-comment current line</p>
   <p>⌘ + Y: Redo, or repeat last keyboard shortcut command</p>
