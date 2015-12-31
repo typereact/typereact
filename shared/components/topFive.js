@@ -59,22 +59,27 @@ class TopFive extends Component {
 
     return (
       <div className="container">
-        <h1>Challenge {this.props.params.challengeID} Results</h1>
+        <h1 className='leaderboard-header'>Challenge {this.props.params.challengeID} Scores</h1>
         <div className="col-xs-6">
           <div className="table">
-            <h4>Top 25 Fastest Times</h4>
-            <table className="table table-striped table-bordered">
-              <thead>
+            <h4 className="top-25">Top 25 Fastest Times</h4>
+            <table className="table table-bordered">
+              <thead className="leaderboard-rowheader">
                 <tr>
-                  <th id="col-md-1">Rank</th>
-                  <th id="col-md-1">User</th>
-                  <th id="col-md-1">Time</th>
-                  <th id="col-md-1">KeyStrokes</th>
+                  <th className="leaderboard-rows" id="col-md-1">Rank</th>
+                  <th className="leaderboard-rows" id="col-md-1">User</th>
+                  <th className="leaderboard-rows" id="col-md-1">KeyStrokes</th>
+                  <th className="leaderboard-rows" id="col-md-1">Time</th>
                 </tr>
               </thead>
               <tbody>
                 {globalTop25Times.map(function(topFiveItem, index) {
-                  return <tr key={topFiveItem.id}><th>{index + 1}</th><th>{topFiveItem.name}</th><th>{topFiveItem.timeToComplete}</th><th>{topFiveItem.numKeyStrokes}</th></tr>;
+                  return <tr key={topFiveItem.id}>
+                  <th className="leaderboard-rows">{index + 1}</th>
+                  <th>{topFiveItem.name}</th>
+                  <th className="leaderboard-rows">{topFiveItem.numKeyStrokes}</th>
+                  <th className="leaderboard-rows">{topFiveItem.timeToComplete}</th>
+                  </tr>;
                 })}
               </tbody>
             </table>
@@ -82,19 +87,24 @@ class TopFive extends Component {
         </div>
         <div className="col-xs-6">
           <div className="table">
-            <h4>Top 25 Fewest Keystrokes</h4>
-            <table className="table table-striped table-bordered">
-              <thead>
+            <h4 className="top-25">Top 25 Fewest Keystrokes</h4>
+            <table className="table table-bordered">
+              <thead className="leaderboard-rowheader">
                 <tr>
-                  <th id="col-md-1">Rank</th>
-                  <th id="col-md-1">User</th>
-                  <th id="col-md-1">KeyStrokes</th>
-                  <th id="col-md-1">Time</th>
+                  <th className="leaderboard-rows" id="col-md-1">Rank</th>
+                  <th className="leaderboard-rows" id="col-md-1">User</th>
+                  <th className="leaderboard-rows" id="col-md-1">KeyStrokes</th>
+                  <th className="leaderboard-rows" id="col-md-1">Time</th>
                 </tr>
               </thead>
               <tbody>
                 {globalTop25KeyStrokes.map(function(topFiveItem, index) {
-                  return <tr key={topFiveItem.id}><th>{index + 1}</th><th>{topFiveItem.name}</th><th>{topFiveItem.numKeyStrokes}</th><th>{topFiveItem.timeToComplete}</th></tr>;
+                  return <tr key={topFiveItem.id}>
+                  <th className="leaderboard-rows">{index + 1}</th>
+                  <th>{topFiveItem.name}</th>
+                  <th className="leaderboard-rows">{topFiveItem.numKeyStrokes}</th>
+                  <th className="leaderboard-rows">{topFiveItem.timeToComplete}</th>
+                  </tr>;
                 })}
               </tbody>
             </table>

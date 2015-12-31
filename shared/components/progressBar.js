@@ -13,7 +13,7 @@ class GameProgress extends Component {
     var percentProgress = Math.round(((totalChanges - changesToGo) / totalChanges) * 100);
     var barColor;
     if(percentProgress > 75) {
-      barColor = '#89ba85';
+      barColor = '#85baba';
     } else if (percentProgress > 50) {
       barColor = '#fec34a';
     } else if (percentProgress > 25) {
