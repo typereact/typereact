@@ -57,7 +57,7 @@ class PostData extends Component {
     return(
       <Modal {...this.props} show={this.props.resultsShow} className="resultsModal" onHide={this.props.hideResults}>
         <Modal.Header closeButton>
-          <Modal.Title className="resultsHead"><strong>Results</strong></Modal.Title>
+          <Modal.Title className="resultsHead"><strong>Congratulations!</strong></Modal.Title>
         </Modal.Header>
         <Modal.Body className="resultsBody">
           <p>Keystrokes: {this.props.counter}</p>
@@ -65,9 +65,11 @@ class PostData extends Component {
         </Modal.Body>
         <Modal.Footer>
           <ButtonToolbar>
+            <div className='all-buttons'>
             <Button href={'/playchallenge/' + (Number(this.props.chalID) + 1)}>Next Challenge</Button>
             <Button href={'/playchallenge/' + this.props.chalID}>Repeat This Challenge</Button>
             <Button href={'/results/' + this.props.chalID}>Leaderboards</Button>
+            </div>
           </ButtonToolbar>
         </Modal.Footer>
       </Modal>
