@@ -407,11 +407,12 @@ font-size:22px;
 }
 
 #landing-button-text {
-  font-size: 14px;
-  height: 47px;
-  width: 218px;
-  background-color:white;
-  color:black;
+  /*font-size: 14px;*/
+  /*background-color:white;*/
+  /*color:black;*/
+  /*font-size: 18px;*/
+  /*height: 47px;*/
+  width: 258px;
 }
 
 /*PROFILE PAGE*/
