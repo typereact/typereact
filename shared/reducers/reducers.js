@@ -484,12 +484,25 @@ function loggedInState(state = initLoggedInState, action) {
       11: 'November',
       12: 'December'
     };
+    console.log('action is ', action);
     var firstName;
-    if(action.username !== 'guest') {
+    if(action.loggedIn && action.username !== null) {
       firstName = action.username.split(' ')[0].toLowerCase();
+    } 
+    else if (action.loggedIn && action.username === null) {
+      firstName = 'User';
     } else {
       firstName = 'guest';
     }
+
+    // if(action.username !== 'guest') {
+    //   firstName = action.username.split(' ')[0].toLowerCase();
+    // } 
+    // else if (action.username === null) {
+    //   firstName = 'guest';
+    // } else {
+    //   firstName = 'guest'
+    // }
 
     action.createdDate[1] = months[action.createdDate[1]];
     console.log('check user action is ', action);
