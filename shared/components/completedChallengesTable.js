@@ -23,7 +23,7 @@ class completedChallengesTable extends Component {
         <tbody>
           {this.props.keyStrokeTable.map(function(result) {
             return (
-              <tr>
+              <tr key={1}>
               <td>{result.ranking}</td>
               <td>{result.key}</td>
               <td>{result.time}</td>
