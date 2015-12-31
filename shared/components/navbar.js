@@ -170,12 +170,14 @@ class Navigation extends Component{
     // console.log(this.props.challenges);
     $.get('/isLoggedIn', function(response) {
       // console.log('Login Status: ' + JSON.stringify(response, null, 2));
-      console.log('response is ', response);
+      console.log('response is ', response);  
       var loggedIn = Boolean(response);
-      var username = response.githubName ? response.githubName.split(' ')[0].toLowerCase() : 'guest';
+      var username = response.githubName ? response.githubName : 'guest';
       var pic = response.githubProfile || null;
       var currentUserId = response.id || 1;
-      this.props.storeUser(loggedIn, username, pic, currentUserId);
+      var createdDate = response['created_at'].substr(0, 10).split('-');
+      console.log('createdDate is ', createdDate);
+      this.props.storeUser(loggedIn, username, pic, currentUserId, createdDate);
     }.bind(this));
   }
 
@@ -286,8 +288,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    storeUser: function(loggedIn, username, picture, currentUserId) {
-      dispatch(checkUser(loggedIn, username, picture, currentUserId));
+    storeUser: function(loggedIn, username, picture, currentUserId, createdDate) {
+      dispatch(checkUser(loggedIn, username, picture, currentUserId, createdDate));
     },
     hideCheatSheet: function() {
       dispatch(hideModal());
