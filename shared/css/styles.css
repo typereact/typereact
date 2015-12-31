@@ -18,6 +18,7 @@
 body {
   font-family: Consolas;
   /*background-color: #fdfcfd;*/
+  margin-bottom: 100px;
 }
 
 /* RESULTS MODAL */
@@ -127,12 +128,19 @@ body {
 
 /*FOOTER*/
 
-#footer {
+.footer {
+  position: fixed;
+  bottom: 0;
   display:block;
   background-color:white;
   border-color:white;
   text-align:center;
   font-family:Avenir;
+    /* Set the fixed height of the footer here */
+  height: 64px;
+  width: 100%;
+  padding-top: 20px;
+
 }
 
 .footer-elements {
@@ -140,7 +148,7 @@ body {
 }
 
 .footer-container {
-  bottom:0;
+  bottom: 0;
   /*margin-top:200px;*/
   /*margin-bottom:70px;*/
   /*width: 1200px;*/
