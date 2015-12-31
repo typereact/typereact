@@ -10,10 +10,9 @@ import $ from 'jquery';
 
 
 class completedChallenges extends Component {
-  componentDidMount() {
+  fetchChallengeHistory(user) {
     if(this.props.allChallenges.length === 0) {
-      $.get('/userChallenge/profileStats', this.props.currentUserId.toString(), function(results) {
-        console.log('results is ', results);
+      $.get('/userChallenge/profileStats', user.toString(), function(results) {
         var allChallenges =[];
         for(var i=0; i < results.length; i++) {
           if(allChallenges.indexOf(results[i].challengeID) === -1 ) {
@@ -25,6 +24,12 @@ class completedChallenges extends Component {
         });
         this.props.addAllChallenges(allChallenges, results);
       }.bind(this));
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.currentUserId === 1 && nextProps.currentUserId !== 1) {
+      this.fetchChallengeHistory.call(this, nextProps.currentUserId);
     }
   }
 
