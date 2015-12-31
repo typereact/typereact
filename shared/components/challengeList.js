@@ -21,27 +21,32 @@ class ChallengeList extends Component {
     return (
       <div className="container">
         <div className="table">
-          <h4>Please select a challenge to play</h4>
-          <table className="table table-striped table-bordered">
-            <thead>
+          <h1 className="challengelist-header">Challenge List</h1>
+          <h4 className="challengelist-miniheader">(Select one to start playing!)</h4>
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
+          <table className="table table-bordered challengelist-table">
+            <thead className="challengelist-head">
               <tr>
-                <th>Link</th>
-                <th>Difficulty</th>
-                <th>Number of Plays</th>
-                <th>Leaderboard</th>
+                <th className="challengelist-rows">Link</th>
+                <th className="challengelist-rows">Difficulty</th>
+                <th className="challengelist-rows">Number of Plays</th>
+                <th className="challengelist-rows">Leaderboard</th>
               </tr>
             </thead>
             <tbody>
               {results.map(function(result) {
                 return (<tr key={result.id}>
-                  <th><a href={'/playchallenge/' + result.id}>{'Challenge #'+result.id}</a></th>
-                  <th>{result.difficultyLevel}</th>
-                  <th>{result.numPlays}</th>
-                  <th><a href={'/results/' + result.id}>View Leaderboard</a></th>
+                  <th className="challengelist-rows"><a className="challenge-links" href={'/playchallenge/' + result.id}>{'Challenge #'+result.id}</a></th>
+                  <th className="challengelist-rows">{result.difficultyLevel}</th>
+                  <th className="challengelist-rows">{result.numPlays}</th>
+                  <th className="challengelist-rows"><a className='challenge-links' href={'/results/' + result.id}>View Leaderboard</a></th>
                 </tr>);
               })}
             </tbody>
           </table>
+          </div>
+          <div className="col-md-2"></div>
         </div>
       </div>
     );

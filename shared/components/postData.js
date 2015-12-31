@@ -57,14 +57,14 @@ class PostData extends Component {
           <Modal.Title className="resultsHead"><strong>Congratulations!</strong></Modal.Title>
         </Modal.Header>
         <Modal.Body className="resultsBody">
-          <p>Keystrokes: {this.props.counter}</p>
-          <p>Time: {this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + Number(this.props.ms) : '00' + Number(this.props.ms)}</p>
+          <p><b>Keystrokes:</b> {this.props.counter}</p>
+          <p><b>Time:</b> {this.props.min > 9 ? this.props.min : '0' + this.props.min}:{this.props.sec > 9 ? this.props.sec : '0' + this.props.sec}:{this.props.ms > 99 ? this.props.ms : this.props.ms > 9 ? '0' + Number(this.props.ms) : '00' + Number(this.props.ms)}</p>
         </Modal.Body>
         <Modal.Footer>
           <ButtonToolbar>
             <div>
             <Button className="resultsButton" href={'/playchallenge/' + (Number(this.props.chalID) + 1)}>Next Challenge</Button>
-            <Button className="resultsButton" href={'/playchallenge/' + this.props.chalID}>Repeat This Challenge</Button>
+            <Button className="resultsButton" href={'/playchallenge/' + this.props.chalID}>Repeat Challenge</Button>
             <Button className="resultsButton" href={'/results/' + this.props.chalID}>Leaderboards</Button>
             </div>
           </ButtonToolbar>

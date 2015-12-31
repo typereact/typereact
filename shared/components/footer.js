@@ -11,7 +11,7 @@ export default class Footer extends Component {
     <div className="row">
       <div className="col-md-12">
           <div className="footer-container">
-          <span className="footer-elements">TypeReact&nbsp; 
+          <span className="footer-elements">© TypeReact 2015&nbsp; 
             <a href="https://github.com/typereact/typereact" target="_blank"><i className="fa fa-github"></i></a>
           </span>
           <span className="footer-elements">Chelsea Cheung&nbsp;

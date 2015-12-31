@@ -10,7 +10,7 @@ export default class FAQs extends Component {
     
     return (
       <div className="container">
-        <h3>FAQs</h3>
+        <h1 className="faq-title">FAQs</h1>
         <div className="row row-spacer"></div>
         <h4>How do I play TypeReact?</h4>
         <h6>When playing a TypeReact "Challenge", you will notice there are two pre-populated code editors. Your goal is to make the two

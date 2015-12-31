@@ -222,7 +222,7 @@ class Navigation extends Component{
       <Navbar fluid id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/"><div className="logo"></div></a>
+            <a href="/challengeList"><div className="logo"></div></a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

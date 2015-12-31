@@ -10,21 +10,27 @@ export default class About extends Component {
 
     return (
       <div className="container">
-        <h3>Meet The TypeReact Team</h3>
-        <h6>TypeReact was created by four software engineers at MakerSquare Los Angeles.</h6>
+        <h2 className="about-title">Meet The TypeReact Team</h2>
+        <h5 className="about-minititle">[ TypeReact was created by four software engineers at MakerSquare Los Angeles. ]</h5>
         <div className="row row-spacer"></div>
-        <h4>Chelsea Cheung</h4>
+        <div className="row">
+        <div className="col-md-3">
+        <h3 className="about-names">Chelsea Cheung</h3>
         <h6>Insert Bio Here</h6>
-        <div className="row row-spacer"></div>
-        <h4>Marc Reicher</h4>
+        </div>
+        <div className="col-md-3">
+        <h3 className="about-names">Marc Reicher</h3>
         <h6>Insert Bio Here</h6>
-        <div className="row row-spacer"></div>
-        <h4>Nick Krein</h4>
+        </div>
+        <div className="col-md-3">
+        <h3 className="about-names">Nick Krein</h3>
         <h6>Insert Bio Here</h6>
-        <div className="row row-spacer"></div>
-        <h4>Tim Lai</h4>
+        </div>
+        <div className="col-md-3">
+        <h3 className="about-names">Tim Lai</h3>
         <h6>Insert Bio Here</h6>
-        <div className="row row-spacer"></div>
+        </div>
+        </div>
       </div>
     );
   }

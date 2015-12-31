@@ -21,6 +21,10 @@ body {
   margin-bottom: 100px;
 }
 
+a {
+  text-decoration:none;
+}
+
 /* RESULTS MODAL */
 .resultsModal {
   position: fixed;
@@ -31,6 +35,8 @@ body {
 
 .resultsHead {
   text-align: center;
+  color:#fc5848;
+  font-family:Avenir;
 }
 
 .resultsBody {
@@ -38,8 +44,20 @@ body {
 }
 
 .resultsButton {
-  margin-left: 65px;
+  font-family:Avenir;
+  margin-left: 100px;
+  border-radius:0px;
+  border-style:solid;
+  border-color:#575858;
 }
+
+.resultsButton:hover {
+  background-color:#fc5848;
+  color:white;
+  border-color:#fc5848;
+  cursor:pointer;
+}
+
 .logo {
   background-image: url('./logo.png');
   width:179px;
@@ -174,6 +192,10 @@ body {
 }
 
 /* NAVBAR */
+
+.hide-navbar {
+  display:none;
+}
 
 #basic-nav-dropdown {
   background-color:white;
@@ -398,21 +420,107 @@ font-size:22px;
   margin-top: 27px;
 }
 
-#landing-title {
-  font-size: 85px;
+.landing-page {
+  margin-top: 130px;
 }
 
-#landing-slogan {
+#landing-title {
+  /*font-size: 85px;*/
+  width:600px;
+  height: 120px;
+  background-image: url('./landing-logo.png');
+  text-align:center;
+}
+
+.landing-slogan {
+  /*text-align: center;*/
+  margin-top:10px;
+  font-size:28px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 4s steps(60, end);
   font-style: italic;
 }
 
+.landing-slogan:nth-child(2){
+  animation: type2 8s steps(60, end);
+}
+
+ .blinkder {
+  /*color:red;*/
+  animation: blink 1s infinite;
+  /*animation: 1s blink step-end infinite;*/
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+@keyframes type2{
+  0%{width: 0;}
+  50%{width: 0;}
+  100%{ width: 100; } 
+} 
+
+@keyframes blink{
+  to {opacity: .0;}
+}
+
+::selection{
+  background: white;
+}
+
 #landing-button-text {
-  /*font-size: 14px;*/
-  /*background-color:white;*/
-  /*color:black;*/
-  /*font-size: 18px;*/
-  /*height: 47px;*/
-  width: 258px;
+  margin-left:40px;
+  font-size: 14px;
+  height: 47px;
+  width: 218px;
+  background-color:#fc5848;
+  color:white;
+  text-align:center;
+}
+
+.play-guest {
+  height: 47px;
+  width: 218px;
+  text-align:center;
+}
+
+/*ABOUT PAGE*/
+
+.chelsea-img {
+  /*background-image: url('chelsea-about.jpg');*/
+}
+
+.chelsea-img.resize {
+/*  width:200px;
+  height:200px;*/
+  
+}
+
+.about-title {
+  text-align:center;
+  font-family:Avenir;
+}
+
+.about-names {
+  font-size: 22px;
+  margin-bottom: 5px;
+  font-family:Avenir;
+  text-align:center;
+}
+
+.about-minititle {
+  text-align:center;
+}
+
+
+/*FAQ PAGE*/
+
+.faq-title {
+  text-align:center;
+  font-family:Avenir;
 }
 
 /*PROFILE PAGE*/
@@ -450,19 +558,25 @@ font-size:22px;
 
 .profile-pic {
   border-radius: 50%;
-  width: 280px;
-  height:280px;
+  width: 250px;
+  height:250px;
   /*border-radius: 120px;*/
 }
 
 #bg-justified-dropdown {
+  font-family:Avenir;
   width: 195px;
   border-radius: 0px;
   background-color: white;
 }
 #bg-justified-dropdown:hover {
+  /*width:195px;*/
   border-color:#85baba;
   background-color:white;
+}
+
+.menu-item {
+  font-family:Avenir;
 }
 
 .main-container {
@@ -485,6 +599,7 @@ font-size:22px;
 }
 
 #order-options {
+  font-family:Avenir;
   float:left;
   margin-top:10px;
   margin-bottom: 10px;
@@ -494,6 +609,71 @@ font-size:22px;
 .second-row {
   text-align: center;
 }
+
+/*CHALLENGE LIST*/
+.challengelist-header {
+  font-weight:bold;
+  /*color:#10aaa9;*/
+  font-family:Avenir;
+  text-align: center;
+}
+
+.challengelist-miniheader {
+  /*color:#fec34a;*/
+  font-family:Avenir;
+  margin-bottom:30px;
+  text-align: center;
+}
+
+.challenge-links {
+  cursor:pointer;
+  color:#575858;
+}
+
+.challenge-links:hover {
+  cursor:pointer;
+  text-decoration: none;
+  color:#cccccc; 
+}
+
+.challengelist-table {
+  text-align:center;
+}
+
+.challengelist-rows {
+  text-align:center;
+}
+
+.challengelist-head {
+  background-color:#fc5848;
+  color:white;
+  opacity:0.5s;
+}
+
+
+/*LEADERBOARD PAGE*/
+
+.leaderboard-header {
+  font-weight:bold;
+  color:#10aaa9;
+  text-align:center;
+  font-family:Avenir;
+}
+
+.leaderboard-rows {
+  text-align:center;
+}
+
+.top-25 {
+  font-family:Avenir;
+  color:#fec34a;
+}
+
+.leaderboard-rowheader {
+  background-color: #fc5848;
+  color:white; 
+}
+
 /* SAVE CHALLENGE TO DB */
 
 
@@ -509,4 +689,79 @@ font-size:22px;
   border-radius: 4px;
 }
 
-/*PLAY CHALLENGE BUTTON*/
+/*LANDING PAGE BUTTONS*/
+
+.cl-effect-2 {
+  /*display: inline-block;*/
+  /*margin: 15px 25px;*/
+  outline: none;
+  text-decoration: none;
+  color: white;
+  /*text-align:center;*/
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+  font-size: 1.35em;
+  /*margin-left:10px;*/
+}
+
+.cl-effect-2 a {
+  line-height: 44px;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  perspective: 1000px;
+  color: white;
+}
+
+.cl-effect-2 a span {
+  position: relative;
+  display: inline-block;
+  padding: 0 14px;
+  background: #fc5848;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transform-origin: 50% 0;
+  -moz-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  color: white;
+}
+
+.cl-effect-2 a span::before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f73421;
+  content: attr(data-hover);
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  transition: background 0.3s;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  -webkit-transform-origin: 50% 0;
+  -moz-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  color: white;
+}
+
+.cl-effect-2 a:hover span,
+.cl-effect-2 a:focus span {
+  -webkit-transform: rotateX(90deg) translateY(-22px);
+  -moz-transform: rotateX(90deg) translateY(-22px);
+  transform: rotateX(90deg) translateY(-22px);
+  color: white;
+}
+
+.cl-effect-2 a:hover span::before,
+.cl-effect-2 a:focus span::before {
+  background: #fc5848;  
+  color: white;
+}
+
