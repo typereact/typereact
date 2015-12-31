@@ -36,8 +36,8 @@ body {
   text-align: center;
 }
 
-.btn-default {
-  margin-left:65px;
+.resultsButton {
+  margin-left: 65px;
 }
 .logo {
   background-image: url('./logo.png');

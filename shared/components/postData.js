@@ -65,10 +65,10 @@ class PostData extends Component {
         </Modal.Body>
         <Modal.Footer>
           <ButtonToolbar>
-            <div className='all-buttons'>
-            <Button href={'/playchallenge/' + (Number(this.props.chalID) + 1)}>Next Challenge</Button>
-            <Button href={'/playchallenge/' + this.props.chalID}>Repeat This Challenge</Button>
-            <Button href={'/results/' + this.props.chalID}>Leaderboards</Button>
+            <div>
+            <Button className="resultsButton" href={'/playchallenge/' + (Number(this.props.chalID) + 1)}>Next Challenge</Button>
+            <Button className="resultsButton" href={'/playchallenge/' + this.props.chalID}>Repeat This Challenge</Button>
+            <Button className="resultsButton" href={'/results/' + this.props.chalID}>Leaderboards</Button>
             </div>
           </ButtonToolbar>
         </Modal.Footer>
