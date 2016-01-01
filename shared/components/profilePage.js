@@ -41,6 +41,10 @@ class profilePage extends Component {
         
       </div>
       <div className="col-md-2"></div>
+      <div className="row row-spacer"></div>
+      <div className="row row-spacer"></div>
+      <div className="row row-spacer"></div>
+      <div className="row row-spacer"></div>
     </div>
     );
   }
