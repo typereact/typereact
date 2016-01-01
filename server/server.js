@@ -40,7 +40,7 @@ app.use(passport.session());
 app.get('/', function(req, res) {
   //if logged in, redirect to challenge list
   if(req.user) {
-    res.redirect('/profile');
+    res.redirect('/challengelist');
   } 
   //otherwise, send to landing page
   else {
