@@ -128,9 +128,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, state) {
   return {
-    onCodeChange: function(newCode) {
+    onCodeChange: function(newCode, change) {
       var timeStamp = new Date();
-      dispatch(stringChanged(newCode, timeStamp));
+      if(change.origin === 'paste') {
+        dispatch(stringChanged('I just copy and pasted code \n'+this.value, timeStamp));
+      } else {
+        dispatch(stringChanged(newCode, timeStamp));
+      }
     },
     handleKey: function() {
       dispatch(incrementKeyHandled());
