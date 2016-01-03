@@ -447,10 +447,12 @@ font-size:22px;
   animation: type2 8s steps(60, end);
 }
 
- .blinkder {
-  /*color:red;*/
-  animation: blink 1s infinite;
-  /*animation: 1s blink step-end infinite;*/
+.blinker {
+  animation: blinker 0.8s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
 }
 
 @keyframes type{ 
