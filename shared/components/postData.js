@@ -25,8 +25,8 @@ class PostData extends Component {
     var challengeID = Number(this.props.chalID);
     var numKeyStrokes = props.counter;
     // time conversion to seconds (input is a string)
-    var totalMin = props.min*60;
-    var total = totalMin + props.sec + '.' + props.ms;
+    var totalSecInt = Number(props.min)*60 + Number(props.sec);
+    var total = totalSecInt + '.' + props.ms;
     var timeToComplete = Number(parseFloat(total).toFixed(2));
 
     var data = {
