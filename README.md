@@ -16,8 +16,7 @@ module.exports = function() {
  }
 }
 ```
-* Launch a MySQL server (make sure the user and password match those in the dbconfig.js file)
-* If testing locally, add a database called typereactv1 for MySQL with user and password set as testuser1.
+* Launch a MySQL server (make sure the database user and password match those in the dbconfig.js file)
 * In your database, add a row to the Users table and fill in 'guest' for the username and github_name columns
 * Add a row to the Challenges table with some test code for challenge_unsolved and challenge_solved
 * Run these two commands (current buiild runs with npm version 3.5.1):
