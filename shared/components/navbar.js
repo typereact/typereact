@@ -155,8 +155,6 @@ var emacsKeys = <div>
   <p>Alt + ;: Toggle comment</p>
 </div>;
 
-// var test = <p>Please try again.</p>;
-
 class Navigation extends Component{
   
   componentDidMount() {
@@ -189,7 +187,7 @@ class Navigation extends Component{
     }
     var githubButton;
     if(!this.props.isLoggedIn) {
-      githubButton = <div className="user-display" style={{display: 'inline-block', padding: '8px 0px'}}><a href="/auth/github" id="github-button" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Log in With Github</a></div>;
+      githubButton = <span><div className="user-display github-button"><a href="/auth/github" id="github-button" className="btn btn-block btn-social btn-github"><span className="fa fa-github"></span>Log in With Github</a></div></span>;
     } else {
       githubButton =
           <NavDropdown eventKey={3} title="my account" id="basic-nav-dropdown" style={{float: 'right'}}>
@@ -200,7 +198,7 @@ class Navigation extends Component{
     }
     var userDisplay;
     if(!this.props.profilePic) {
-      userDisplay = <NavItem id="user-display-name">welcome, <font color="#fc5848">{this.props.user}</font></NavItem>;
+      userDisplay = <Nav id="user-display-guest"><b>welcome, <font color="#fc5848">{this.props.user}</font></b></Nav>;
     } else {
       userDisplay = <div className="user-display" style={{display: 'inline-block'}}><img src={this.props.profilePic} style={{height: '50px', display: 'inline-block'}} /><div className="user-display" style={{display: 'inline-block', color:'#575858', padding: '0px 10px'}}><b>welcome, <font color="#fc5848">{this.props.user}</font></b></div></div>;
     }
@@ -249,8 +247,7 @@ class Navigation extends Component{
     );
   }
 }
-            // <div className='logo'></div>
-            // <a href="/" id='navbar-links'>TypeReact</a>
+
 
 Navigation.propTypes = {
   isLoggedIn: PropTypes.bool,
