@@ -28,9 +28,9 @@ git commit -m '[feature] <COMMIT-MESSAGE>'
 git pull –-rebase upstream dev
 ```
 
-* Resolve merge conflicts if they exist
+* Resolve merge conflicts if they exist.
 
-* Push changes to your personal github account
+* Push changes to your personal github account.
 ```
 git push origin feature/addlogin
 ```
