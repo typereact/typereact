@@ -38,13 +38,13 @@ export default class FAQs extends Component {
                 <div className="row row-spacer"></div>
             </div>
             <div className="col-md-4 block bottom-row squares">
-                <h4 className="faq-questions">I would like to report a problem or make a suggestion about TypeReact. What is the best way to do so?</h4>
+                <h4 className="faq-questions">How do I report a problem or make a suggestion about TypeReact?</h4>
                 <h6 className="faq-answers">Please feel free to let us know if you found any bugs or would like to make any suggestions. Issues/suggestions can be reported on our GitHub page linked below.</h6>
                 <h6 className="faq-answers"><a href="https://github.com/typereact/typereact/issues">Report a problem</a></h6>
                 <div className="row row-spacer"></div>
             </div>
             <div className="col-md-4 block bottom-row right-square">
-                <h4 className="faq-questions">I want to submit my own challenge. How can I do so?</h4>
+                <h4 className="faq-questions">How do I submit my own challenge?</h4>
                 <h6 className="faq-answers">We are currently developing the feature for users to easily submit challenges. </h6>
             </div>
         </div>
