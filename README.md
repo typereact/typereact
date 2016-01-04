@@ -2,7 +2,7 @@
 
 [TypeReact](typereact.com) is a web game created for JavaScript programmers to improve their use of shortcut keys with Sublime, Vim, or Emacs key bindings.
 
-##Getting Started
+##Getting started
 * Fork the repo.
 
 * [Register](https://github.com/settings/applications/new) a developer app with GitHub to obtain a client ID and secret.
@@ -36,7 +36,7 @@ npm start
 
 * If these modules are edited, you must stop your npm script (ctrl+c), delete the current version of the edited module from your ```node_modules``` folder, and run an npm install again to have the updated version.
 
-## Submitting Bug Reports
+## Submitting bug reports
 
 * All bugs should be submitted through the [issue tracker](https://github.com/typereact/typereact/issues).
 
@@ -51,7 +51,7 @@ npm start
 
 * If making a pull request, please follow the guidelines in the ```CONTRIBUTING.md``` file.
 
-## TypeReact Team
+## TypeReact team
 TypeReact was created by four software engineers at MakerSquare Los Angeles.
 * [Marc Reicher](https://github.com/marcreicher)
 
