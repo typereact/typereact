@@ -40,7 +40,7 @@ class ChallengeList extends Component {
                   <th className="challengelist-rows"><a className="challenge-links" href={'/playchallenge/' + result.id}>{'Challenge #'+result.id}</a></th>
                   <th className="challengelist-rows">{result.difficultyLevel}</th>
                   <th className="challengelist-rows">{result.numPlays}</th>
-                  <th className="challengelist-rows"><a className='challenge-links' href={'/results/' + result.id}>View Leaderboard</a></th>
+                  <th className="challengelist-rows"><a className="challenge-links" href={'/results/' + result.id}>View Leaderboard</a></th>
                 </tr>);
               })}
             </tbody>
