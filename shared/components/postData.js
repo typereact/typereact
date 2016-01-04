@@ -52,6 +52,7 @@ class PostData extends Component {
     }
     
     return(
+      <div className='results-container'>
       <Modal {...this.props} show={this.props.resultsShow} className="resultsModal" onHide={this.props.hideResults}>
         <Modal.Header closeButton>
           <Modal.Title className="resultsHead"><strong>Congratulations!</strong></Modal.Title>
@@ -70,6 +71,7 @@ class PostData extends Component {
           </ButtonToolbar>
         </Modal.Footer>
       </Modal>
+      </div>
       );
   }
 

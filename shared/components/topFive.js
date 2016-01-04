@@ -59,7 +59,7 @@ class TopFive extends Component {
 
     return (
       <div className="container">
-        <h1 className='leaderboard-header'>Challenge {this.props.params.challengeID} Scores</h1>
+        <h1 className='leaderboard-header'>Challenge #{this.props.params.challengeID} Scores</h1>
         <div className="col-xs-6">
           <div className="table">
             <h4 className="top-25">Top 25 Fastest Times</h4>

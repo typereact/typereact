@@ -37,7 +37,7 @@ class GameProgress extends Component {
             >
             </div>
           </div>
-          <div className="current-progress">Current Progress: {percentProgress} %</div>
+          <div className="current-progress">Current Progress: <font color="#85baba">{percentProgress}</font> %</div>
       </div>
     );
   }
