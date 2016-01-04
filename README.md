@@ -2,7 +2,7 @@
 
 [TypeReact](typereact.com) is a web game created for JavaScript programmers to improve their use of shortcut keys with Sublime, Vim, or Emacs key bindings.
 
-###Getting Started
+##Getting Started
 * Fork the repo.
 
 * [Register](https://github.com/settings/applications/new) a developer app with GitHub to obtain a client ID and secret.
@@ -31,12 +31,12 @@ npm start
 ```
 * Open ```localhost:8080``` in your browser.
 
-###Resources
+## Resources
 * In the ```package.json file```, customized versions of [CodeMirror](https://github.com/codemirror/codemirror) and [React-Codemirror](https://github.com/JedWatson/react-codemirror) are used to include additional functionality and methods. The custom modules can be found in the [typereact org repo](https://github.com/typereact).
 
 * If these modules are edited, you must stop your npm script (ctrl+c), delete the current version of the edited module from your ```node_modules``` folder, and run an npm install again to have the updated version.
 
-### Submitting Bug Reports
+## Submitting Bug Reports
 
 * All bugs should be submitted through the [issue tracker](https://github.com/typereact/typereact/issues).
 
@@ -51,12 +51,15 @@ npm start
 
 * If making a pull request, please follow the guidelines in the ```CONTRIBUTING.md``` file.
 
-### Dev Team
+## Dev Team
 * Product Owner: [Marc Reicher](https://github.com/marcreicher)
+
 * Scrum Master: [Nick Krein](https://github.com/nkreinmusic)
+
 * Front-End Engineers:
   * [Chelsea Cheung](https://github.com/chelseatcheung)
   * [Tim Lai](https://github.com/tim-lai)
+ 
 * Back-End Engineers:
   * [Marc Reicher](https://github.com/marcreicher)
   * [Nick Krein](https://github.com/nkreinmusic)
