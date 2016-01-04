@@ -191,19 +191,16 @@ function editorState(state = initEditorState, action) {
     break;
   case CHANGE_KEYMAP:
     if(action.keyMap === 'sublime') {
-      // console.log('inside keyMap sublime');
       $('.sublime-option').addClass('editor-option-clicked');
       $('.vim-option').removeClass('editor-option-clicked');
       $('.emacs-option').removeClass('editor-option-clicked');
     }
     if(action.keyMap === 'vim') {
-      // console.log('inside keyMap vim');
       $('.vim-option').addClass('editor-option-clicked');
       $('.sublime-option').removeClass('editor-option-clicked');
       $('.emacs-option').removeClass('editor-option-clicked');
     }
     if(action.keyMap === 'emacs') {
-      // console.log('inside keyMap emacs');
       $('.emacs-option').addClass('editor-option-clicked');
       $('.sublime-option').removeClass('editor-option-clicked');
       $('.vim-option').removeClass('editor-option-clicked');
@@ -484,7 +481,6 @@ function loggedInState(state = initLoggedInState, action) {
       11: 'November',
       12: 'December'
     };
-    console.log('action is ', action);
     var firstName;
     if(action.loggedIn && action.username !== null) {
       firstName = action.username.split(' ')[0].toLowerCase();
@@ -505,7 +501,6 @@ function loggedInState(state = initLoggedInState, action) {
     // }
 
     action.createdDate[1] = months[action.createdDate[1]];
-    console.log('check user action is ', action);
     return {
       loggedIn: action.loggedIn,
       user: firstName,
@@ -688,7 +683,6 @@ function profilePageState(state = initprofilePageState, action) {
       option = 'Time';
       for(var l=0; l < state.challengeResults.length; l++) {
         if(state.challengeResults[l].challengeID.toString() === challenge.toString()) {
-          console.log('rankingNum2 is ', rankingNum2);
           var tableObj4 = {};
           tableObj4.ranking = 0;
           tableObj4.key = state.challengeResults[l].numKeyStrokes;

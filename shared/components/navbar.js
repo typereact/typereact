@@ -159,13 +159,11 @@ class Navigation extends Component{
   
   componentDidMount() {
     $.get('/isLoggedIn', function(response) {
-      console.log('response is ', response);  
       var loggedIn = Boolean(response);
       var username = response.githubName ? response.githubName : 'guest';
       var pic = response.githubProfile || null;
       var currentUserId = response.id || 1;
       var createdDate = response['created_at'] ? response['created_at'].substr(0, 10).split('-') : ['2015','04','30'];
-      console.log('createdDate is ', createdDate);
       this.props.storeUser(loggedIn, username, pic, currentUserId, createdDate);
     }.bind(this));
   }

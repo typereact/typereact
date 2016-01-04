@@ -35,7 +35,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, state) {
   return {
     changeOrderOptions: function (event) {
-      console.log('event is ', event);
       dispatch(changingOrderOptions(event));
     }
   };
