@@ -59,7 +59,7 @@ class TopFive extends Component {
 
     return (
       <div className="container">
-        <h1 className='leaderboard-header'>Challenge #{this.props.params.challengeID} Scores</h1>
+        <h1 className="leaderboard-header">Challenge #{this.props.params.challengeID} Scores</h1>
         <div className="col-xs-6">
           <div className="table">
             <h4 className="top-25">Top 25 Fastest Times</h4>
@@ -114,10 +114,6 @@ class TopFive extends Component {
     );
   }
 }
-      // <p></p>
-      // {globalTop25KeyStrokes.map(function(topFiveItem, index) {
-      //   return <li className='listItem' key={topFiveItem.id}>{index + 1}.<img src={topFiveItem.pic} height='40' width='40'/> {topFiveItem.numKeyStrokes} keystrokes. By: {topFiveItem.name}</li>;
-      // })}
 
 TopFive.propTypes = {
   // top25Times: PropTypes.array,
