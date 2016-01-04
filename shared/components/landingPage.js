@@ -26,7 +26,7 @@ export default class LandingPage extends Component {
           </div>
           <div className="col-sm-4"></div>
         </div>
-        <div classNAme="row">
+        <div className="row">
           <div className="col-sm-4"></div>
           <div className="col-sm-4">
           <span><div className="landing-slogan">code with efficiency<span className="blinker">|</span></div></span>
@@ -38,10 +38,14 @@ export default class LandingPage extends Component {
         <div className="row row-spacer"></div>
         <div className="row row-spacer"></div>
         <div className="row row-spacer"></div>
-        <div className="row col-md-offset-3 cl-effect-2">  
-          <a href="/challengelist"><span className="play-guest" data-hover="Play As Guest" id="landing-button-text">Play As Guest</span></a>
-          <span className="col-md-1"></span>
-          {githubButton}
+        <div className="row">
+          <div className="col-sm-4">
+          </div>
+          <div className="col-sm-6 cl-effect-2 landing-buttons">  
+            <span><a href="/challengelist"><span className="play-guest" data-hover='Play As Guest' id="landing-button-text">Play As Guest</span></a></span>
+            <span>{githubButton}</span>
+          </div>
+          <div className="col-sm-3"></div>
         </div>
         <div className="row row-spacer"></div>
         <div className="row row-spacer"></div>
