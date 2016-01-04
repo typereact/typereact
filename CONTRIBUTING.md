@@ -13,9 +13,9 @@
 git checkout -b feature/<NEW-BRANCH-NAME>
 ```
 
-* Make changes to your new branch
+* Make changes to your new branch.
 
-* Add and commit changes
+* Add and commit changes.
 ```
 git add <FILE-TO-ADD>
 ```
@@ -23,7 +23,7 @@ git add <FILE-TO-ADD>
 git commit -m '[feature] <COMMIT-MESSAGE>'
 ```
 
-* Rebase from the upstream dev branch to your feature branch  Be sure to do this while you are on your feature branch
+* Rebase from the upstream dev branch to your feature branch. Be sure to do this while you are on your feature branch.
 ```
 git pull –-rebase upstream dev
 ```
@@ -37,7 +37,7 @@ git push origin feature/addlogin
 
 * Submit pull request from your personal github to the org’s github. The pull request should be from your feature branch to the org’s dev branch.
 
-* Once your pull request has been merged to the org's dev branch, git checkout your local dev branch and rebase from the org's dev branch before beginning work on a new feature
+* Once your pull request has been merged to the org's dev branch, git checkout your local dev branch and rebase from the org's dev branch before beginning work on a new feature.
 
 ## Commit Message Guidelines
 
