@@ -40,7 +40,7 @@ class PostData extends Component {
       type: 'POST',
       url: '/userchallenge/postuserchallenge',
       data: JSON.stringify(data),
-      success: function() {console.log('results saved to db');},
+      success: function() {},
       contentType: 'application/json'
     });
   }
