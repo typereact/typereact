@@ -517,7 +517,7 @@ font-size:22px;
 }
 
 #landing-button-text {
-  /*margin-left: 40px;*/
+  /*margin-left: -10px;*/
   padding-top: 3px;
   font-size: 14px;
   height: 47px;
@@ -529,7 +529,7 @@ font-size:22px;
 
 .landing-buttons {
   text-align:center;
-  margin-left:-20px;
+  margin-left:-30px;
 }
 
 .play-guest {
