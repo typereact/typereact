@@ -514,19 +514,20 @@ font-size:22px;
 }
 
 #landing-button-text {
-  margin-left:40px;
+  margin-left: 40px;
+  padding-top: 3px;
   font-size: 14px;
   height: 47px;
   width: 218px;
-  background-color:#fc5848;
-  color:white;
-  text-align:center;
+  background-color: #fc5848;
+  color: white;
+  text-align: center;
 }
 
 .play-guest {
   height: 47px;
   width: 218px;
-  text-align:center;
+  text-align: center;
 }
 
 /*ABOUT PAGE*/
@@ -646,27 +647,30 @@ font-size:22px;
 }
 
 .faq-title {
-  font-weight:bold;
-  text-align:center;
-  font-family:Avenir;
-  margin-bottom:10px;
+  font-weight: bold;
+  text-align: center;
+  font-family: Avenir;
+  margin-bottom: 10px;
   /*color:#fc5848;*/
 }
 
 .faq-questions {
-  text-align:justify center;
+  text-align: justify center;
+  padding: 4px;
   /*text-align:center;*/
-  color:white;
-  background-color:#fc5848;
-  font-family:Avenir;
+  color: white;
+  background-color: #fc5848;
+  font-family: Avenir;
 }
 
 .faq-answers {
   /*font-family:Avenir;*/
   /*text-align:center;*/
   /*text-align:justify;*/
+  padding-left: 8px;
+  padding-right: 8px;
   font-size:15px;
-  color:#4d4d4d;
+  color: #4d4d4d;
 }
 
 .faq-answers a {

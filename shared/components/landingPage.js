@@ -12,8 +12,7 @@ export default class LandingPage extends Component {
 
   render() {
 
-    // var githubButton = <a href="/auth/github" className="btn btn-lg col-md-3 btn-social btn-github" id="landing-button-text"><span className="fa fa-github"></span>Log in With Github</a>;
-    var githubButton = <a href="/auth/github"><span data-hover='Log in with Github' id="landing-button-text">Log in With Github</span></a>;
+    var githubButton = <a href="/auth/github"><span data-hover="Log in with Github" id="landing-button-text">Log in With Github</span></a>;
 
     return (
       <div className="container landing-page">
@@ -40,7 +39,7 @@ export default class LandingPage extends Component {
         <div className="row row-spacer"></div>
         <div className="row row-spacer"></div>
         <div className="row col-md-offset-3 cl-effect-2">  
-          <a href="/challengelist"><span className="play-guest" data-hover='Play As Guest'>Play As Guest</span></a>
+          <a href="/challengelist"><span className="play-guest" data-hover="Play As Guest" id="landing-button-text">Play As Guest</span></a>
           <span className="col-md-1"></span>
           {githubButton}
         </div>
