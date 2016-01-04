@@ -51,12 +51,11 @@ npm start
 
 * If making a pull request, please follow the guidelines in the ```CONTRIBUTING.md``` file.
 
-## Dev Team
-* Product Owner: [Marc Reicher](https://github.com/marcreicher)
-* Scrum Master: [Nick Krein](https://github.com/nkreinmusic)
-* Front-End Engineers:
-  * [Chelsea Cheung](https://github.com/chelseatcheung)
-  * [Tim Lai](https://github.com/tim-lai)
- * Back-End Engineers:
-  * [Marc Reicher](https://github.com/marcreicher)
-  * [Nick Krein](https://github.com/nkreinmusic)
+## TypeReact Team
+* [Marc Reicher](https://github.com/marcreicher)
+
+* [Nick Krein](https://github.com/nkreinmusic)
+
+* [Chelsea Cheung](https://github.com/chelseatcheung)
+
+* [Tim Lai](https://github.com/tim-lai)
