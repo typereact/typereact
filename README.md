@@ -24,7 +24,7 @@ module.exports = function() {
 
 * Add a row to the Challenges table with some test code for challenge_unsolved and challenge_solved
 
-* Run these two commands (current buiild runs with npm version 3.5.1):
+* Run these two commands (current build runs with npm version 3.5.1):
 ```
 npm install
 npm start
@@ -32,7 +32,7 @@ npm start
 * Open ```localhost:8080``` in your browser.
 
 ## Resources
-* In the ```package.json file```, customized versions of [CodeMirror](https://github.com/codemirror/codemirror) and [React-Codemirror](https://github.com/JedWatson/react-codemirror) are used to include additional functionality and methods. The custom modules can be found in the [typereact org repo](https://github.com/typereact).
+* In the ```package.json file```, customized versions of [CodeMirror](https://github.com/codemirror/codemirror), [react-codemirror](https://github.com/JedWatson/react-codemirror), and [react-coundown-clock](https://github.com/pughpugh/react-countdown-clock) are used to include additional functionality and methods. The custom modules can be found in the [typereact org repo](https://github.com/typereact).
 
 * If these modules are edited, you must stop your npm script (ctrl+c), delete the current version of the edited module from your ```node_modules``` folder, and run an npm install again to have the updated version.
 
