@@ -474,9 +474,9 @@ font-size:22px;
 
 .landing-slogan {
   /*text-align: center;*/
-  /*margin-left:20px;*/
-  margin-top:10px;
-  font-size:28px;
+  padding-left: 140px;
+  margin-top: 10px;
+  font-size: 28px;
   white-space: nowrap;
   overflow: hidden;
   width: 30em;
@@ -516,15 +516,34 @@ font-size:22px;
   background: white;
 }
 
-#landing-button-text {
-  /*margin-left: -10px;*/
-  padding-top: 3px;
-  font-size: 14px;
-  height: 47px;
+
+#landing-button-text-guest {
+  /*margin-left: 40px;*/
+  /*margin-top: -8px;*/
+  /*padding-top: 3px;*/
+  float: left;
+  font-size: 17px;
+  /*height: 47px;*/
   width: 218px;
   background-color: #fc5848;
   color: white;
   text-align: center;
+}
+
+#landing-button-text-gh {
+  /*margin-left: 40px;*/
+  /*margin-top: -8px;*/
+  /*padding-top: 3px;*/
+  font-size: 17px;
+  /*height: 47px;*/
+  width: 218px;
+  background-color: #fc5848;
+  color: white;
+  text-align: center;
+}
+
+.landing-button-section {
+  padding-left: 64px;
 }
 
 .landing-buttons {
@@ -535,7 +554,8 @@ font-size:22px;
 .play-guest {
   float:left;
   /*margin-right:40px;*/
-  height: 47px;
+  /*height: 47px;*/
+  font-size: 17px;
   width: 218px;
   text-align: center;
 }
