@@ -1,6 +1,6 @@
 # TypeReact
 
-[TypeReact](www.typereact.com) is a web game created for JavaScript programmers to improve their use of shortcut keys with Sublime, Vim, or Emacs key bindings.
+[TypeReact](http://www.typereact.com) is a web game created for JavaScript programmers to improve their use of shortcut keys with Sublime, Vim, or Emacs key bindings.
 
 ##Getting started
 * Fork the repo.
